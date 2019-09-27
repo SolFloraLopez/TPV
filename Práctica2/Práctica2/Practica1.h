@@ -3,7 +3,7 @@
 
 //using namespace std;
 
-struct Coche 
+struct Coche
 {
 	int codigo;
 	int precio;
@@ -14,7 +14,7 @@ struct Alquiler
 {
 	int codigo;
 	int dia;
-	string fecha;
+	std::string fecha;
 	Coche* coche;
 };
 

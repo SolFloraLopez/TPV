@@ -1,6 +1,7 @@
 #include "Practica1.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ int main()
 
 }
 
-bool cargarCoches(string fichEntrada, ListaCoches listaCoches) 
+bool cargarCoches(string fichEntrada, ListaCoches& listaCoches) 
 {
 	ifstream input;
 	string aux;
@@ -54,7 +55,7 @@ bool cargarCoches(string fichEntrada, ListaCoches listaCoches)
 	return true;
 }
 
-bool leerAlquileres	(string fichEntrada, ListaAlquileres listaAlquileres, ListaCoches listaCoches)
+bool leerAlquileres	(string fichEntrada, ListaAlquileres& listaAlquileres, ListaCoches listaCoches)
 {
 	ifstream input;
 	string aux;
@@ -93,7 +94,7 @@ bool leerAlquileres	(string fichEntrada, ListaAlquileres listaAlquileres, ListaC
 		listaAlquileres.alquileres[i].fecha = aux;
 
 		getline(input, aux);
-		listaAlquileres.alquileres[i].dias = stoi(aux);
+		listaAlquileres.alquileres[i].dia = stoi(aux);
 
 		listaAlquileres.alquileres[i].coche = buscaCoche(listaCoches, listaAlquileres.alquileres[i].codigo);
 	}
@@ -102,7 +103,10 @@ bool leerAlquileres	(string fichEntrada, ListaAlquileres listaAlquileres, ListaC
 	return true;
 }
 
-void 
+void ordenarAlquileres(ListaAlquileres& listaAlquileres) 
+{
+	sort(listaAlquileres)
+}
 
 Coche * buscaCoche(ListaCoches listaCoches, int codigo) 
 {
@@ -117,3 +121,4 @@ Coche * buscaCoche(ListaCoches listaCoches, int codigo)
 
 	return &listaCoches.coches[i];
 }
+
