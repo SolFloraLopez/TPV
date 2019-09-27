@@ -5,12 +5,7 @@
 
 using namespace std;
 
-int main()
-{
-
-}
-
-bool cargarCoches(string fichEntrada, ListaCoches& listaCoches) 
+bool cargarCoches(string fichEntrada, ListaCoches& listaCoches)
 {
 	ifstream input;
 	string aux;
@@ -23,29 +18,18 @@ bool cargarCoches(string fichEntrada, ListaCoches& listaCoches)
 	listaCoches.cont = stoi(aux);
 	listaCoches.coches = new Coche[listaCoches.cont];
 
-	for (int i = 0; i < listaCoches.cont; i++) 
+	for (int i = 0; i < listaCoches.cont; i++)
 	{
-		char c;
-		input.get(c);
 		aux = "";
 
-		while (c != ' ') 
-		{
-			aux += c;
-			input.get(c);
-		}
+		input >> aux;
 
 		listaCoches.coches[i].codigo = stoi(aux);
 
-		input.get(c);
 		aux = "";
 
-		while (c != ' ')
-		{
-			aux += c;
-			input.get(c);
-		}
-		
+		input >> aux;
+
 		listaCoches.coches[i].precio = stoi(aux);
 
 		getline(input, listaCoches.coches[i].nombre);
@@ -55,7 +39,20 @@ bool cargarCoches(string fichEntrada, ListaCoches& listaCoches)
 	return true;
 }
 
-bool leerAlquileres	(string fichEntrada, ListaAlquileres& listaAlquileres, ListaCoches listaCoches)
+Coche * buscaCoche(ListaCoches listaCoches, int codigo)
+{
+	int i = 0;
+	while (i < listaCoches.cont && listaCoches.coches[i].codigo != codigo)
+	{
+		i++;
+	}
+
+	if (i == listaCoches.cont) return nullptr;
+
+	return &listaCoches.coches[i];
+}
+
+bool leerAlquileres(string fichEntrada, ListaAlquileres& listaAlquileres, ListaCoches listaCoches)
 {
 	ifstream input;
 	string aux;
@@ -71,27 +68,15 @@ bool leerAlquileres	(string fichEntrada, ListaAlquileres& listaAlquileres, Lista
 	for (int i = 0; i < listaAlquileres.cont; i++)
 	{
 		char c;
-		input.get(c);
-		aux = "";
+		int d, m, a;
 
-		while (c != ' ')
-		{
-			aux += c;
-			input.get(c);
-		}
+		input >> aux;
 
 		listaAlquileres.alquileres[i].codigo = stoi(aux);
 
-		input.get(c);
-		aux = "";
+		input >> d; input.get(c); input >> m; input.get(c); input >> a;
 
-		while (c != ' ')
-		{
-			aux += c;
-			input.get(c);
-		}
-
-		listaAlquileres.alquileres[i].fecha = aux;
+		listaAlquileres.alquileres[i].fecha = Date(d, m, a);
 
 		getline(input, aux);
 		listaAlquileres.alquileres[i].dia = stoi(aux);
@@ -103,22 +88,51 @@ bool leerAlquileres	(string fichEntrada, ListaAlquileres& listaAlquileres, Lista
 	return true;
 }
 
-void ordenarAlquileres(ListaAlquileres& listaAlquileres) 
+bool sortingFunction(Alquiler alquiler1, Alquiler alquiler2)
 {
-	sort(listaAlquileres)
+	return alquiler1.fecha < alquiler2.fecha;
 }
 
-Coche * buscaCoche(ListaCoches listaCoches, int codigo) 
+void ordenarAlquileres(ListaAlquileres& listaAlquileres)
 {
-	int i = 0;
+	sort(listaAlquileres.alquileres, &listaAlquileres.alquileres[listaAlquileres.cont], sortingFunction);
+}
 
-	while (i < listaCoches.cont && listaCoches.coches[i].codigo != codigo) 
+void mostrarAlquileres(string fichSalida, ListaAlquileres listaAlquileres)
+{
+	ofstream output;
+	output.open(fichSalida);
+
+	//Escribir fecha
+
+	for (int i = 0; i < listaAlquileres.cont; i++)
 	{
-		i++;
+		output << listaAlquileres.alquileres[i].fecha;
+
+		if (listaAlquileres.alquileres[i].coche != nullptr)
+		{
+			output << listaAlquileres.alquileres[i].coche->nombre << " " << listaAlquileres.alquileres[i].dia << " dia(s) por "
+				<< listaAlquileres.alquileres[i].coche->precio * listaAlquileres.alquileres[i].dia << " euros\n";
+		}
+
+		else
+		{
+			output << " ERROR: Modelo inexistente \n";
+		}
 	}
 
-	if (i == listaCoches.cont) return nullptr;
+	output.close();
+}
 
-	return &listaCoches.coches[i];
+int main()
+{
+	string fichCoches = "coches.txt"; string fichAlquileres = "rent.txt"; string fichSalida = "exitPractica.txt";
+	ListaCoches listaCoches;
+	ListaAlquileres listaAlquileres;
+
+	cargarCoches(fichCoches, listaCoches);
+	leerAlquileres(fichAlquileres, listaAlquileres, listaCoches);
+	ordenarAlquileres(listaAlquileres);
+	mostrarAlquileres(fichSalida, listaAlquileres);
 }
 

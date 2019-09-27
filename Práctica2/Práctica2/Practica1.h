@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Date.h"
 
 //using namespace std;
 
@@ -14,7 +15,7 @@ struct Alquiler
 {
 	int codigo;
 	int dia;
-	std::string fecha;
+	Date fecha;
 	Coche* coche;
 };
 
