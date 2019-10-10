@@ -21,7 +21,7 @@ void firstTest() {
 
 	const uint winWidth = 800;
 	const uint winHeight = 600;
-	const uint FRAME_RATE = 50;
+	const uint FRAME_RATE = 500;
 
 	// Inicialización del sistema, ventana y renderer
 	SDL_Init(SDL_INIT_EVERYTHING);
