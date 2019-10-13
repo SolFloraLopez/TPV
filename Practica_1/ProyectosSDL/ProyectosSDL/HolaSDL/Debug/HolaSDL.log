@@ -1,0 +1,12 @@
+﻿  Arrow.cpp
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.h(14,48): error C2059:  error de sintaxis: ')'
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.h(14,48): error C2143:  error de sintaxis: falta ')' delante de ';'
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.h(16,9): error C2535:  'Arrow::Arrow(void)': función miembro ya definida o declarada
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.h(15): message :  vea la declaración de 'Arrow::Arrow'
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(3,41): error C2511:  'Arrow::Arrow(double,double)': la función miembro sobrecargada no se ha encontrado en 'Arrow'
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.h(6): message :  vea la declaración de 'Arrow'
+  main.cpp
+  Texture.cpp
+  Vector2D.cpp
+  Generando código...
+D:\Otros\Uni\RepoTP\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(3,68): error C2550:  'Arrow::{ctor}': las listas de inicializadores de constructor solo se permiten en las definiciones de constructor
