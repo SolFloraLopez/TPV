@@ -13,7 +13,7 @@ using uint = unsigned int;
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 3;
-const uint FRAME_RATE;
+const uint FRAME_RATE = 50;
 
 class Game {
 private:

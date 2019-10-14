@@ -13,14 +13,14 @@ private:
 	Vector2D vel;
 	Arrow* arrow = nullptr;
 	Texture* texture = nullptr;
+	bool cargado;
 	
 	//Game* game = nullptr;
 
 public:
-	Bow(Point2D pos, double ancho, double alto, Vector2D vel, Arrow* arrow, Texture* texture);
-	void render() const;
+	Bow(Point2D pos, double ancho, double alto, Vector2D vel, Arrow* arrow, Texture* texture, bool cargado);
+	void render(std::string filename) const;
 	void update();
 	void handleEvents(/*SDL_Event& event*/);
-
 
 };
