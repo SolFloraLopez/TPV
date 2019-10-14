@@ -6,9 +6,9 @@ void Arrow::render() const{
 
 }
 
-bool Arrow::update() {
+/*bool Arrow::update() {
 
-}
+}*/
 
 void Arrow::rect() {
 

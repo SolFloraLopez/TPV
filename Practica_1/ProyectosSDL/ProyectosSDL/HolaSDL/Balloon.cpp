@@ -9,10 +9,10 @@ void Balloon::render() const {
 	SDL_Rect destRect;
 	destRect.h = alto;
 	destRect.w = ancho;
-	destRect.x = pos.getX;
-	destRect.y = pos.getY;
+	destRect.x = pos.getX();
+	destRect.y = pos.getY();
 	texture->render(destRect);
 
 };
 void Balloon::update() {};
-bool Balloon::move() {};
+//bool Balloon::move() {};

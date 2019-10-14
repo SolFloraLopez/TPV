@@ -71,6 +71,7 @@
     <ClCompile Include="Balloon.cpp" />
     <ClCompile Include="Bow.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>

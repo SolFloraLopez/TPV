@@ -1,10 +1,2 @@
-﻿  Arrow.cpp
-  Balloon.cpp
-  Bow.cpp
-  Game.cpp
-  Texture.cpp
-  Vector2D.cpp
-  Generando código...
-D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.h(16,22): error C2734:  'FRAME_RATE': el objeto 'const' debe inicializarse si no es de tipo 'extern'
-D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(8): error C4716:  'Balloon::move': debe devolver un valor
-D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(11): error C4716:  'Arrow::update': debe devolver un valor
+﻿  Game.cpp
+  HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
