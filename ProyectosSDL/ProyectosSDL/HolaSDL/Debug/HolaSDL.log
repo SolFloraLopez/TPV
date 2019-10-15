@@ -1,14 +1,15 @@
 ﻿  Game.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': redefinición de macro
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  vea la definición anterior de '_malloca'
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(28,15): warning C4003:  no hay suficientes argumentos para la invocación de macro "free" de tipo función
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(29,7): warning C4003:  no hay suficientes argumentos para la invocación de macro "free" de tipo función
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(29,7): error C2059:  error de sintaxis: ','
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(28,15): error C2143:  error de sintaxis: falta ')' delante de ','
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(28,13): error C2059:  error de sintaxis: ')'
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2143:  error de sintaxis: falta ')' delante de '...'
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2143:  error de sintaxis: falta ';' delante de '...'
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2059:  error de sintaxis: '...'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2143: error de sintaxis: falta ')' delante de '...'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2143: error de sintaxis: falta ';' delante de '...'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,16): error C2059: error de sintaxis: '...'
   Texture.cpp
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,19): error C2059: error de sintaxis: ')'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.cpp(6,15): error C2039: 'free': no es un miembro de 'Texture'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.h(14): message : vea la declaración de 'Texture'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.cpp(7,21): error C2065: 'texture': identificador no declarado
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.cpp(8,2): error C2065: 'texture': identificador no declarado
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.cpp(9,2): error C2065: 'w': identificador no declarado
   Generando código...
-D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(34,19): error C2059:  error de sintaxis: ')'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\HolaSDL\Texture.cpp(9,6): error C2065: 'h': identificador no declarado
