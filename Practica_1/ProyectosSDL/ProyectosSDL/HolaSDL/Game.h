@@ -19,6 +19,8 @@ const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 3;
 const uint FRAME_RATE = 50;
+const uint BOW_VELOCITY = 5;
+const uint BALLOON_VELOCITY = 3;
 
 enum {Background, BowTexture, Balloons};
 
@@ -47,7 +49,7 @@ private:
 	void balloonspawner();
 public:
 	Game();
-	//~Game();
+	~Game();
 	void run();
 	void render() const;
 	void handleEvents();

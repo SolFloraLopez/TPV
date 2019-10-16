@@ -4,6 +4,12 @@
 Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Arrow* arrow, Texture* texture, bool cargado) :
 	pos(pos), ancho(ancho), alto(alto), vel(vel), arrow(arrow), texture(texture), cargado(cargado) {};
 
+Bow::~Bow() 
+{
+	delete arrow;
+	delete texture;
+}
+
 void Bow::render() const {
 	SDL_Rect destRect;
 	destRect.h = alto;
@@ -19,10 +25,7 @@ void Bow::update()
 
 	if (pos.getY() + alto > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - alto };
 
-	else if (pos.getY() - alto * 1.575 < -((double)WIN_HEIGHT / 2))
-	{
-		pos = { pos.getX(), -((double)WIN_HEIGHT / 2) + alto * 1.575};
-	}
+	else if (pos.getY() < 0) pos = { pos.getX(), 0 };
 };
 
 void Bow::handleEvents(SDL_Event& event) 

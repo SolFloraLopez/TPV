@@ -3,15 +3,15 @@
 #include "Vector2D.h"
 #include "Game.h"
 #include "Texture.h"
-#include "checkML.h"
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
 using uint = unsigned int;
 
 Game::Game() {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
+	srand(time(NULL));
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("First test with SDL", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
@@ -22,15 +22,18 @@ Game::Game() {
 		textures[i] = new Texture(renderer, infoText[i].ruta, infoText[i].filas, infoText[i].columnas);
 	}
 
-	bow = new Bow({0,0}, (double)200, (double)190, { 0, 0.1 }, nullptr, textures[BowTexture], true);
+	bow = new Bow({0,0}, (double)200, (double)190, { 0, BOW_VELOCITY }, nullptr, textures[BowTexture], true);
+	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10));
 }
 
 void Game::run() {		//bucle principal
 	while (!SDL_QuitRequested())
 	{
 		handleEvents();
+		balloonspawner();
 		update();
 		render();
+		SDL_Delay(1000 / FRAME_RATE);
 	}
 }
 
@@ -39,6 +42,11 @@ void Game::render() const
 	SDL_RenderClear(renderer);
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 	bow->render();
+
+	for (int i = 0; i < balloons.size(); i++) 
+	{
+		balloons[i]->render();
+	}
 	SDL_RenderPresent(renderer);
 };
 
@@ -51,9 +59,38 @@ void Game::handleEvents()
 	}
 }
 
-void Game::balloonspawner() {};
+void Game::balloonspawner() 
+{
+	if (balloons.size() < 1000 && rand() % 20 == 1)
+	{
+		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
+			(double)512, (double)512, { -1, BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7));
+	}
+};
 
-void Game::update() 
+void Game::update()
 {
 	bow->update();
-};
+	for (int i = 0; i < balloons.size(); i++)
+	{
+		if (balloons[i]->update() == false) 
+		{
+			balloons.erase(balloons.begin() + i);
+		}
+	}
+}
+
+Game::~Game() 
+{
+	for (int i = 0; i < balloons.size(); i++) {
+		balloons[i]->~Balloon();
+	}
+	
+	balloons.clear();
+	bow->~Bow();
+
+	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+}
