@@ -1,6 +1,6 @@
-﻿  Game.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(14,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(46,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(74,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(85,20): warning C4018: '<': no coinciden signed/unsigned
+﻿  Arrow.cpp
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(13,15): warning C4244: '=': conversión de 'const double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(14,15): warning C4244: '=': conversión de 'const double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(15,28): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(16,28): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe

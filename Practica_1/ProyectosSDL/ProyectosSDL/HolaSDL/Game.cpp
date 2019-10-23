@@ -22,7 +22,7 @@ Game::Game() {
 		textures[i] = new Texture(renderer, infoText[i].ruta, infoText[i].filas, infoText[i].columnas);
 	}
 
-	bow = new Bow({0,0}, (double)200, (double)190, { 0, BOW_VELOCITY }, nullptr, textures[BowTexture], true);
+	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true);
 	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10));
 }
 
@@ -41,12 +41,19 @@ void Game::render() const
 {
 	SDL_RenderClear(renderer);
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
+
 	bow->render();
+
+	for (int i = 0; i < shotArrows.size(); i++)
+	{
+		shotArrows[i]->render();
+	}
 
 	for (int i = 0; i < balloons.size(); i++) 
 	{
 		balloons[i]->render();
 	}
+	
 	SDL_RenderPresent(renderer);
 };
 
