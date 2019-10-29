@@ -29,5 +29,10 @@ void Arrow::rect() {
 
 void Arrow::changePos(Vector2D pos)
 {
-	position = { pos.getX(), pos.getY() + 42 };
+	position = { pos.getX(), pos.getY() };
+}
+
+SDL_Rect* Arrow::returnPointRect()
+{
+	return new SDL_Rect{ (int)position.getY(), (int)position.getX() + ((int)ancho / 4) * 3 , (int)alto / 2, (int)ancho / 4};
 }

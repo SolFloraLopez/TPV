@@ -22,8 +22,8 @@ Game::Game() {
 		textures[i] = new Texture(renderer, infoText[i].ruta, infoText[i].filas, infoText[i].columnas);
 	}
 
-	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true);
-	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10));
+	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this);
+	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10, this));
 }
 
 void Game::run() {		//bucle principal
@@ -71,9 +71,33 @@ void Game::balloonspawner()
 	if (balloons.size() < 1000 && rand() % 20 == 1)
 	{
 		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
-			(double)512, (double)512, { -1, BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7));
+			(double)512, (double)512, { -1, BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
 	}
 };
+
+void Game::shoot(Arrow* arrow)
+{
+	shotArrows.push_back(arrow);
+	availableArrows--;
+}
+
+int Game::getAvailableArrows()
+{
+	return availableArrows;
+}
+
+bool Game::collision(Balloon* balloon)
+{
+	for (int i = 0; i < shotArrows.size(); i++)
+	{
+		if (SDL_HasIntersection(balloon->returnRect(), shotArrows[i]->returnPointRect()))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void Game::update()
 {
@@ -81,6 +105,14 @@ void Game::update()
 	for (int i = 0; i < balloons.size(); i++)
 	{
 		if (balloons[i]->update() == false) 
+		{
+			balloons.erase(balloons.begin() + i);
+		}
+	}
+
+	for (int i = 0; i < shotArrows.size(); i++)
+	{
+		if (shotArrows[i]->update() == false)
 		{
 			balloons.erase(balloons.begin() + i);
 		}

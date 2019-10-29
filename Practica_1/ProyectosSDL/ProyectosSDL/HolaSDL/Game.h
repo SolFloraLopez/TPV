@@ -41,6 +41,7 @@ private:
 	//int arrows;
 	Texture* textures[NUM_TEXTURES];
 	Bow* bow;
+	int availableArrows = 10;
 
 	vector<Arrow*> shotArrows;
 	vector<Balloon*> balloons;
@@ -56,6 +57,7 @@ public:
 	void render() const;
 	void handleEvents();
 	void update();
-	//void collision();
-	//void shoot();
+	bool collision(Balloon* balloon);
+	void shoot(Arrow* arrow);
+	int getAvailableArrows();
 };

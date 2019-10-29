@@ -3,16 +3,16 @@
 
 using namespace std;
 
-void Texture::free() {
-	SDL_DestroyTexture(texture);
-	texture = nullptr;
-	w = h = 0;
-}
+//void Texture::free() {
+//	SDL_DestroyTexture(texture);
+//	texture = nullptr;
+//	w = h = 0;
+//}
 
 void Texture::load(string filename, uint nRows, uint nCols) {
 	SDL_Surface* tempSurface = IMG_Load(filename.c_str());
 	if (tempSurface == nullptr) throw "Error loading surface from " + filename;
-	free();
+	/*free();*/
 	texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	if (texture == nullptr) throw "Error loading texture from " + filename;
 	numRows = nRows;

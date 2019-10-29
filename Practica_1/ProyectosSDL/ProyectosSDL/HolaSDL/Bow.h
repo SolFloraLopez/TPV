@@ -4,6 +4,8 @@
 #include "Arrow.h"
 #include <iostream>
 
+class Game;
+
 class Bow {
 
 private:
@@ -14,12 +16,13 @@ private:
 	Arrow* arrow = nullptr;
 	Texture* texture = nullptr;
 	Texture* arrowTexture = nullptr;
+	Game* game;
 	bool cargado;
 	
 	//Game* game = nullptr;
 
 public:
-	Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado);
+	Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado, Game* game);
 	~Bow();
 	void render() const;
 	void update();

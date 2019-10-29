@@ -1,8 +1,8 @@
 #include "Bow.h"
 #include "Game.h"
 
-Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado) :
-	pos(pos), ancho(ancho), alto(alto), vel(vel), texture(texture), arrowTexture(arrowTexture), cargado(cargado) {};
+Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado, Game* thisGame) :
+	pos(pos), ancho(ancho), alto(alto), vel(vel), texture(texture), arrowTexture(arrowTexture), cargado(cargado), game(thisGame) {};
 
 Bow::~Bow() 
 {
@@ -26,7 +26,7 @@ void Bow::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) };
 
-	if (arrow != nullptr) arrow->changePos(pos);
+	if (arrow != nullptr) arrow->changePos({ pos.getX(), pos.getY() + alto / 2 - 15 });
 
 	if (pos.getY() + alto > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - alto };
 
@@ -50,9 +50,14 @@ void Bow::handleEvents(SDL_Event& event)
 			vel = Vector2D(1, velocity);
 		}
 
-		else if (event.key.keysym.sym == SDLK_LEFT)
+		else if (event.key.keysym.sym == SDLK_LEFT && game->getAvailableArrows() > 0)
 		{
-			arrow = new Arrow((double)82, (double)404, { 0,0 }, { 0, ARROW_VELOCITY }, arrowTexture);
+			arrow = new Arrow((double)41, (double)202, { 0,0 }, { 1, ARROW_VELOCITY }, arrowTexture);
+		}
+		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr)
+		{
+			game->shoot(arrow);
+			arrow = nullptr;
 		}
 		break;
 	case SDL_KEYUP:

@@ -1,4 +1,4 @@
-	#pragma once
+#pragma once
 #include "Vector2D.h"
 #include "Texture.h"
 #include <iostream>
@@ -17,4 +17,5 @@ public:
 	void rect();
 	void changePos(Vector2D pos);
 	bool update();
+	SDL_Rect* returnPointRect();
 };
