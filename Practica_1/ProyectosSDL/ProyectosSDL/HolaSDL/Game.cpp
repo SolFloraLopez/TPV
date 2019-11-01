@@ -17,13 +17,13 @@ Game::Game() {
 		SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	for (int i = 0; i < NUM_TEXTURES; i++) 
+	for (int i = 0; i < NUM_TEXTURES; i++) //Crea el array de texturas con las texturas de todo el juego
 	{
 		textures[i] = new Texture(renderer, infoText[i].ruta, infoText[i].filas, infoText[i].columnas);
 	}
 
-	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this);
-	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10, this));
+	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
+	balloons.push_back(new Balloon({ WIN_HEIGHT, WIN_HEIGHT }, (double)512, (double)512, { -1, BALLOON_VELOCITY }, true, textures[Balloons], rand() % 10, this)); //Crea y añade un nuevo globo al array de globos
 }
 
 void Game::run() {		//bucle principal
@@ -37,7 +37,7 @@ void Game::run() {		//bucle principal
 	}
 }
 
-void Game::render() const 
+void Game::render() const //Llama a los metodos render de los elementos del juego
 {
 	SDL_RenderClear(renderer);
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
@@ -57,7 +57,7 @@ void Game::render() const
 	SDL_RenderPresent(renderer);
 };
 
-void Game::handleEvents() 
+void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea false, mientras que el jugador no salga del juego
 {
 	SDL_Event event;
 	while (SDL_PollEvent(&event) && !exit) {
@@ -66,7 +66,7 @@ void Game::handleEvents()
 	}
 }
 
-void Game::balloonspawner() 
+void Game::balloonspawner() //Generador de globos
 {
 	if (balloons.size() < 1000 && rand() % 20 == 1)
 	{
@@ -75,22 +75,22 @@ void Game::balloonspawner()
 	}
 };
 
-void Game::shoot(Arrow* arrow)
+void Game::shoot(Arrow* arrow) //Añade la flecha al array de flechas lanzadas y resta uno a las flechas disponibles
 {
 	shotArrows.push_back(arrow);
 	availableArrows--;
 }
 
-int Game::getAvailableArrows()
+int Game::getAvailableArrows() //Devuelve el numero de flechas disponibles
 {
 	return availableArrows;
 }
 
-bool Game::collision(Balloon* balloon)
+bool Game::collision(Balloon* balloon) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
 {
-	for (int i = 0; i < shotArrows.size(); i++)
+	for (int i = 0; i < shotArrows.size(); i++) 
 	{
-		if (SDL_HasIntersection(balloon->returnRect(), shotArrows[i]->returnPointRect()))
+		if (SDL_HasIntersection(balloon->returnRect(), shotArrows[i]->returnPointRect())) 
 		{
 			return true;
 		}
@@ -99,7 +99,7 @@ bool Game::collision(Balloon* balloon)
 	return false;
 }
 
-void Game::update()
+void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
 	bow->update();
 	for (int i = 0; i < balloons.size(); i++)
@@ -119,7 +119,7 @@ void Game::update()
 	}
 }
 
-Game::~Game() 
+Game::~Game() //Destructor del juego
 {
 	for (int i = 0; i < balloons.size(); i++) {
 		balloons[i]->~Balloon();

@@ -17,10 +17,10 @@ private:
 	uint inst = 0;
 	Texture* texture = nullptr;
 	Game* game;
-	//Game* game = nullptr;
+	
 
 public:
-	Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, /*uint inst,*/ Texture* tex, int color, Game* game);
+	Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int color, Game* game);
 	~Balloon();
 	void render() const;
 	bool update();

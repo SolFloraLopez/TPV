@@ -14,7 +14,6 @@ public:
 	Arrow(double alto, double ancho, Point2D pos, Vector2D vel,Texture* tex);
 	~Arrow();
 	void render() const;
-	void rect();
 	void changePos(Vector2D pos);
 	bool update();
 	SDL_Rect* returnPointRect();

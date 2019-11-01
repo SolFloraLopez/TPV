@@ -19,8 +19,7 @@ private:
 	Game* game;
 	bool cargado;
 	
-	//Game* game = nullptr;
-
+	
 public:
 	Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado, Game* game);
 	~Bow();

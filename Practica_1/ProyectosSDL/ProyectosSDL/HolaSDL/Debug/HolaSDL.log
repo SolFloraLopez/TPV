@@ -1,23 +1,28 @@
-﻿  Balloon.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(14,20): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(15,21): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(16,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+﻿  Arrow.cpp
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(13,15): warning C4244:  '=': conversión de 'const double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(14,15): warning C4244:  '=': conversión de 'const double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(15,28): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Balloon.cpp
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(16,28): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(16,20): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(17,21): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(18,23): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
   Bow.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(17,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(16,15): warning C4244: '=': conversión de 'const double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(17,15): warning C4244: '=': conversión de 'const double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(18,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(19,23): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(20,15): warning C4244:  '=': conversión de 'const double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(21,15): warning C4244:  '=': conversión de 'const double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(22,23): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
   Game.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(19,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(14,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(47,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(52,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(91,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(105,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(113,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(23,23): warning C4244:  '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(14,12): warning C4244:  'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(47,20): warning C4018:  '<': no coinciden signed/unsigned
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(52,20): warning C4018:  '<': no coinciden signed/unsigned
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(91,20): warning C4018:  '<': no coinciden signed/unsigned
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(105,20): warning C4018:  '<': no coinciden signed/unsigned
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(113,20): warning C4018:  '<': no coinciden signed/unsigned
   Main.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(124,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(124,20): warning C4018:  '<': no coinciden signed/unsigned
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': redefinición de macro
   Generando código...
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-  HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Practica_1\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  vea la definición anterior de '_malloca'
+  HolaSDL.vcxproj -> D:\Otros\Uni\RepoTP\TPV\Practica_1\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
