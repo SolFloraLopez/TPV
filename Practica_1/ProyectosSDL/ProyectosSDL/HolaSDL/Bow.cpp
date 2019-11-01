@@ -4,7 +4,7 @@
 
 //Constructor
 Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado, Game* thisGame) :
-	pos(pos), ancho(ancho), alto(alto), vel(vel), texture(texture), arrowTexture(arrowTexture), cargado(cargado), game(thisGame) {};
+	pos(pos), width(ancho), height(alto), vel(vel), texture(texture), arrowTexture(arrowTexture), loaded(cargado), game(thisGame) {};
 
 
 //Destructor
@@ -17,8 +17,8 @@ Bow::~Bow()
 
 void Bow::render() const { //Crear un rectangulo destino con las proporciones del arco y renderiza su textura
 	SDL_Rect destRect;
-	destRect.h = alto;
-	destRect.w = ancho;
+	destRect.h = height;
+	destRect.w = width;
 	destRect.x = pos.getX();
 	destRect.y = pos.getY();
 	texture->render(destRect);
@@ -30,9 +30,9 @@ void Bow::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del arco
 
-	if (arrow != nullptr) arrow->changePos({ pos.getX(), pos.getY() + alto / 2 - 15 }); //Si flecha no es null, cambian la posicion de esta
+	if (arrow != nullptr) arrow->changePos({ pos.getX(), pos.getY() + height / 2 - 15 }); //Si flecha no es null, cambian la posicion de esta
 
-	if (pos.getY() + alto > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - alto }; //Mantiene el arco en pantalla
+	if (pos.getY() + height > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - height }; //Mantiene el arco en pantalla
 
 	else if (pos.getY() < 0) pos = { pos.getX(), 0 };
 };
@@ -56,7 +56,7 @@ void Bow::handleEvents(SDL_Event& event)
 
 		else if (event.key.keysym.sym == SDLK_LEFT && game->getAvailableArrows() > 0) //Si hay flechas disponibles, crea una nueva
 		{
-			arrow = new Arrow((double)41, (double)202, { 0,0 }, { 1, ARROW_VELOCITY }, arrowTexture);
+			arrow = new Arrow((double)41, (double)202, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture);
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr) //Si hay una flecha cargada llama al metodo disparar de game y el puntero a arrow se pone en null
 		{

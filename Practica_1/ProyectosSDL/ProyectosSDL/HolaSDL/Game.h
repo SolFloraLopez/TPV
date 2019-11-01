@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Balloon.h"
 #include "Arrow.h"
 #include "Bow.h"
@@ -19,17 +20,18 @@ const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 4;
 const uint FRAME_RATE = 50;
-const uint BOW_VELOCITY = 5;
-const uint BALLOON_VELOCITY = 3;
-const uint ARROW_VELOCITY = 4;
+const uint BALLOON_POINTS = 10;
+const double BOW_VELOCITY = 5;
+const double BALLOON_VELOCITY = 0.5;
+const double ARROW_VELOCITY = 4;
 
 enum {Background, BowTexture, Balloons, ArrowTexture};
 
 struct infoTexturas
 {
-	string ruta;
-	int filas;
-	int columnas;
+	string route;
+	int rows;
+	int columns;
 };
 
 class Game {
@@ -37,11 +39,10 @@ private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	bool exit = false;
-	//int points;
-	//int arrows;
 	Texture* textures[NUM_TEXTURES];
 	Bow* bow;
 	int availableArrows = 10;
+	int points = 0;
 
 	vector<Arrow*> shotArrows;
 	vector<Balloon*> balloons;

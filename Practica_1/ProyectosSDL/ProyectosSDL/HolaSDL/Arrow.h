@@ -5,8 +5,8 @@
 
 class Arrow {
 private:
-	double ancho;
-	double alto;
+	double width;
+	double height;
 	Point2D position;
 	Vector2D vel;
 	Texture* texture = nullptr;
