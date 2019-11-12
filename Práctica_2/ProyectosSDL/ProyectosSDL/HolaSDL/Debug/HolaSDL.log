@@ -1,24 +1,5 @@
-﻿  Arrow.cpp
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(14,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(15,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(16,28): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Balloon.cpp
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Arrow.cpp(17,28): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(16,22): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(17,21): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(18,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Bow.cpp
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(19,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(20,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(21,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(22,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Game.cpp
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Bow.cpp(23,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(15,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': macro redefinition
-  Texture.cpp
-  Vector2D.cpp
-  Generating Code...
-C:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  see previous definition of '_malloca'
-  HolaSDL.vcxproj -> U:\hlocal\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
+﻿Arrow.obj : error LNK2019: símbolo externo "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ) sin resolver al que se hace referencia en la función "public: virtual __thiscall ArrowsGameObject::~ArrowsGameObject(void)" (??1ArrowsGameObject@@UAE@XZ)
+ArrowsGameObject.obj : error LNK2001: símbolo externo "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ) sin resolver
+Balloon.obj : error LNK2001: símbolo externo "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ) sin resolver
+Bow.obj : error LNK2001: símbolo externo "public: virtual __thiscall GameObject::~GameObject(void)" (??1GameObject@@UAE@XZ) sin resolver
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe : fatal error LNK1120: 1 externos sin resolver

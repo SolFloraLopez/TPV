@@ -3,8 +3,12 @@
 
 
 //Constructor
-Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado,  Texture* tex, int color, Game* thisGame) :
-	pos(pos), width(ancho), height(alto), vel(vel), state(estado), texture(tex), color(color), game(thisGame) {};
+Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, Game* thisGame) : 
+	ArrowsGameObject(pos, vel, ancho, alto, tex, thisGame) 
+{
+	state = estado;
+	color = colour;
+}
 
 Balloon::~Balloon() //Destructor
 {

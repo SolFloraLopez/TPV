@@ -1,11 +1,10 @@
 #pragma once
-#include "Vector2D.h"
-#include "Texture.h"
+#include "ArrowsGameObject.h"
 #include <iostream>
 
 class Game;
 
-class Balloon {
+class Balloon : public ArrowsGameObject{
 
 private:
 	Point2D pos;
@@ -20,7 +19,7 @@ private:
 	
 
 public:
-	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int color, Game* game);
+	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, Game* game);
 	~Balloon();
 	void render() const;
 	bool update();

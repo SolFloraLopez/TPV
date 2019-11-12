@@ -1,19 +1,19 @@
 #pragma once
-#include "Vector2D.h"
-#include "Texture.h"
+#include "ArrowsGameObject.h"
 #include <iostream>
 
-class Arrow {
+class Arrow : public ArrowsGameObject {
 private:
 	double width;
 	double height;
 	Point2D position;
 	Vector2D vel;
 	Texture* texture = nullptr;
+	Game* game;
 public:
-	Arrow(double alto, double ancho, Point2D pos, Vector2D vel,Texture* tex);
+	Arrow(double alto, double ancho, Point2D pos, Vector2D vel, Texture* tex, Game* game);
 	~Arrow();
-	void render() const;
+	//void render() const;
 	void changePos(Vector2D pos);
 	bool update();
 	SDL_Rect* returnPointRect();

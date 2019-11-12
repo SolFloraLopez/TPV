@@ -3,8 +3,12 @@
 
 
 //Constructor
-Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTexture, bool cargado, Game* thisGame) :
-	pos(pos), width(ancho), height(alto), vel(vel), texture(texture), arrowTexture(arrowTexture), loaded(cargado), game(thisGame) {};
+Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTex, bool cargado, Game* thisGame) :
+	ArrowsGameObject(pos, vel, ancho, alto, texture, thisGame)
+{
+	arrowTexture = arrowTex;
+	loaded = cargado;
+};
 
 
 //Destructor
@@ -26,7 +30,7 @@ void Bow::render() const { //Crear un rectangulo destino con las proporciones de
 	if(arrow != nullptr) arrow->render(); //Si flecha no es null llama el render de la misma
 };
 
-void Bow::update() 
+bool Bow::update() 
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del arco
 
@@ -35,6 +39,8 @@ void Bow::update()
 	if (pos.getY() + height > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - height }; //Mantiene el arco en pantalla
 
 	else if (pos.getY() < 0) pos = { pos.getX(), 0 };
+
+	return true;
 };
 
 void Bow::handleEvents(SDL_Event& event) 
@@ -56,7 +62,7 @@ void Bow::handleEvents(SDL_Event& event)
 
 		else if (event.key.keysym.sym == SDLK_LEFT && game->getAvailableArrows() > 0) //Si hay flechas disponibles, crea una nueva
 		{
-			arrow = new Arrow((double)41, (double)202, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture);
+			Arrow arrow((double)41, (double)202, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, game);
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr) //Si hay una flecha cargada llama al metodo disparar de game y el puntero a arrow se pone en null
 		{
