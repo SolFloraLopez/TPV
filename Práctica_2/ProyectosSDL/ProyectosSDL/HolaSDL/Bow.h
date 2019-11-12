@@ -26,6 +26,6 @@ public:
 	~Bow();
 	void render() const;
 	bool update();
-	void handleEvents(SDL_Event& event);
+	void handleEvent(SDL_Event& event);
 
 };

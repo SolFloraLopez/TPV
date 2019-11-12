@@ -12,7 +12,7 @@ Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool esta
 
 Balloon::~Balloon() //Destructor
 {
-	delete texture;
+	//delete texture;
 }
 
 void Balloon::render() const { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura

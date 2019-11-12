@@ -21,6 +21,7 @@ public:
 	bool update();
 	SDL_Rect getDestRect();
 	SDL_Rect* getCollisionRect();
+	~ArrowsGameObject();
 	//loadFromFile();
 	//saveToFile();
 };

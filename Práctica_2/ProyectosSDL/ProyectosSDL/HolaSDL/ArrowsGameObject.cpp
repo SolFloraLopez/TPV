@@ -4,6 +4,8 @@
 ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game) : 
 	pos(pos), width(width), height(height), vel(vel), texture(texture),  game(game) {};
 
+ArrowsGameObject::~ArrowsGameObject() {};
+
 void ArrowsGameObject::render()
 {
 	texture->render(getDestRect());

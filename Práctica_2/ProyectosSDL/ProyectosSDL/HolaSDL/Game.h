@@ -16,6 +16,15 @@ using namespace std;
 
 using uint = unsigned int;
 
+enum { Background, BowTexture, Balloons, ArrowTexture };
+
+struct infoTexturas
+{
+	string route;
+	int rows;
+	int columns;
+};
+
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 4;
@@ -25,14 +34,10 @@ const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 4;
 
-enum {Background, BowTexture, Balloons, ArrowTexture};
-
-struct infoTexturas
-{
-	string route;
-	int rows;
-	int columns;
-};
+const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
+											{"..\\images\\Bow2.png", 1, 1},
+											{"..\\images\\balloons.png", 7, 6},
+											{"..\\images\\Arrow1.png", 1, 1} };
 
 class Game {
 private:
@@ -46,10 +51,6 @@ private:
 
 	vector<Arrow*> shotArrows;
 	vector<Balloon*> balloons;
-	infoTexturas infoText[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
-												{"..\\images\\Bow2.png", 1, 1},
-												{"..\\images\\balloons.png", 7, 6},
-												{"..\\images\\Arrow1.png", 1, 1} };
 	void balloonspawner();
 public:
 	Game();

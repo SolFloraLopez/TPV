@@ -22,11 +22,7 @@ Game::Game()
 
 	for (int i = 0; i < NUM_TEXTURES; i++) //Crea el array de texturas con las texturas de todo el juego
 	{
-		ifstream route (infoText[i].route);
-
-		if (!route.is_open()) throw "Texture file route is not valid \n";
-
-		else textures[i] = new Texture(renderer, infoText[i].route, infoText[i].rows, infoText[i].columns);
+		textures[i] = new Texture(renderer, INFOTEXT[i].route, INFOTEXT[i].rows, INFOTEXT[i].columns);
 	}
 
 	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
@@ -69,7 +65,7 @@ void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea f
 	SDL_Event event;
 	while (SDL_PollEvent(&event) && !exit) {
 		if (event.type == SDL_QUIT) exit = true;
-		bow->handleEvents(event);
+		bow->handleEvent(event);
 	}
 }
 
@@ -113,36 +109,42 @@ void Game::update() //Llama a los update de los elementos del juego, si estos de
 {
 	bow->update();
 
-	for (uint i = 0; i < balloons.size(); i++)
+	for (uint i = 0; i < balloons.size();)
 	{
-		if (balloons[i]->update() == false) 
+		if (!balloons[i]->update())
 		{
+			delete balloons[i];
 			balloons.erase(balloons.begin() + i);
 		}
+
+		else i++;
 	}
 
-	for (uint i = 0; i < shotArrows.size(); i++)
+	for (uint i = 0; i < shotArrows.size();)
 	{
-		if (shotArrows[i]->update() == false)
+		if (!shotArrows[i]->update())
 		{
+			delete shotArrows[i];
 			shotArrows.erase(shotArrows.begin() + i);
 
-			if(availableArrows == 0 && shotArrows.size() < 1) 
+			if (availableArrows == 0 && shotArrows.size() < 1)
 			{
 				exit = true;
 			}
 		}
+
+		else i++;
 	}
 }
 
 Game::~Game() //Destructor del juego
 {
 	for (uint i = 0; i < balloons.size(); i++) {
-		balloons[i]->~Balloon();
+		delete balloons[i];
 	}
 	
 	balloons.clear();
-	bow->~Bow();
+	delete bow;
 
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 	SDL_DestroyRenderer(renderer);

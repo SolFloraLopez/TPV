@@ -6,7 +6,7 @@ Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* te
 
 Arrow::~Arrow() //Destructor
 {
-	delete texture;
+	//delete texture;
 }
 
 //void Arrow::render() const{  //Crear un rectangulo destino con las proporciones de la flecha y renderiza su textura

@@ -14,9 +14,7 @@ Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture,
 //Destructor
 Bow::~Bow() 
 {
-	arrow->~Arrow();
 	delete arrow;
-	delete texture;
 }
 
 void Bow::render() const { //Crear un rectangulo destino con las proporciones del arco y renderiza su textura
@@ -43,7 +41,7 @@ bool Bow::update()
 	return true;
 };
 
-void Bow::handleEvents(SDL_Event& event) 
+void Bow::handleEvent(SDL_Event& event) 
 {
 	double velocity = vel.getY();
 
