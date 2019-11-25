@@ -10,13 +10,14 @@
 #include "Balloon.h"
 #include "Arrow.h"
 #include "Bow.h"
+#include "Butterfly.h"
 
 
 using namespace std;
 
 using uint = unsigned int;
 
-enum { Background, BowTexture, Balloons, ArrowTexture };
+enum { Background, BowTexture, Balloons, ArrowTexture , ButterflyTexture};
 
 struct infoTexturas
 {
@@ -27,9 +28,8 @@ struct infoTexturas
 
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
-const uint NUM_TEXTURES = 4;
+const uint NUM_TEXTURES = 5;
 const uint FRAME_RATE = 50;
-const uint BALLOON_POINTS = 10;
 const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 4;
@@ -37,7 +37,9 @@ const double ARROW_VELOCITY = 4;
 const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
 											{"..\\images\\Bow2.png", 1, 1},
 											{"..\\images\\balloons.png", 7, 6},
-											{"..\\images\\Arrow1.png", 1, 1} };
+											{"..\\images\\Arrow1.png", 1, 1},
+											{"..\\images\\butterfly2.png", 4, 10}
+};
 
 class Game {
 private:
@@ -46,6 +48,7 @@ private:
 	bool exit = false;
 	Texture* textures[NUM_TEXTURES];
 	Bow* bow;
+	Butterfly* butterfly;
 	int availableArrows = 10;
 	int points = 0;
 
@@ -59,7 +62,8 @@ public:
 	void render() const;
 	void handleEvents();
 	void update();
-	bool collision(Balloon* balloon);
+	bool collision(ArrowsGameObject* obj, int cols, int rows);
+	void changeScore(int value);
 	void shoot(Arrow* arrow);
 	int getAvailableArrows();
 };

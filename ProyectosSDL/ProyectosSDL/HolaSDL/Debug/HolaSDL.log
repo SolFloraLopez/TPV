@@ -1,2 +1,8 @@
-﻿  Texture.cpp
-  HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
+﻿  Game.cpp
+  Source.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+  Texture.cpp
+  Generando código...
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+  LINK : no se encontró D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  HolaSDL.vcxproj -> D:\Otros\Uni\RepoTP\TPV\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe

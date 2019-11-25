@@ -16,7 +16,7 @@ Balloon::~Balloon() //Destructor
 }
 
 void Balloon::render() /*const*/ { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura
-	SDL_Rect destRect = ArrowsGameObject::getDestRect();
+	SDL_Rect destRect = ArrowsGameObject::getDestRect(cols,rows);
 	if (inst == 0) texture->renderFrame(destRect, color, inst);
 	else texture->renderFrame(destRect, color, (SDL_GetTicks() - inst) / FRAME_RATE);
 
@@ -31,7 +31,7 @@ bool Balloon::update()
 		return false;
 	}
 
-	if (state && game->collision(this)) //Si hay colision entre el globo y una flecha y el estado del globo no es false(pinchado)
+	if (state && game->collision(this,cols,rows)) //Si hay colision entre el globo y una flecha y el estado del globo no es false(pinchado)
 	{									 // cambia el estado del globo a false y guarda el instante de tiempo en el que ha colisionado
 		state = false;
 		inst = SDL_GetTicks();
@@ -42,7 +42,7 @@ bool Balloon::update()
 	else return true;
 };
 
-SDL_Rect* Balloon::returnRect() //Devuelve un rectangulo del tamaño de un globo
-{
-	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX(), (int)height / 7, (int)width / 6 };
-}
+//SDL_Rect* Balloon::returnRect() //Devuelve un rectangulo del tamaño de un globo
+//{
+//	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX(), (int)height / 7, (int)width / 6 };
+//}

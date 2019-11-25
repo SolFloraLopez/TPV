@@ -26,10 +26,10 @@ Game::Game()
 	}
 
 	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
-	
+	butterfly = new Butterfly({ 100,100 }, { 0.5,0.5 }, (double)384, (double)368, true, textures[ButterflyTexture], this);
 }
 
-void Game::run() {		//Bucle principal
+void Game::run() {//Bucle principal
 	while (!SDL_QuitRequested() && !exit)
 	{
 		handleEvents();
@@ -46,6 +46,8 @@ void Game::render() const //Llama a los metodos render de los elementos del jueg
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
 	bow->render();
+	butterfly->render();
+	
 
 	for (uint i = 0; i < shotArrows.size(); i++)
 	{
@@ -74,7 +76,7 @@ void Game::balloonspawner() //Generador de globos
 	if (balloons.size() < 1000 && rand() % 20 == 1)
 	{
 		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
-			(double)85, (double)73, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
+			(double)512, (double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
 	}
 };
 
@@ -90,14 +92,12 @@ int Game::getAvailableArrows() //Devuelve el numero de flechas disponibles
 	return availableArrows;
 }
 
-bool Game::collision(Balloon* balloon) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
+bool Game::collision(ArrowsGameObject* object,int cols, int rows) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
 {
 	for (uint i = 0; i < shotArrows.size(); i++) 
 	{
-		if (SDL_HasIntersection(balloon->returnRect(), shotArrows[i]->returnPointRect())) 
+		if (SDL_HasIntersection(object->getCollisionRect(cols,rows), shotArrows[i]->returnPointRect())) 
 		{
-			points += BALLOON_POINTS;
-			cout << "\n Points: " << points;
 			return true;
 		}
 	}
@@ -105,10 +105,15 @@ bool Game::collision(Balloon* balloon) //Calcula la colision entre flechas y glo
 	return false;
 }
 
+void Game::changeScore(int value)
+{
+	points += value;
+	cout << value;
+}
+
 void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
 	bow->update();
-
 	for (uint i = 0; i < balloons.size();)
 	{
 		if (!balloons[i]->update())

@@ -14,6 +14,9 @@ private:
 	//Vector2D vel;
 	bool state = true;
 	uint inst = 0;
+	const int cols = 6;
+	const int rows = 7;
+	const int value = 10;
 	//Texture* texture = nullptr;
 	//Game* game;
 	

@@ -1,17 +1,1 @@
-﻿  Arrow.cpp
-  ArrowsGameObject.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(23,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(24,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(25,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Balloon.cpp
-  Bow.cpp
-  Game.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(26,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Main.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(15,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-  Generando código...
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-  HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
+﻿LINK : fatal error LNK1168: no se puede abrir D:\Otros\Uni\RepoTP\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe para escritura

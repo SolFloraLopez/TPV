@@ -19,8 +19,8 @@ protected:
 public:
 	void render();
 	bool update();
-	SDL_Rect getDestRect();
-	SDL_Rect* getCollisionRect();
+	SDL_Rect getDestRect(int cols, int rows);
+	SDL_Rect* getCollisionRect(int cols, int rows);
 	~ArrowsGameObject();
 	//loadFromFile();
 	//saveToFile();
