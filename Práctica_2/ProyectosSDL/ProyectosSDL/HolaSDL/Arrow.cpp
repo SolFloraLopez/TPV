@@ -20,19 +20,19 @@ Arrow::~Arrow() //Destructor
 
 bool Arrow::update() //Mueve la flecha segun su posicion y velocidad
 {
-	position = { position.getX() + (vel.getY() * vel.getX()), position.getY()};
+	pos = { pos.getX() + (vel.getY() * vel.getX()), pos.getY()};
 	
-	if (position.getX() - width > WIN_WIDTH) return false;
+	if (pos.getX() - width > WIN_WIDTH) return false;
 	else return true;
 }
 
 
-void Arrow::changePos(Vector2D pos) //Cambia la posicion de la flecha
+void Arrow::changePos(Vector2D newPos) //Cambia la posicion de la flecha
 {
-	position = { pos.getX(), pos.getY() };
+	pos = { newPos.getX(), newPos.getY() };
 }
 
 SDL_Rect* Arrow::returnPointRect() //Devuelve el rectangulo de la punta de la flecha
 {
-	return new SDL_Rect{ (int)position.getY(), (int)position.getX() + ((int)width / 4) * 3 , (int)height / 2, (int)width / 4};
+	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX() + ((int)width / 4) * 3 , (int)height / 2, (int)width / 4};
 }

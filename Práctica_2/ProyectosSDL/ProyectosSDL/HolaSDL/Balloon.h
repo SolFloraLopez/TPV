@@ -7,21 +7,21 @@ class Game;
 class Balloon : public ArrowsGameObject{
 
 private:
-	Point2D pos;
+	/*Point2D pos;
 	double width;
-	double height;
+	double height;*/
 	int color;
-	Vector2D vel;
+	//Vector2D vel;
 	bool state = true;
 	uint inst = 0;
-	Texture* texture = nullptr;
-	Game* game;
+	//Texture* texture = nullptr;
+	//Game* game;
 	
 
 public:
 	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, Game* game);
 	~Balloon();
-	void render() const;
+	void render() /*const*/;
 	bool update();
 	SDL_Rect* returnRect();
 };

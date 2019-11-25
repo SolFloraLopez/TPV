@@ -74,7 +74,7 @@ void Game::balloonspawner() //Generador de globos
 	if (balloons.size() < 1000 && rand() % 20 == 1)
 	{
 		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
-			(double)512, (double)512, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
+			(double)85, (double)73, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
 	}
 };
 
