@@ -26,7 +26,7 @@ bool Balloon::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del globo
 
-	if (pos.getY() < 0 - height * 7) //Devuelve false si el globo se sale de lo alto de la pantalla
+	if (pos.getY() < 0 - height * rows) //Devuelve false si el globo se sale de lo alto de la pantalla
 	{
 		return false;
 	}
@@ -37,7 +37,7 @@ bool Balloon::update()
 		inst = SDL_GetTicks();
 	}
 
-	if ((SDL_GetTicks()- inst) / FRAME_RATE == 6) return false; 
+	if ((SDL_GetTicks()- inst) / FRAME_RATE == cols) return false; 
 
 	else return true;
 };

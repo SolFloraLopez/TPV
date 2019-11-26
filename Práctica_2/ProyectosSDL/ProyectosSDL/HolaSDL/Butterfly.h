@@ -5,7 +5,7 @@
 class Game; 
 class Butterfly : public ArrowsGameObject {
 private:
-	bool state;
+	bool state = true;
 	const int cols = 10;
 	const int rows = 4;
 	const int value = -5;

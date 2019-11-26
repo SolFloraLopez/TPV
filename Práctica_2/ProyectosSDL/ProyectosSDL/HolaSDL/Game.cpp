@@ -26,7 +26,7 @@ Game::Game()
 	}
 
 	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
-	butterfly = new Butterfly({ 100,100 }, { 0.5,0.5 }, (double)384, (double)368, true, textures[ButterflyTexture], this);
+	butterflyspawner();
 }
 
 void Game::run() {//Bucle principal
@@ -46,12 +46,15 @@ void Game::render() const //Llama a los metodos render de los elementos del jueg
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
 	bow->render();
-	butterfly->render();
 	
-
 	for (uint i = 0; i < shotArrows.size(); i++)
 	{
 		shotArrows[i]->render();
+	}
+
+	for (uint i = 0; i < butterflies.size(); i++)
+	{
+		butterflies[i]->render();
 	}
 
 	for (uint i = 0; i < balloons.size(); i++) 
@@ -77,6 +80,15 @@ void Game::balloonspawner() //Generador de globos
 	{
 		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
 			(double)512, (double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
+	}
+};
+
+void Game::butterflyspawner() //Generador de globos
+{
+	for (int i = 0; i < BUTTERFLY_AMOUNT; i++)
+	{
+		butterflies.push_back(new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
+			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], this));
 	}
 };
 
@@ -114,6 +126,18 @@ void Game::changeScore(int value)
 void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
 	bow->update();
+
+	for (uint i = 0; i < butterflies.size();)
+	{
+		if (!butterflies[i]->update())
+		{
+			delete butterflies[i];
+			butterflies.erase(butterflies.begin() + i);
+		}
+
+		else i++;
+	}
+
 	for (uint i = 0; i < balloons.size();)
 	{
 		if (!balloons[i]->update())

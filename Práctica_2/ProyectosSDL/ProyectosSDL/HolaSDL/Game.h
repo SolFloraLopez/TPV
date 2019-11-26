@@ -30,6 +30,7 @@ const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 5;
 const uint FRAME_RATE = 50;
+const uint BUTTERFLY_AMOUNT = 12;
 const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 4;
@@ -54,7 +55,9 @@ private:
 
 	vector<Arrow*> shotArrows;
 	vector<Balloon*> balloons;
+	vector<Butterfly*> butterflies;
 	void balloonspawner();
+	void butterflyspawner();
 public:
 	Game();
 	~Game();

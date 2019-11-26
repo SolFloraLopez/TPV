@@ -29,5 +29,5 @@ SDL_Rect ArrowsGameObject::getDestRect(int cols, int rows)
 
 SDL_Rect* ArrowsGameObject::getCollisionRect(int cols, int rows)
 {
-	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX() + (int)width/cols, (int)height/rows, (int)width };
+	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX(), (int)height/rows, (int)width / cols };
 }

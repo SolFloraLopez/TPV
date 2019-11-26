@@ -1,1 +1,3 @@
-﻿LINK : fatal error LNK1168: no se puede abrir D:\Otros\Uni\RepoTP\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe para escritura
+﻿  Game.cpp
+C:\Users\usuario_local\Documents\GitHub\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(15,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  HolaSDL.vcxproj -> C:\Users\usuario_local\Documents\GitHub\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
