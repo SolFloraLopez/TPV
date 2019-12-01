@@ -23,7 +23,7 @@ void Bow::render() { //Crear un rectangulo destino con las proporciones del arco
 	if(arrow != nullptr) arrow->render(); //Si flecha no es null llama el render de la misma
 };
 
-bool Bow::update() 
+void Bow::update() 
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del arco
 
@@ -34,8 +34,6 @@ bool Bow::update()
 	if (pos.getY() + height > WIN_HEIGHT) pos = { pos.getX(), WIN_HEIGHT - height }; //Mantiene el arco en pantalla
 
 	else if (pos.getY() < 0) pos = { pos.getX(), 0 };
-
-	return true;
 };
 
 void Bow::handleEvent(SDL_Event& event) 

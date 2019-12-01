@@ -15,6 +15,6 @@ public:
 	~Arrow();
 	//void render() const;
 	void changePos(Vector2D pos);
-	bool update();
+	void update();
 	SDL_Rect* returnPointRect();
 };

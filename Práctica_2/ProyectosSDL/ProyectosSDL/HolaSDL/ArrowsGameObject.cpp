@@ -11,10 +11,9 @@ void ArrowsGameObject::render()
 	texture->render(getDestRect(1,1));
 }
 
-bool ArrowsGameObject::update()
+void ArrowsGameObject::update()
 {
 	pos = { pos.getX() + (vel.getY() * vel.getX()), pos.getY() };
-	return true;
 }
 
 SDL_Rect ArrowsGameObject::getDestRect(int cols, int rows)
@@ -30,4 +29,9 @@ SDL_Rect ArrowsGameObject::getDestRect(int cols, int rows)
 SDL_Rect* ArrowsGameObject::getCollisionRect(int cols, int rows)
 {
 	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX(), (int)height/rows, (int)width / cols };
+}
+
+void ArrowsGameObject::setItList(list<GameObject*>::iterator iterator)
+{
+	it = iterator;
 }

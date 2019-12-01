@@ -25,7 +25,12 @@ Game::Game()
 		textures[i] = new Texture(renderer, INFOTEXT[i].route, INFOTEXT[i].rows, INFOTEXT[i].columns);
 	}
 
-	bow = new Bow({0,0}, (double)82, (double)190, { 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
+	bow = new Bow({ 0,0 }, (double)82, (double)190,
+	{ 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this); //Crea el arco
+
+		objects.push_back(bow);
+	bow->setItList(objects.end());
+
 	butterflyspawner();
 }
 
@@ -40,26 +45,19 @@ void Game::run() {//Bucle principal
 	}
 }
 
-void Game::render() const //Llama a los metodos render de los elementos del juego
+void Game::render() //Llama a los metodos render de los elementos del juego
 {
 	SDL_RenderClear(renderer);
 	textures[Background]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
-	bow->render();
-	
-	for (uint i = 0; i < shotArrows.size(); i++)
-	{
-		shotArrows[i]->render();
-	}
+	list<GameObject*>::iterator it;
 
-	for (uint i = 0; i < butterflies.size(); i++)
-	{
-		butterflies[i]->render();
-	}
+	it = objects.begin();
 
-	for (uint i = 0; i < balloons.size(); i++) 
+	while (it != objects.end())
 	{
-		balloons[i]->render();
+		(*it)->render();
+		++it;
 	}
 	
 	SDL_RenderPresent(renderer);
@@ -76,10 +74,13 @@ void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea f
 
 void Game::balloonspawner() //Generador de globos
 {
-	if (balloons.size() < 1000 && rand() % 20 == 1)
+	if (rand() % 20 == 1)
 	{
-		balloons.push_back(new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, 
-			(double)512, (double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY}, true, textures[Balloons], rand() % 7, this));
+		Balloon* newBalloon = new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, (double)512,
+			(double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY }, true, textures[Balloons], rand() % 7, this);
+
+		objects.push_back(newBalloon);
+		newBalloon->setItList(objects.end());
 	}
 };
 
@@ -87,14 +88,27 @@ void Game::butterflyspawner() //Generador de globos
 {
 	for (int i = 0; i < BUTTERFLY_AMOUNT; i++)
 	{
-		butterflies.push_back(new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
-			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], this));
+		Butterfly* newButterfly = new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
+			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], this);
+
+		objects.push_back(newButterfly);
+		newButterfly->setItList(objects.end());
 	}
 };
+
+void Game::rewardspawner(Point2D rewardPosition, Arrow* arrow)
+{
+	Reward* newReward = new Reward({ rewardPosition.getX() + 20, rewardPosition.getY() + 20}, { 0, 1 },
+		(double)352, (double)238, true, textures[RewardTexture], textures[BubbleTexture], arrow, this);
+
+	objects.push_back(newReward);
+	newReward->setItList(objects.end());
+}
 
 void Game::shoot(Arrow* arrow) //Añade la flecha al array de flechas lanzadas y resta uno a las flechas disponibles
 {
 	shotArrows.push_back(arrow);
+	objects.push_back(shotArrows.back());
 	availableArrows--;
 	cout << "\n Arrows: " << availableArrows;
 }
@@ -104,76 +118,60 @@ int Game::getAvailableArrows() //Devuelve el numero de flechas disponibles
 	return availableArrows;
 }
 
-bool Game::collision(ArrowsGameObject* object,int cols, int rows) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
+Arrow* Game::collision(ArrowsGameObject* object, int cols, int rows) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
 {
 	for (uint i = 0; i < shotArrows.size(); i++) 
 	{
 		if (SDL_HasIntersection(object->getCollisionRect(cols,rows), shotArrows[i]->returnPointRect())) 
 		{
-			return true;
+			return shotArrows[i];
 		}
 	}
 
-	return false;
+	return nullptr;
 }
 
 void Game::changeScore(int value)
 {
 	points += value;
-	cout << value;
+	cout << "\n Points: " << points;
 }
 
 void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
-	bow->update();
+	list<GameObject*>::iterator it;
+	it = objects.begin();
 
-	for (uint i = 0; i < butterflies.size();)
+	while (it != objects.end())
 	{
-		if (!butterflies[i]->update())
-		{
-			delete butterflies[i];
-			butterflies.erase(butterflies.begin() + i);
-		}
-
-		else i++;
+		(*it)->update();
+		++it;
 	}
 
-	for (uint i = 0; i < balloons.size();)
-	{
-		if (!balloons[i]->update())
-		{
-			delete balloons[i];
-			balloons.erase(balloons.begin() + i);
-		}
+	it = *objectsToErase.begin();
 
-		else i++;
+	while (it != *objectsToErase.end())
+	{
+		delete *it;
+		objects.remove(*it);
+		++it;
 	}
 
-	for (uint i = 0; i < shotArrows.size();)
-	{
-		if (!shotArrows[i]->update())
-		{
-			delete shotArrows[i];
-			shotArrows.erase(shotArrows.begin() + i);
+	objectsToErase.clear();
+}
 
-			if (availableArrows == 0 && shotArrows.size() < 1)
-			{
-				exit = true;
-			}
-		}
-
-		else i++;
-	}
+void Game::killObject(list<GameObject*>::iterator object)
+{
+	objectsToErase.push_back(object);
 }
 
 Game::~Game() //Destructor del juego
 {
-	for (uint i = 0; i < balloons.size(); i++) {
-		delete balloons[i];
+	for (GameObject* ob : objects) 
+	{
+		delete ob;
+		objects.remove(ob);
 	}
-	
-	balloons.clear();
-	delete bow;
 
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 	SDL_DestroyRenderer(renderer);

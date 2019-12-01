@@ -22,24 +22,32 @@ void Balloon::render() /*const*/ { //Crear un rectangulo destino con las proporc
 
 };
 
-bool Balloon::update()
+void Balloon::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del globo
 
 	if (pos.getY() < 0 - height * rows) //Devuelve false si el globo se sale de lo alto de la pantalla
 	{
-		return false;
+		game->killObject(it);
 	}
 
-	if (state && game->collision(this,cols,rows)) //Si hay colision entre el globo y una flecha y el estado del globo no es false(pinchado)
+	if (state) //Si hay colision entre el globo y una flecha y el estado del globo no es false(pinchado)
 	{									 // cambia el estado del globo a false y guarda el instante de tiempo en el que ha colisionado
-		state = false;
-		inst = SDL_GetTicks();
+		Arrow* arrow = game->collision(this, cols, rows);
+
+		if(arrow != nullptr)
+		{
+			state = false;
+			inst = SDL_GetTicks();
+			game->changeScore(value);
+			game->rewardspawner(pos, arrow);
+		}
 	}
 
-	if ((SDL_GetTicks()- inst) / FRAME_RATE == cols) return false; 
-
-	else return true;
+	if ((SDL_GetTicks() - inst) / FRAME_RATE == cols)
+	{
+		game->killObject(it);
+	}
 };
 
 //SDL_Rect* Balloon::returnRect() //Devuelve un rectangulo del tamaño de un globo

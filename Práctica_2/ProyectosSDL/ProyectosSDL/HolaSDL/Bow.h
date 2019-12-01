@@ -25,7 +25,7 @@ public:
 	Bow(Point2D pos, double width, double height, Vector2D vel, Texture* texture, Texture* arrowTex, bool loaded, Game* game);
 	~Bow();
 	void render() /*const*/;
-	bool update();
+	void update();
 	void handleEvent(SDL_Event& event);
 
 };

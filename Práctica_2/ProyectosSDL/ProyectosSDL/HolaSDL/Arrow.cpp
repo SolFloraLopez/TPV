@@ -18,12 +18,11 @@ Arrow::~Arrow() //Destructor
 //	texture->render(destRect);
 //}
 
-bool Arrow::update() //Mueve la flecha segun su posicion y velocidad
+void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 {
 	pos = { pos.getX() + (vel.getY() * vel.getX()), pos.getY()};
 	
-	if (pos.getX() - width > WIN_WIDTH) return false;
-	else return true;
+	if (pos.getX() - width > WIN_WIDTH) game->killObject(it);
 }
 
 

@@ -24,7 +24,7 @@ void Butterfly::render() /*const*/ { //Crear un rectangulo destino con las propo
 
 };
 
-bool Butterfly::update() {
+void Butterfly::update() {
 
 	if (state)
 	{
@@ -37,17 +37,16 @@ bool Butterfly::update() {
 
 		pos = { pos.getX() + vel.getX(), pos.getY() + vel.getY() };
 
-		if (game->collision(this, cols, rows))
+		if (game->collision(this, cols, rows) != nullptr)
 		{
 			state = false;
 			vel = { vel.getX(), abs(vel.getY()) };
+			game->changeScore(value);
 		}
 	}
 
 	else
 	{
 		pos = { pos.getX(), pos.getY() + vel.getY() };
-	}
-
-	return true; //El update NO tiene que ser bool
+	} //El update NO tiene que ser bool
 }

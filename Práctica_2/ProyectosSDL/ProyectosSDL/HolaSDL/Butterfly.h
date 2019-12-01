@@ -13,5 +13,5 @@ public:
 	Butterfly(Point2D pos, Vector2D vel, double width, double height, bool state, Texture* texture, Game* game);
 	~Butterfly();
 	void render();
-	bool update();
+	void update();
 };

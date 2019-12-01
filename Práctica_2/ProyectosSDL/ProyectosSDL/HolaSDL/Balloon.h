@@ -25,6 +25,6 @@ public:
 	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, Game* game);
 	~Balloon();
 	void render() /*const*/;
-	bool update();
+	void update();
 	SDL_Rect* returnRect();
 };
