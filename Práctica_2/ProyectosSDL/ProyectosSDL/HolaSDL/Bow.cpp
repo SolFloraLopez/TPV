@@ -53,7 +53,7 @@ void Bow::handleEvent(SDL_Event& event)
 			vel = Vector2D(1, velocity);
 		}
 
-		else if (event.key.keysym.sym == SDLK_LEFT && game->getAvailableArrows() > 0 && arrow == nullptr) //Si hay flechas disponibles, crea una nueva
+		else if (event.key.keysym.sym == SDLK_LEFT && game->changeAvaliableArrows(0) > 0 && arrow == nullptr) //Si hay flechas disponibles, crea una nueva
 		{
 			arrow = new Arrow ((double)41, (double)202, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, game);
 		}

@@ -11,7 +11,7 @@ protected:
 	Vector2D vel;
 	double width;
 	double height;
-	//int iterador;
+	int currentData = 0;
 	Texture* texture;
 	Game* game;
 	list<GameObject*>::iterator it;
@@ -25,6 +25,6 @@ public:
 	SDL_Rect* getCollisionRect(int cols, int rows);
 	~ArrowsGameObject();
 	void setItList(list<GameObject*>::iterator iterator);
-	//loadFromFile();
+	//void loadFromFile(string data);
 	//saveToFile();
 };

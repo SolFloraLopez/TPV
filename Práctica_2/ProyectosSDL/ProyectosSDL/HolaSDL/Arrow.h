@@ -4,12 +4,7 @@
 
 class Arrow : public ArrowsGameObject {
 private:
-	//double width;
-	//double height;
-	//Point2D position;
-	//Vector2D vel;
-	//Texture* texture = nullptr;
-	//Game* game;
+	int numHits = 0;
 public:
 	Arrow(double alto, double ancho, Point2D pos, Vector2D vel, Texture* tex, Game* game);
 	~Arrow();
@@ -17,4 +12,6 @@ public:
 	void changePos(Vector2D pos);
 	void update();
 	SDL_Rect* returnPointRect();
+	void addHit();
+	int getHits();
 };

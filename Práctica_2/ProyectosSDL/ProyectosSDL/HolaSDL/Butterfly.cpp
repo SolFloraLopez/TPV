@@ -28,7 +28,7 @@ void Butterfly::update() {
 
 	if (state)
 	{
-		if (pos.getX() + width / cols >= WIN_WIDTH || pos.getX() <= 0)
+		if (pos.getX() + width / cols >= WIN_WIDTH || pos.getX() <= WIN_WIDTH / 3)
 		{
 			vel = { -vel.getX(), vel.getY() };
 		}
@@ -42,11 +42,17 @@ void Butterfly::update() {
 			state = false;
 			vel = { vel.getX(), abs(vel.getY()) };
 			game->changeScore(value);
+			game->updateButterflyCounter();
 		}
 	}
 
 	else
 	{
 		pos = { pos.getX(), pos.getY() + vel.getY() };
-	} //El update NO tiene que ser bool
+
+		if (pos.getY() > WIN_HEIGHT + height / rows)
+		{
+			game->killObject(it);
+		}
+	}
 }

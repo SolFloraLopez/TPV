@@ -22,9 +22,12 @@ void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 {
 	pos = { pos.getX() + (vel.getY() * vel.getX()), pos.getY()};
 	
-	if (pos.getX() - width > WIN_WIDTH) game->killObject(it);
+	if (pos.getX() - width > WIN_WIDTH)
+	{
+		if (game->changeCurrentArrows(-1) <= 0 && game->changeAvaliableArrows(0) <= 0) game->exitGame();
+		game->killObject(it);
+	}
 }
-
 
 void Arrow::changePos(Vector2D newPos) //Cambia la posicion de la flecha
 {
@@ -34,4 +37,14 @@ void Arrow::changePos(Vector2D newPos) //Cambia la posicion de la flecha
 SDL_Rect* Arrow::returnPointRect() //Devuelve el rectangulo de la punta de la flecha
 {
 	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX() + ((int)width / 4) * 3 , (int)height / 2, (int)width / 4};
+}
+
+void Arrow::addHit()
+{
+	numHits++;
+}
+
+int Arrow::getHits()
+{
+	return numHits;
 }

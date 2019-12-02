@@ -35,3 +35,33 @@ void ArrowsGameObject::setItList(list<GameObject*>::iterator iterator)
 {
 	it = iterator;
 }
+
+//void ArrowsGameObject::loadFromFile(string data)
+//{
+//	switch (currentData)
+//	{
+//	case 0:
+//		pos = { stoi(data), pos.getY() };
+//		currentData++;
+//		break;
+//	case 1:
+//		pos = { pos.getX(), stoi(data) };
+//		currentData++;
+//		break;
+//	case 2:
+//		vel = { stoi(data), vel.getY() };
+//		currentData++;
+//		break;
+//	case 3:
+//		vel = { vel.getX(), stoi(data) };
+//		currentData++;
+//		break;
+//	case 4:
+//		width = stoi(data);
+//		currentData++;
+//		break;
+//
+//	default:
+//		break;
+//	}
+//}

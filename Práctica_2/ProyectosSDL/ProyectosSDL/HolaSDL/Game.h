@@ -13,13 +13,16 @@
 #include "Bow.h"
 #include "Butterfly.h"
 #include "Reward.h"
+#include "EventHandler.h"
+#include "ScoreBoard.h"
 
 
 using namespace std;
 
 using uint = unsigned int;
 
-enum { Background, BowTexture, Balloons, ArrowTexture , ButterflyTexture, RewardTexture, BubbleTexture};
+enum { Background1, Background2, Background3, Background4, Background5, Background6,
+	ScoreArrowTexture, DigitsTexture, BowTexture, Balloons, ArrowTexture, ButterflyTexture, RewardTexture, BubbleTexture};
 
 struct infoTexturas
 {
@@ -30,14 +33,24 @@ struct infoTexturas
 
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
-const uint NUM_TEXTURES = 7;
+const uint NUM_TEXTURES = 14;
 const uint FRAME_RATE = 50;
-const uint BUTTERFLY_AMOUNT = 12;
+const uint BASE_ARROWS_AMOUNT = 2;
+const uint BASE_BUTTERFLY_AMOUNT = 3;
+const uint BASE_POINT_MAX = 100;
+const uint MAP_AMOUNT = 6;
 const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 8;
 
 const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
+											{"..\\images\\bg_spring_trees_1.png", 1, 1},
+											{"..\\images\\Cartoon_Forest_BG_01.png", 1, 1},
+											{"..\\images\\Cartoon_Forest_BG_02.png", 1, 1},
+											{"..\\images\\Cartoon_Forest_BG_03.png", 1, 1},
+											{"..\\images\\Cartoon_Forest_BG_04.png", 1, 1},
+											{"..\\images\\Arrow2.png", 1, 1},
+											{"..\\images\\digits1.png", 1, 10},
 											{"..\\images\\Bow2.png", 1, 1},
 											{"..\\images\\balloons.png", 7, 6},
 											{"..\\images\\Arrow1.png", 1, 1},
@@ -52,13 +65,17 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	bool exit = false;
 	Texture* textures[NUM_TEXTURES];
-	Bow* bow;
-	int availableArrows = 10;
+	int availableArrows = BASE_ARROWS_AMOUNT;
+	int currentButterflies = 0;
+	int currentArrows = 0;
 	int points = 0;
+	int currentMap = 0;
+	int currentMaxPoints = BASE_POINT_MAX;
 	
 
 	vector<Arrow*> shotArrows;
 	list<GameObject*> objects;
+	list<EventHandler*> events;
 	list<list<GameObject*>::iterator> objectsToErase;
 	void balloonspawner();
 	void butterflyspawner();
@@ -69,10 +86,14 @@ public:
 	void render();
 	void handleEvents();
 	void update();
+	void saveToFile(int fileNumber);
 	Arrow* collision(ArrowsGameObject* obj, int cols, int rows);
-	void changeScore(int value);
 	void shoot(Arrow* arrow);
-	int getAvailableArrows();
+	int changeScore(int value);
 	void rewardspawner(Point2D rewardPosition, Arrow* arrow);
 	void killObject(list<GameObject*>::iterator object);
+	void updateButterflyCounter();
+	int changeAvaliableArrows(int amount);
+	int changeCurrentArrows(int amount);
+	void exitGame();
 };

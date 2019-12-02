@@ -1,5 +1,6 @@
 #include "Balloon.h"
 #include "Game.h"
+#include <cmath>
 
 
 //Constructor
@@ -37,10 +38,11 @@ void Balloon::update()
 
 		if(arrow != nullptr)
 		{
+			arrow->addHit();
 			state = false;
 			inst = SDL_GetTicks();
-			game->changeScore(value);
-			game->rewardspawner(pos, arrow);
+			game->changeScore(value + pow((arrow->getHits() - 1), 2) * value);
+			if(rand() % 3 == 0)game->rewardspawner(pos, arrow);
 		}
 	}
 
