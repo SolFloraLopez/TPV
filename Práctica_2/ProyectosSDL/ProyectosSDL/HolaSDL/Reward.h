@@ -22,10 +22,12 @@ private:
 
 public:
 	Reward(Point2D pos, Vector2D vel, double width, double height, bool state, int type, Texture* texture, 
-		Texture* bubbleTex, Arrow* arrowPointer, Game* game);
+		Texture* bubbleTex, Arrow* arrowPointer, Game* game, int ID);
 	~Reward();
-	void render();
-	void update();
+	virtual void render();
+	virtual void update();
+	virtual void loadFromFile(fstream& input);
+	virtual void saveToFile(ofstream& output);
 	SDL_Rect* getCollisionRect(int cols, int rows);
 	void handleEvent(SDL_Event& event);
 };

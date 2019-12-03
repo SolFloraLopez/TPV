@@ -10,8 +10,10 @@ private:
 	const int rows = 4;
 	const int value = -5;
 public:
-	Butterfly(Point2D pos, Vector2D vel, double width, double height, bool state, Texture* texture, Game* game);
+	Butterfly(Point2D pos, Vector2D vel, double width, double height, bool state, Texture* texture, Game* game, int ID);
 	~Butterfly();
-	void render();
-	void update();
+	virtual void render();
+	virtual void update();
+	virtual void loadFromFile(fstream& input);
+	virtual void saveToFile(ofstream& output);
 };

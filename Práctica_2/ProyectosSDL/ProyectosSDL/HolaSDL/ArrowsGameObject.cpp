@@ -1,8 +1,8 @@
 #include "Game.h"
 #include "ArrowsGameObject.h"
 
-ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game) : 
-	pos(pos), width(width), height(height), vel(vel), texture(texture),  game(game) {};
+ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game, int id) : 
+	pos(pos), width(width), height(height), vel(vel), texture(texture),  game(game) , ID(id){};
 
 ArrowsGameObject::~ArrowsGameObject() {};
 
@@ -36,32 +36,21 @@ void ArrowsGameObject::setItList(list<GameObject*>::iterator iterator)
 	it = iterator;
 }
 
-//void ArrowsGameObject::loadFromFile(string data)
-//{
-//	switch (currentData)
-//	{
-//	case 0:
-//		pos = { stoi(data), pos.getY() };
-//		currentData++;
-//		break;
-//	case 1:
-//		pos = { pos.getX(), stoi(data) };
-//		currentData++;
-//		break;
-//	case 2:
-//		vel = { stoi(data), vel.getY() };
-//		currentData++;
-//		break;
-//	case 3:
-//		vel = { vel.getX(), stoi(data) };
-//		currentData++;
-//		break;
-//	case 4:
-//		width = stoi(data);
-//		currentData++;
-//		break;
-//
-//	default:
-//		break;
-//	}
-//}
+void ArrowsGameObject::loadFromFile(fstream& input)
+{
+	double aux, aux2;
+	input >> aux;
+	input >> aux2;
+	pos = { aux, aux2};
+	input >> aux;
+	input >> aux2;
+	vel = { aux, aux2 };
+	input >> width;
+	input >> height;
+}
+
+void ArrowsGameObject::saveToFile(ofstream& output)
+{
+	output << ID << " " << pos.getX() << " " << pos.getY() << " " << vel.getX() << " "
+		<< vel.getY() << " " << width << " " << height << " ";
+}

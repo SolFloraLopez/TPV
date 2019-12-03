@@ -3,8 +3,8 @@
 
 
 //Constructor
-Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTex, bool cargado, Game* thisGame) :
-	ArrowsGameObject(pos, vel, ancho, alto, texture, thisGame)
+Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTex, bool cargado, Game* thisGame, int id) :
+	ArrowsGameObject(pos, vel, ancho, alto, texture, thisGame, id)
 {
 	arrowTexture = arrowTex;
 	loaded = cargado;
@@ -55,7 +55,7 @@ void Bow::handleEvent(SDL_Event& event)
 
 		else if (event.key.keysym.sym == SDLK_LEFT && game->changeAvaliableArrows(0) > 0 && arrow == nullptr) //Si hay flechas disponibles, crea una nueva
 		{
-			arrow = new Arrow ((double)41, (double)202, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, game);
+			arrow = new Arrow (arrowHeight, arrowWidth, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, game, 4);
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr) //Si hay una flecha cargada llama al metodo disparar de game y el puntero a arrow se pone en null
 		{
@@ -69,4 +69,14 @@ void Bow::handleEvent(SDL_Event& event)
 	default:
 		break;
 	}
+};
+
+void Bow::loadFromFile(fstream& input)
+{
+	ArrowsGameObject::loadFromFile(input);
+}
+
+void Bow::saveToFile(ofstream& output)
+{
+	ArrowsGameObject::saveToFile(output);
 };

@@ -35,13 +35,16 @@ const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 14;
 const uint FRAME_RATE = 50;
-const uint BASE_ARROWS_AMOUNT = 2;
+const uint BASE_ARROWS_AMOUNT = 3;
 const uint BASE_BUTTERFLY_AMOUNT = 3;
 const uint BASE_POINT_MAX = 100;
 const uint MAP_AMOUNT = 6;
 const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
-const double ARROW_VELOCITY = 8;
+const double ARROW_VELOCITY = 10;
+
+const double BOW_HEIGHT = 61;
+const double BOW_WIDTH = 142;
 
 const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
 											{"..\\images\\bg_spring_trees_1.png", 1, 1},
@@ -64,6 +67,9 @@ private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 	bool exit = false;
+	bool recordingInput = false;
+	bool saving = false;
+	string file = "";
 	Texture* textures[NUM_TEXTURES];
 	int availableArrows = BASE_ARROWS_AMOUNT;
 	int currentButterflies = 0;
@@ -71,6 +77,7 @@ private:
 	int points = 0;
 	int currentMap = 0;
 	int currentMaxPoints = BASE_POINT_MAX;
+	bool load = false;
 	
 
 	vector<Arrow*> shotArrows;
@@ -80,13 +87,14 @@ private:
 	void balloonspawner();
 	void butterflyspawner();
 public:
-	Game();
+	Game(bool load, string route);
 	~Game();
 	void run();
 	void render();
 	void handleEvents();
 	void update();
-	void saveToFile(int fileNumber);
+	void saveToFile();
+	void loadFromFile(string route);
 	Arrow* collision(ArrowsGameObject* obj, int cols, int rows);
 	void shoot(Arrow* arrow);
 	int changeScore(int value);
@@ -95,5 +103,7 @@ public:
 	void updateButterflyCounter();
 	int changeAvaliableArrows(int amount);
 	int changeCurrentArrows(int amount);
+	bool getSaving();
 	void exitGame();
+	void writeData(string data);
 };

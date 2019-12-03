@@ -2,7 +2,7 @@
 #include "Reward.h"
 
 Reward::Reward(Point2D pos, Vector2D vel, double width, double height, bool estado, int tipo, Texture* texture, 
-	Texture* bubbleTex, Arrow* ArrowPointer, Game* game) : ArrowsGameObject(pos, vel, width, height, texture, game)
+	Texture* bubbleTex, Arrow* ArrowPointer, Game* game, int id) : ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;
 	bubbleTexture = bubbleTex;
@@ -58,4 +58,16 @@ void Reward::handleEvent(SDL_Event& event)
 			game->killObject(it);
 		}
 	}
+}
+
+void Reward::loadFromFile(fstream& input)
+{
+	ArrowsGameObject::loadFromFile(input);
+	input >> type;
+}
+
+void Reward::saveToFile(ofstream& output)
+{
+	ArrowsGameObject::saveToFile(output);
+	output << type;
 }

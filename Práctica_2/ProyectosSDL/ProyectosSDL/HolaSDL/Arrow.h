@@ -6,11 +6,12 @@ class Arrow : public ArrowsGameObject {
 private:
 	int numHits = 0;
 public:
-	Arrow(double alto, double ancho, Point2D pos, Vector2D vel, Texture* tex, Game* game);
+	Arrow(double alto, double ancho, Point2D pos, Vector2D vel, Texture* tex, Game* game, int ID);
 	~Arrow();
-	//void render() const;
 	void changePos(Vector2D pos);
-	void update();
+	virtual void update();
+	virtual void loadFromFile(fstream& input);
+	virtual void saveToFile(ofstream& output);
 	SDL_Rect* returnPointRect();
 	void addHit();
 	int getHits();

@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include <iostream>
+#include <fstream>
 #include <list>
 
 class Game;
@@ -11,20 +13,20 @@ protected:
 	Vector2D vel;
 	double width;
 	double height;
-	int currentData = 0;
+	int ID;
 	Texture* texture;
 	Game* game;
 	list<GameObject*>::iterator it;
 
-	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game);
+	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game, int ID);
 
 public:
-	void render();
-	void update();
+	virtual void render();
+	virtual void update();
 	SDL_Rect getDestRect(int cols, int rows);
 	SDL_Rect* getCollisionRect(int cols, int rows);
 	~ArrowsGameObject();
 	void setItList(list<GameObject*>::iterator iterator);
-	//void loadFromFile(string data);
-	//saveToFile();
+	virtual void loadFromFile(fstream& input);
+	virtual void saveToFile(ofstream& output);
 };

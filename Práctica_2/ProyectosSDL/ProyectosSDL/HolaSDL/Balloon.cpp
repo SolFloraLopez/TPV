@@ -4,8 +4,8 @@
 
 
 //Constructor
-Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, Game* thisGame) : 
-	ArrowsGameObject(pos, vel, ancho, alto, tex, thisGame) 
+Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, Game* thisGame, int id) :
+	ArrowsGameObject(pos, vel, ancho, alto, tex, thisGame, id)
 {
 	state = estado;
 	color = colour;
@@ -51,6 +51,19 @@ void Balloon::update()
 		game->killObject(it);
 	}
 };
+
+void Balloon::loadFromFile(fstream& input)
+{
+	ArrowsGameObject::loadFromFile(input);
+	input >> state;
+	input >> color;
+}
+
+void Balloon::saveToFile(ofstream& output)
+{
+	ArrowsGameObject::saveToFile(output);
+	output << state << " " << color;
+}
 
 //SDL_Rect* Balloon::returnRect() //Devuelve un rectangulo del tamaño de un globo
 //{

@@ -2,8 +2,8 @@
 #include "Game.h"
 #include <cmath>
 
-Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, Game* game):
-ArrowsGameObject(pos, vel, width, height, texture, game) 
+Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, Game* game, int id):
+ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;
 }
@@ -55,4 +55,14 @@ void Butterfly::update() {
 			game->killObject(it);
 		}
 	}
+}
+
+void Butterfly::loadFromFile(fstream& input)
+{
+	ArrowsGameObject::loadFromFile(input);
+}
+
+void Butterfly::saveToFile(ofstream& output)
+{
+	ArrowsGameObject::saveToFile(output);
 }

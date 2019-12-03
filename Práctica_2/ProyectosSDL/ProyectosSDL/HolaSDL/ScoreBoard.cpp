@@ -24,10 +24,18 @@ void ScoreBoard::render()
 	int aux = points;
 	int i = 0;
 
-	while(aux > 0)
+	if (aux == 0)
 	{
-		SDL_Rect destRect = getDestRect(numberCols, 1, numberHeight, numberWidth, { WIN_WIDTH / 2 - (double)numberWidth * i , WIN_HEIGHT / 2 });
-		numbersTex->renderFrame(destRect, 1, aux % 10);
+		SDL_Rect destRect = getDestRect(numberCols, 1, numberHeight, numberWidth,
+			{ scorePos.getX(), scorePos.getY() });
+		numbersTex->renderFrame(destRect, 0, 0);
+	}
+
+	else while(aux > 0)
+	{
+		SDL_Rect destRect = getDestRect(numberCols, 1, numberHeight, numberWidth, 
+			{ scorePos.getX() - (double)(numberWidth / numberCols) * i , scorePos.getY()});
+		numbersTex->renderFrame(destRect, 0, aux % 10);
 		aux /= 10;
 		i++;
 	}
@@ -46,4 +54,12 @@ SDL_Rect ScoreBoard::getDestRect(int cols, int rows, uint height, uint width, Po
 void ScoreBoard::setItList(list<GameObject*>::iterator iterator)
 {
 	it = iterator;
+}
+
+void ScoreBoard::loadFromFile(fstream& input)
+{
+}
+
+void ScoreBoard::saveToFile(ofstream& output)
+{
 }

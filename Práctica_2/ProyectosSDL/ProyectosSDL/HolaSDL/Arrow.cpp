@@ -1,8 +1,8 @@
 #include "Arrow.h"
 #include "Game.h"
 
-Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, Game* game) : 
-	ArrowsGameObject(pos, vel, width, height, tex, game) {}; //Constructor
+Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, Game* game, int id) :
+	ArrowsGameObject(pos, vel, width, height, tex, game, id) {}; //Constructor
 
 Arrow::~Arrow() //Destructor
 {
@@ -47,4 +47,14 @@ void Arrow::addHit()
 int Arrow::getHits()
 {
 	return numHits;
+}
+
+void Arrow::loadFromFile(fstream& input)
+{
+	ArrowsGameObject::loadFromFile(input);
+}
+
+void Arrow::saveToFile(ofstream& output)
+{
+	ArrowsGameObject::saveToFile(output);
 }

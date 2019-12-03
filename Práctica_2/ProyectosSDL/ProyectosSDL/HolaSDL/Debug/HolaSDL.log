@@ -1,4 +1,1 @@
-﻿  Game.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(16,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(192,20): warning C4018: '<': no coinciden signed/unsigned
-  HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_2\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
+﻿
