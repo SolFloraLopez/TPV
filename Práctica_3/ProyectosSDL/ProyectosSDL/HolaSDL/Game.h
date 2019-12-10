@@ -42,7 +42,6 @@ const uint MAP_AMOUNT = 6;
 const double BOW_VELOCITY = 5;
 const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 10;
-
 const double BOW_HEIGHT = 61;
 const double BOW_WIDTH = 142;
 

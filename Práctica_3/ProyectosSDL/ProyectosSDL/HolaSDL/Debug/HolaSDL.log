@@ -1,1 +1,31 @@
-﻿
+﻿  Arrow.cpp
+  ArrowsGameObject.cpp
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': macro redefinition
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  see previous definition of '_malloca'
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(22,21): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(23,20): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(24,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  Balloon.cpp
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(25,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  Bow.cpp
+  Butterfly.cpp
+  EventHandler.cpp
+  Game.cpp
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(44,28): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(16,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  GameObject.cpp
+  GameState.cpp
+  Main.cpp
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(235,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': macro redefinition
+  Reward.cpp
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  see previous definition of '_malloca'
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': macro redefinition
+  ScoreBoard.cpp
+C:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  see previous definition of '_malloca'
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(49,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  Texture.cpp
+  Vector2D.cpp
+  Generating Code...
+U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(50,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  HolaSDL.vcxproj -> U:\hlocal\yourThwackieEvolved\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe
