@@ -61,7 +61,7 @@ void Game::render() //Llama a los metodos render de los elementos del juego
 	SDL_RenderClear(renderer);
 	textures[currentMap % MAP_AMOUNT]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
-	list<GameObject*>::iterator it;
+	list<GameObject*>::iterator it;//
 
 	it = objects.begin();
 
@@ -69,7 +69,7 @@ void Game::render() //Llama a los metodos render de los elementos del juego
 	{
 		(*it)->render();
 		++it;
-	}
+	}//
 	
 	SDL_RenderPresent(renderer);
 };
@@ -77,7 +77,7 @@ void Game::render() //Llama a los metodos render de los elementos del juego
 void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea false, mientras que el jugador no salga del juego
 {
 
-	SDL_Event event;
+	SDL_Event event;//
 
 	if (!events.empty())
 	{
@@ -111,7 +111,7 @@ void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea f
 				++eh;
 			}
 		}
-	}
+	}//
 }
 
 void Game::balloonspawner() //Generador de globos
@@ -140,36 +140,36 @@ void Game::butterflyspawner() //Generador de mariposas
 
 void Game::rewardspawner(Point2D rewardPosition, Arrow* arrow)
 {
-	Reward* newReward = new Reward({ rewardPosition.getX() + 20, rewardPosition.getY() + 20}, { 0, 1 },
+	Reward* newReward = new Reward({ rewardPosition.getX() + 20, rewardPosition.getY() + 20}, { 0, 1 },//
 		(double)352, (double)238, true, rand() % 2, textures[RewardTexture], textures[BubbleTexture], arrow, this, 2);
 
 	newReward->setItList(objects.insert(objects.end(), newReward));
-	events.push_back(newReward);
+	events.push_back(newReward);//
 }
 
 void Game::shoot(Arrow* arrow) //Añade la flecha al array de flechas lanzadas y resta uno a las flechas disponibles
 {
-	shotArrows.push_back(arrow);
+	shotArrows.push_back(arrow); //
 	arrow->setItList(objects.insert(objects.end(), arrow));
 	availableArrows--;
-	changeCurrentArrows(1);
+	changeCurrentArrows(1); //
 }
 
 int Game::changeAvaliableArrows(int amount)
 {
-	availableArrows += amount;
-	return availableArrows;
+	availableArrows += amount;//
+	return availableArrows;//
 }
 
 int Game::changeCurrentArrows(int amount)
 {
-	currentArrows += amount;
-	return currentArrows;
+	currentArrows += amount; //
+	return currentArrows;//
 }
 
 Arrow* Game::collision(ArrowsGameObject* object, int cols, int rows) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
 {
-	for (uint i = 0; i < shotArrows.size(); i++) 
+	for (uint i = 0; i < shotArrows.size(); i++) //
 	{
 		if (SDL_HasIntersection(object->getCollisionRect(cols,rows), shotArrows[i]->returnPointRect())) 
 		{
@@ -177,19 +177,19 @@ Arrow* Game::collision(ArrowsGameObject* object, int cols, int rows) //Calcula l
 		}
 	}
 
-	return nullptr;
+	return nullptr;//
 }
 
 int Game::changeScore(int value)
 {
-	points += value;
+	points += value;//
 	if (points < 0) points = 0;
-	return points;
+	return points;//
 }
 
 void Game::updateButterflyCounter()
 {
-	currentButterflies--;
+	currentButterflies--;//
 }
 
 void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
@@ -248,12 +248,17 @@ void Game::update() //Llama a los update de los elementos del juego, si estos de
 
 void Game::killObject(list<GameObject*>::iterator object)
 {
-	objectsToErase.push_back(object);
+	objectsToErase.push_back(object); //
 }
 
 bool Game::getSaving()
 {
 	return saving;
+}
+
+bool Game::getExit()
+{
+	return exit;
 }
 
 void Game::exitGame()

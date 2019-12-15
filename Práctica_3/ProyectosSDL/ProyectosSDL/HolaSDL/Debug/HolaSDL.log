@@ -1,35 +1,8 @@
-﻿  Arrow.cpp
-  ArrowsGameObject.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(26,21): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(27,20): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(28,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Balloon.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ArrowsGameObject.cpp(29,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Bow.cpp
-  Butterfly.cpp
-  Game.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(44,28): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+﻿  Game.cpp
 C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(16,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  GameState.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(235,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-  Main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-  Reward.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+  PlayState.cpp
   SDLGameObject.cpp
-  ScoreBoard.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(49,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   Generando código...
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(50,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-ArrowsGameObject.obj : error LNK2019: símbolo externo "public: __thiscall SDLGameObject::~SDLGameObject(void)" (??1SDLGameObject@@QAE@XZ) sin resolver al que se hace referencia en la función __unwindfunclet$??0ArrowsGameObject@@IAE@VVector2D@@0NNPAVTexture@@PAVGame@@H@Z$0
-SDLGameObject.obj : error LNK2001: símbolo externo "public: virtual void __thiscall SDLGameObject::render(void)" (?render@SDLGameObject@@UAEXXZ) sin resolver
-SDLGameObject.obj : error LNK2001: símbolo externo "public: virtual void __thiscall SDLGameObject::update(void)" (?update@SDLGameObject@@UAEXXZ) sin resolver
-SDLGameObject.obj : error LNK2001: símbolo externo "public: virtual void __thiscall SDLGameObject::saveToFile(class std::basic_ofstream<char,struct std::char_traits<char> > &)" (?saveToFile@SDLGameObject@@UAEXAAV?$basic_ofstream@DU?$char_traits@D@std@@@std@@@Z) sin resolver
-SDLGameObject.obj : error LNK2001: símbolo externo "public: virtual void __thiscall SDLGameObject::loadFromFile(class std::basic_fstream<char,struct std::char_traits<char> > &)" (?loadFromFile@SDLGameObject@@UAEXAAV?$basic_fstream@DU?$char_traits@D@std@@@std@@@Z) sin resolver
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe : fatal error LNK1120: 5 externos sin resolver
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(235,20): warning C4018: '<': no coinciden signed/unsigned
+PlayState.obj : error LNK2019: sÝmbolo externo "public: void __thiscall PlayState::exit(void)" (?exit@PlayState@@QAEXXZ) sin resolver al que se hace referencia en la funci¾n "public: void __thiscall PlayState::handleEvents(void)" (?handleEvents@PlayState@@QAEXXZ)
+C:\Users\Tomßs L¾pez\Desktop\Universidad\Segundo\TPV\TPV\Prßctica_3\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe : fatal error LNK1120: 1 externos sin resolver

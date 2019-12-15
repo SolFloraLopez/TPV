@@ -7,12 +7,15 @@ class Game;
 
 class GameState 
 {
-private:
+protected:
 	list<GameObject*> objects;
 	list<EventHandler*> events;
 	Game* game;
 public:
+	GameState(list<GameObject*> objects, list<EventHandler*> events, Game* game);
 	void update();
 	void render();
 	void handleEvents();
+	void exitGame();
+	bool getExit();
 };
