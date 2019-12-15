@@ -76,9 +76,11 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Reward.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
+    <ClCompile Include="SDLGameObject.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>

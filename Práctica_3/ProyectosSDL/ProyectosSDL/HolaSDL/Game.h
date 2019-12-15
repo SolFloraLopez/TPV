@@ -15,6 +15,7 @@
 #include "Reward.h"
 #include "EventHandler.h"
 #include "ScoreBoard.h"
+#include "GameStateMachine.h"
 
 
 using namespace std;
@@ -65,6 +66,7 @@ class Game {
 private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+	GameStateMachine* stateMachine;
 	bool exit = false;
 	bool recordingInput = false;
 	bool saving = false;

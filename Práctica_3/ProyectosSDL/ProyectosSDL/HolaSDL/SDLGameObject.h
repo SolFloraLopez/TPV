@@ -4,15 +4,17 @@
 
 class SDLGameObject : public GameObject {
 	
-private:
+protected:
 	Point2D pos;
 	double width;
 	double height;
 	Texture* texture;
-	GameState* gameState;
+	Game* game;
 public:
-	SDLGameObject(Point2D pos,double width,double height, Texture* texture, GameState* gameState);
+	SDLGameObject(Point2D pos,double width,double height, Texture* texture, Game* gameState);
 	~SDLGameObject();
 	virtual void render();
 	virtual void update();
+	virtual void saveToFile(ofstream& output);
+	virtual void loadFromFile(fstream& input);
 };

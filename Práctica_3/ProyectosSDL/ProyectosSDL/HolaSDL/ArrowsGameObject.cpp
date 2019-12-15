@@ -1,8 +1,12 @@
 #include "Game.h"
 #include "ArrowsGameObject.h"
 
-ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game, int id) : 
-	pos(pos), width(width), height(height), vel(vel), texture(texture),  game(game) , ID(id){};
+ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D velocity, double width, double height, Texture* texture, Game* game, int id) : 
+	SDLGameObject(pos, width, height, texture, game)
+{
+	vel = velocity;
+	ID = id;
+};
 
 ArrowsGameObject::~ArrowsGameObject() {};
 

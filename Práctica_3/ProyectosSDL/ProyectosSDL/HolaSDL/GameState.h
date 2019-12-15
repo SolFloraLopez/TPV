@@ -1,6 +1,5 @@
 #pragma once
 #include <list>
-#include "Game.h"
 #include "GameObject.h"
 #include "EventHandler.h"
 

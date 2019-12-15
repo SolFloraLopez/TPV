@@ -1,21 +1,17 @@
 #pragma once
-#include "GameObject.h"
+#include "SDLGameObject.h"
 #include <iostream>
 #include <fstream>
 #include <list>
 
 class Game;
 
-class ArrowsGameObject : public GameObject
+class ArrowsGameObject : public SDLGameObject
 {
 protected:
-	Point2D pos;
 	Vector2D vel;
-	double width;
-	double height;
 	int ID;
 	Texture* texture;
-	Game* game;
 	list<GameObject*>::iterator it;
 
 	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game, int ID);
