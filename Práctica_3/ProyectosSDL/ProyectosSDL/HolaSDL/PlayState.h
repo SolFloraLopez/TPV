@@ -7,29 +7,6 @@
 #include <vector>
 #include "Constants.h"
 
-//using uint = unsigned int;
-
-//struct infoTexturas
-//{
-//	string route;
-//	int rows;
-//	int columns;
-//};
-
-//const uint WIN_WIDTH = 800;
-//const uint WIN_HEIGHT = 600;
-//const uint NUM_TEXTURES = 14;
-//const uint FRAME_RATE = 50;
-//const uint BASE_ARROWS_AMOUNT = 3;
-//const uint BASE_BUTTERFLY_AMOUNT = 3;
-//const uint BASE_POINT_MAX = 100;
-//const uint MAP_AMOUNT = 6;
-//const double BOW_VELOCITY = 5;
-//const double BALLOON_VELOCITY = 0.5;
-//const double ARROW_VELOCITY = 10;
-//const double BOW_HEIGHT = 61;
-//const double BOW_WIDTH = 142;
-
 class PlayState : public GameState 
 {
 private:
@@ -37,8 +14,6 @@ private:
 	list<list<GameObject*>::iterator> objectsToErase;
 	bool recordingInput = false;
 	bool saving = false;
-	string file = "";
-	Texture* textures[NUM_TEXTURES];
 	int availableArrows = BASE_ARROWS_AMOUNT;
 	int currentButterflies = 0;
 	int currentArrows = 0;
@@ -46,8 +21,9 @@ private:
 	int currentMap = 0;
 	int currentMaxPoints = BASE_POINT_MAX;
 	bool load = false;
+	string file = "";
 public:
-	PlayState(list<GameObject*> objects, list<EventHandler*> events, Game* game);
+	PlayState(list<GameObject*> objects, list<EventHandler*> events, SDLApplication* game);
 	void update();
 	void render();
 	void handleEvents();

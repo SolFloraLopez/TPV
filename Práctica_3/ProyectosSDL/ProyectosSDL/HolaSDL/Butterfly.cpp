@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <cmath>
 
-Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, Game* game, int id):
+Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, GameState* game, int id):
 ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;
@@ -37,12 +37,12 @@ void Butterfly::update() {
 
 		pos = { pos.getX() + vel.getX(), pos.getY() + vel.getY() };
 
-		if (game->collision(this, cols, rows) != nullptr)
+		if (playState->collision(this, cols, rows) != nullptr)
 		{
 			state = false;
 			vel = { vel.getX(), abs(vel.getY()) };
-			game->changeScore(value);
-			game->updateButterflyCounter();
+			playState->changeScore(value);
+			playState->updateButterflyCounter();
 		}
 	}
 
@@ -52,7 +52,7 @@ void Butterfly::update() {
 
 		if (pos.getY() > WIN_HEIGHT + height / rows)
 		{
-			game->killObject(it);
+			playState->killObject(it);
 		}
 	}
 }

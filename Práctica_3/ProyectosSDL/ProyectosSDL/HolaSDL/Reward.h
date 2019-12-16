@@ -4,7 +4,7 @@
 #include "EventHandler.h"
 #include <iostream>
 
-class Game;
+class GameState;
 
 class Reward : public ArrowsGameObject, public EventHandler
 {
@@ -22,7 +22,7 @@ private:
 
 public:
 	Reward(Point2D pos, Vector2D vel, double width, double height, bool state, int type, Texture* texture, 
-		Texture* bubbleTex, Arrow* arrowPointer, Game* game, int ID);
+		Texture* bubbleTex, Arrow* arrowPointer, GameState* game, int ID);
 	~Reward();
 	virtual void render();
 	virtual void update();

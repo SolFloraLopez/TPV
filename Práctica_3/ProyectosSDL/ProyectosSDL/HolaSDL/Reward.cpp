@@ -2,7 +2,7 @@
 #include "Reward.h"
 
 Reward::Reward(Point2D pos, Vector2D vel, double width, double height, bool estado, int tipo, Texture* texture, 
-	Texture* bubbleTex, Arrow* ArrowPointer, Game* game, int id) : ArrowsGameObject(pos, vel, width, height, texture, game, id)
+	Texture* bubbleTex, Arrow* ArrowPointer, GameState* game, int id) : ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;
 	bubbleTexture = bubbleTex;
@@ -25,14 +25,14 @@ void Reward::update()
 {
 	pos = { pos.getX(), pos.getY() + vel.getY() };
 
-	if (game->collision(this, cols, rows) != nullptr && game->collision(this, cols, rows) != arrow)
+	if (playState->collision(this, cols, rows) != nullptr && playState->collision(this, cols, rows) != arrow)
 	{
 		state = false;
 	}
 
 	if(pos.getY() > WIN_HEIGHT + height / rows)
 	{
-		game->killObject(it);
+		playState->killObject(it);
 	}
 }
 
@@ -46,16 +46,16 @@ void Reward::handleEvent(SDL_Event& event)
 			switch (type)
 			{
 			case 0: //Control del arco con las teclas de flecha
-				game->changeScore(value);
+				playState->changeScore(value);
 				break;
 			case 1: // Si no se pulsa ninguna tecla la velocidad del arco es igual a 0
-				game->changeAvaliableArrows(1);
+				playState->changeAvaliableArrows(1);
 				break;
 			default:
 				break;
 			}
 
-			game->killObject(it);
+			playState->killObject(it);
 		}
 	}
 }

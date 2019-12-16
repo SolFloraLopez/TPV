@@ -6,16 +6,16 @@
 #include "Constants.h"
 #include <string>
 
-class Game;
+class SDLApplication;
 
 class GameState 
 {
 protected:
 	list<GameObject*> objects;
 	list<EventHandler*> events;
-	Game* game;
+	SDLApplication* game;
 public:
-	GameState(Game* game);
+	GameState(SDLApplication* game);
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void handleEvents() = 0;

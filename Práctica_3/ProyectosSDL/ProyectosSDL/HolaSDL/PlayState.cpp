@@ -1,6 +1,6 @@
 #include "PlayState.h"
 
-PlayState::PlayState(list<GameObject*> objects, list<EventHandler*> events, Game* game) : 
+PlayState::PlayState(list<GameObject*> objects, list<EventHandler*> events, SDLApplication* game) : 
 GameState(game) {}
 
 void PlayState::update()
@@ -138,7 +138,7 @@ void PlayState::balloonspawner() //Generador de globos
 	if (rand() % 20 == 1)
 	{
 		Balloon* newBalloon = new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, (double)512,
-			(double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY }, true, textures[Balloons], rand() % 7, game, 3);
+			(double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY }, true, GameState::getTexture(Balloons), rand() % 7, game, 3);
 
 		newBalloon->setItList(objects.insert(objects.end(), newBalloon));
 	}
@@ -147,7 +147,7 @@ void PlayState::balloonspawner() //Generador de globos
 void PlayState::rewardspawner(Point2D rewardPosition, Arrow* arrow)
 {
 	Reward* newReward = new Reward({ rewardPosition.getX() + 20, rewardPosition.getY() + 20 }, { 0, 1 },
-		(double)352, (double)238, true, rand() % 2, textures[RewardTexture], textures[BubbleTexture], arrow, game, 2);
+		(double)352, (double)238, true, rand() % 2, GameState::getTexture(RewardTexture), GameState::getTexture(BubbleTexture), arrow, game, 2);
 
 	newReward->setItList(objects.insert(objects.end(), newReward));
 	events.push_back(newReward);
@@ -160,7 +160,7 @@ void PlayState::butterflySpawner()
 	for (int i = 0; i < currentButterflies; i++)
 	{
 		Butterfly* newButterfly = new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
-			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], game, 1);
+			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, GameState::getTexture(ButterflyTexture), game, 1);
 
 		newButterfly->setItList(objects.insert(objects.end(), newButterfly));//
 	}

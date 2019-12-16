@@ -2,7 +2,7 @@
 #include "ArrowsGameObject.h"
 #include <iostream>
 
-class Game;
+class GameState;
 
 class Balloon : public ArrowsGameObject{
 
@@ -16,7 +16,7 @@ private:
 	
 
 public:
-	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, Game* game, int ID);
+	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, GameState* game, int ID);
 	~Balloon();
 	virtual void render() /*const*/;
 	virtual void update();

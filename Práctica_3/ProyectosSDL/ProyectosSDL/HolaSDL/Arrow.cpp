@@ -1,22 +1,12 @@
 #include "Arrow.h"
 #include "Game.h"
 
-Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, Game* game, int id) :
+Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, GameState* game, int id) :
 	ArrowsGameObject(pos, vel, width, height, tex, game, id) {}; //Constructor
 
 Arrow::~Arrow() //Destructor
-{
-	//delete texture;
-}
+{}
 
-//void Arrow::render() const{  //Crear un rectangulo destino con las proporciones de la flecha y renderiza su textura
-//	SDL_Rect destRect;
-//	destRect.h = height;
-//	destRect.w = width;
-//	destRect.x = position.getX();
-//	destRect.y = position.getY();
-//	texture->render(destRect);
-//}
 
 void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 {
@@ -24,8 +14,8 @@ void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 	
 	if (pos.getX() - width > WIN_WIDTH)
 	{
-		if (game->changeCurrentArrows(-1) <= 0 && game->changeAvaliableArrows(0) <= 0) game->exitGame();
-		game->killObject(it);
+		if (playState->changeCurrentArrows(-1) <= 0 && playState->changeAvaliableArrows(0) <= 0) game->exitGame();
+		playState->killObject(it);
 	}
 }
 

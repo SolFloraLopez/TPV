@@ -1,6 +1,6 @@
 #include "SDLGameObject.h"
 
-SDLGameObject::SDLGameObject(Point2D pos, double width, double height, Texture* texture, Game* gameState): 
+SDLGameObject::SDLGameObject(Point2D pos, double width, double height, Texture* texture, GameState* gameState): 
 	pos(pos), width(width), height(height), texture(texture), game(gameState){}
 
 void SDLGameObject::render()

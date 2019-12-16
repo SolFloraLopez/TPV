@@ -1,10 +1,11 @@
 #pragma once
 #include "SDLGameObject.h"
+#include "PlayState.h"
 #include <iostream>
 #include <fstream>
 //#include <list>
 
-class Game;
+class GameState;
 
 class ArrowsGameObject : public SDLGameObject
 {
@@ -13,8 +14,9 @@ protected:
 	int ID;
 	Texture* texture;
 	//list<GameObject*>::iterator it;
+	PlayState* playState;
 
-	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, Game* game, int ID);
+	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, GameState* game, int ID);
 
 public:
 	//virtual void render();

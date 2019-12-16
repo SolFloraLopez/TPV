@@ -1,11 +1,12 @@
 #pragma once
 #include "GameObject.h"
+#include "PlayState.h"
 #include "Vector2D.h"
 #include <list>
 
-class Game;
+class SDLApplication;
 
-class ScoreBoard : public GameObject 
+class ScoreBoard : public SDLGameObject 
 {
 private:
 	const uint numberHeight = 20;
@@ -19,13 +20,15 @@ private:
 	int points = 0;
 	int arrowsAmount = 0;
 
-	Game* game;
+	GameState* game;
 	Texture* numbersTex;
 	Texture* arrowTex;
 
+	PlayState* playState;
+
 	list<GameObject*>::iterator it;
 public:
-	ScoreBoard(Texture* numbers, Texture* arrows, Game* game);
+	ScoreBoard(Texture* numbers, Texture* arrows, GameState* game);
 	virtual void render();
 	virtual void update();
 	virtual void loadFromFile(fstream& input);

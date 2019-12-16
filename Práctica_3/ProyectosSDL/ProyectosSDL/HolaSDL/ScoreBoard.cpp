@@ -1,8 +1,10 @@
 #include "ScoreBoard.h"
 #include "Game.h"
 
-ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, Game* thisGame)
+ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, GameState* thisGame) : 
+	SDLGameObject(scorePos, numberWidth, numberHeight, numbersTex, thisGame)
 {
+	playState = dynamic_cast<PlayState*>(thisGame);
 	numbersTex = numTex;
 	arrowTex = arrTex;
 	game = thisGame;
@@ -10,8 +12,8 @@ ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, Game* thisGame)
 
 void ScoreBoard::update()
 {
-	points = game->changeScore(0);
-	arrowsAmount = game->changeAvaliableArrows(0);
+	points = playState->changeScore(0);
+	arrowsAmount = playState->changeAvaliableArrows(0);
 }
 
 void ScoreBoard::render()

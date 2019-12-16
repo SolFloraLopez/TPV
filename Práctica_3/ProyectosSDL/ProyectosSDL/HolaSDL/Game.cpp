@@ -1,17 +1,10 @@
-#include "SDL.h"
-#include "SDL_image.h"
-#include "Vector2D.h"
 #include "Game.h"
-#include "Texture.h"
-#include <iostream>
-#include <fstream>
-#include <time.h>
 
 using namespace std;
 
 using uint = unsigned int;
 
-Game::Game(bool load, string route) 
+SDLApplication::SDLApplication(bool load, string route) 
 {
 	srand(time(NULL));
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -45,7 +38,7 @@ Game::Game(bool load, string route)
 	}
 }
 
-void Game::run() {//Bucle principal
+void SDLApplication::run() {//Bucle principal
 	while (!SDL_QuitRequested() && !exit)
 	{
 		handleEvents();
@@ -56,7 +49,7 @@ void Game::run() {//Bucle principal
 	}
 }
 
-void Game::render() //Llama a los metodos render de los elementos del juego
+void SDLApplication::render() //Llama a los metodos render de los elementos del juego
 {
 	SDL_RenderClear(renderer);
 	textures[currentMap % MAP_AMOUNT]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
@@ -74,7 +67,7 @@ void Game::render() //Llama a los metodos render de los elementos del juego
 	SDL_RenderPresent(renderer);
 };
 
-void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea false, mientras que el jugador no salga del juego
+void SDLApplication::handleEvents() //Llama a HandleEvents del bow mientras que exit sea false, mientras que el jugador no salga del juego
 {
 
 	SDL_Event event;//
@@ -114,85 +107,7 @@ void Game::handleEvents() //Llama a HandleEvents del bow mientras que exit sea f
 	}//
 }
 
-void Game::balloonspawner() //Generador de globos
-{
-	if (rand() % 20 == 1)
-	{
-		Balloon* newBalloon = new Balloon({ ((double)WIN_WIDTH / 2) + rand() % (WIN_WIDTH / 2), WIN_HEIGHT }, (double)512,
-			(double)597, { -1, 2 + (rand() % 4) * BALLOON_VELOCITY }, true, textures[Balloons], rand() % 7, this, 3);
-
-		newBalloon->setItList(objects.insert(objects.end(), newBalloon));
-	}
-};
-
-void Game::butterflyspawner() //Generador de mariposas
-{
-	currentButterflies = BASE_BUTTERFLY_AMOUNT * ((currentMap % MAP_AMOUNT) + 1);//
-
-	for (int i = 0; i < currentButterflies; i++)
-	{
-		Butterfly* newButterfly = new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
-			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], this, 1);
-
-		newButterfly->setItList(objects.insert(objects.end(), newButterfly));//
-	}
-};
-
-void Game::rewardspawner(Point2D rewardPosition, Arrow* arrow)
-{
-	Reward* newReward = new Reward({ rewardPosition.getX() + 20, rewardPosition.getY() + 20}, { 0, 1 },//
-		(double)352, (double)238, true, rand() % 2, textures[RewardTexture], textures[BubbleTexture], arrow, this, 2);
-
-	newReward->setItList(objects.insert(objects.end(), newReward));
-	events.push_back(newReward);//
-}
-
-void Game::shoot(Arrow* arrow) //Añade la flecha al array de flechas lanzadas y resta uno a las flechas disponibles
-{
-	shotArrows.push_back(arrow); //
-	arrow->setItList(objects.insert(objects.end(), arrow));
-	availableArrows--;
-	changeCurrentArrows(1); //
-}
-
-int Game::changeAvaliableArrows(int amount)
-{
-	availableArrows += amount;//
-	return availableArrows;//
-}
-
-int Game::changeCurrentArrows(int amount)
-{
-	currentArrows += amount; //
-	return currentArrows;//
-}
-
-Arrow* Game::collision(ArrowsGameObject* object, int cols, int rows) //Calcula la colision entre flechas y globos para todas la flechas lanzadas
-{
-	for (uint i = 0; i < shotArrows.size(); i++) //
-	{
-		if (SDL_HasIntersection(object->getCollisionRect(cols,rows), shotArrows[i]->returnPointRect())) 
-		{
-			return shotArrows[i];
-		}
-	}
-
-	return nullptr;//
-}
-
-int Game::changeScore(int value)
-{
-	points += value;//
-	if (points < 0) points = 0;
-	return points;//
-}
-
-void Game::updateButterflyCounter()
-{
-	currentButterflies--;//
-}
-
-void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
+void SDLApplication::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
 	if (saving) {//
 		saveToFile();
@@ -246,49 +161,22 @@ void Game::update() //Llama a los update de los elementos del juego, si estos de
 	if (currentButterflies <= 0) exit = true;//
 }
 
-void Game::killObject(list<GameObject*>::iterator object)
-{
-	objectsToErase.push_back(object); //
-}
-
-bool Game::getSaving()
+bool SDLApplication::getSaving()
 {
 	return saving;
 }
 
-bool Game::getExit()
+bool SDLApplication::getExit()
 {
 	return exit;
 }
 
-void Game::exitGame()
+void SDLApplication::exitGame()
 {
 	exit = true;
 }
 
-void Game::saveToFile()//
-{
-	ofstream output(file);
-
-	output << availableArrows << " " << currentButterflies << " " << currentArrows << " " 
-		<< points << " " << currentMap << " " << currentMaxPoints << " " << objects.size() << "\n";
-
-	list<GameObject*>::iterator it;
-
-	it = objects.begin();
-
-	while (it != objects.end())
-	{
-		(*it)->saveToFile(output);
-		++it;
-
-		output << "\n";
-	}
-
-	output.close();//
-}
-
-void Game::loadFromFile(string route)
+void SDLApplication::loadFromFile(string route)
 {
 	fstream input(route);
 
@@ -347,7 +235,7 @@ void Game::loadFromFile(string route)
 	input.close();
 }
 
-void Game::newSaveToFile()
+void SDLApplication::saveToFile()
 {
 	stateMachine->popState();
 	cin >> file;
@@ -355,12 +243,12 @@ void Game::newSaveToFile()
 	stateMachine->pushState(new PauseState(this));
 }
 
-Texture* Game::getTexture(int num)
+Texture* SDLApplication::getTexture(int num)
 {
 	return textures[num];
 }
 
-Game::~Game() //Destructor del juego
+SDLApplication::~SDLApplication() //Destructor del juego
 {
 	for (GameObject* ob : objects) 
 	{

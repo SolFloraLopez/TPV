@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 				cin >> input;
 				try
 				{					
-					Game game = Game(true, to_string(input));
+					SDLApplication game = SDLApplication(true, to_string(input));
 					game.render();
 					game.run();
 					cargado = true;
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
 		
 		else if (input == 0)
 		{			
-			Game game = Game(false, "");
+			SDLApplication game = SDLApplication(false, "");
 			game.render();
 			game.run();
 		}

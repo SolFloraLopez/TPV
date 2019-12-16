@@ -11,7 +11,7 @@ class PauseState : public GameState
 private:
 	Texture* buttonTexture;
 public:
-	PauseState(Game* game);
+	PauseState(SDLApplication* game);
 	virtual void render() {};
 	virtual void handleEvents() {};
 	virtual void update() {};

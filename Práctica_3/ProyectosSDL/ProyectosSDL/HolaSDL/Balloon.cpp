@@ -4,7 +4,7 @@
 
 
 //Constructor
-Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, Game* thisGame, int id) :
+Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, GameState* thisGame, int id) :
 	ArrowsGameObject(pos, vel, ancho, alto, tex, thisGame, id)
 {
 	state = estado;
@@ -13,7 +13,6 @@ Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool esta
 
 Balloon::~Balloon() //Destructor
 {
-	//delete texture;
 }
 
 void Balloon::render() /*const*/ { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura
@@ -29,26 +28,26 @@ void Balloon::update()
 
 	if (pos.getY() < 0 - height * rows) //Devuelve false si el globo se sale de lo alto de la pantalla
 	{
-		game->killObject(it);
+		playState->killObject(it);
 	}
 
 	if (state) //Si hay colision entre el globo y una flecha y el estado del globo no es false(pinchado)
 	{									 // cambia el estado del globo a false y guarda el instante de tiempo en el que ha colisionado
-		Arrow* arrow = game->collision(this, cols, rows);
+		Arrow* arrow = playState->collision(this, cols, rows);
 
 		if(arrow != nullptr)
 		{
 			arrow->addHit();
 			state = false;
 			inst = SDL_GetTicks();
-			game->changeScore(value + pow((arrow->getHits() - 1), 2) * value);
-			if(rand() % 3 == 0)game->rewardspawner(pos, arrow);
+			playState->changeScore(value + pow((arrow->getHits() - 1), 2) * value);
+			if(rand() % 3 == 0)playState->rewardspawner(pos, arrow);
 		}
 	}
 
 	if ((SDL_GetTicks() - inst) / FRAME_RATE == cols)
 	{
-		game->killObject(it);
+		playState->killObject(it);
 	}
 };
 
@@ -64,8 +63,3 @@ void Balloon::saveToFile(ofstream& output)
 	ArrowsGameObject::saveToFile(output);
 	output << state << " " << color;
 }
-
-//SDL_Rect* Balloon::returnRect() //Devuelve un rectangulo del tamaño de un globo
-//{
-//	return new SDL_Rect{ (int)pos.getY(), (int)pos.getX(), (int)height / 7, (int)width / 6 };
-//}
