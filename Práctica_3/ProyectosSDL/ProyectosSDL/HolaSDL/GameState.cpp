@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "GameState.h"
 
-GameState::GameState(list<GameObject*> objects, list<EventHandler*> events, Game* game) : objects(objects), events(events), game(game) {}
+GameState::GameState(Game* game) : game(game) {}
 
 void GameState::exitGame()
 {
@@ -11,4 +11,9 @@ void GameState::exitGame()
 bool GameState::getExit()
 {
 	return game->getExit();
+}
+
+Texture* GameState::getTexture(int num)
+{
+	return game->getTexture(num);
 }

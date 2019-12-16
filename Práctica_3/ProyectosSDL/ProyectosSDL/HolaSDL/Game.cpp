@@ -127,14 +127,14 @@ void Game::balloonspawner() //Generador de globos
 
 void Game::butterflyspawner() //Generador de mariposas
 {
-	currentButterflies = BASE_BUTTERFLY_AMOUNT * ((currentMap % MAP_AMOUNT) + 1);
+	currentButterflies = BASE_BUTTERFLY_AMOUNT * ((currentMap % MAP_AMOUNT) + 1);//
 
 	for (int i = 0; i < currentButterflies; i++)
 	{
 		Butterfly* newButterfly = new Butterfly({ ((double)WIN_WIDTH / 3) + rand() % (WIN_WIDTH / 3), (double)(rand() % (WIN_HEIGHT - 92)) },
 			{ 1 - (double)(rand() % 2) * 2 , 1 - (double)(rand() % 2) * 2 }, (double)384, (double)368, true, textures[ButterflyTexture], this, 1);
 
-		newButterfly->setItList(objects.insert(objects.end(), newButterfly));
+		newButterfly->setItList(objects.insert(objects.end(), newButterfly));//
 	}
 };
 
@@ -194,7 +194,7 @@ void Game::updateButterflyCounter()
 
 void Game::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
 {
-	if (saving) {
+	if (saving) {//
 		saveToFile();
 	}
 
@@ -243,7 +243,7 @@ void Game::update() //Llama a los update de los elementos del juego, si estos de
 		objectsToErase.clear();
 	}
 
-	if (currentButterflies <= 0) exit = true;
+	if (currentButterflies <= 0) exit = true;//
 }
 
 void Game::killObject(list<GameObject*>::iterator object)
@@ -266,7 +266,7 @@ void Game::exitGame()
 	exit = true;
 }
 
-void Game::saveToFile()
+void Game::saveToFile()//
 {
 	ofstream output(file);
 
@@ -285,7 +285,7 @@ void Game::saveToFile()
 		output << "\n";
 	}
 
-	output.close();
+	output.close();//
 }
 
 void Game::loadFromFile(string route)
@@ -345,6 +345,19 @@ void Game::loadFromFile(string route)
 	}
 
 	input.close();
+}
+
+void Game::newSaveToFile()
+{
+	stateMachine->popState();
+	cin >> file;
+	stateMachine->currentState()->saveToFile(file);
+	stateMachine->pushState(new PauseState(this));
+}
+
+Texture* Game::getTexture(int num)
+{
+	return textures[num];
 }
 
 Game::~Game() //Destructor del juego

@@ -78,6 +78,8 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Reward.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
@@ -91,6 +93,7 @@
     <ClInclude Include="Balloon.h" />
     <ClInclude Include="Bow.h" />
     <ClInclude Include="Butterfly.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="Game.h" />

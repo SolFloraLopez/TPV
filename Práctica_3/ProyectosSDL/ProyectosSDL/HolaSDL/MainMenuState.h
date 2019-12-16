@@ -3,5 +3,6 @@
 
 class MainMenuState : public GameState 
 {
-
+	void render();
+	void handleEvents();
 };

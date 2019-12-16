@@ -3,5 +3,6 @@
 
 class EndState : public GameState
 {
-
+	void render();
+	void handleEvents();
 };
