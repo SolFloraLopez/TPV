@@ -1,6 +1,5 @@
-#include "Game.h"
 #include "ArrowsGameObject.h"
-#include "GameState.h"
+#include "PlayState.h"
 
 ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D velocity, double width, double height, Texture* texture, GameState* game, int id):
 	SDLGameObject(pos, width, height, texture, game)

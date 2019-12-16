@@ -4,6 +4,8 @@
 #include "Arrow.h"
 #include "Reward.h"
 #include "Butterfly.h"
+#include "ScoreBoard.h"
+#include "Bow.h"
 #include <vector>
 #include "Constants.h"
 
@@ -24,10 +26,11 @@ private:
 	string file = "";
 public:
 	PlayState(list<GameObject*> objects, list<EventHandler*> events, SDLApplication* game);
-	void update();
-	void render();
-	void handleEvents();
-	void saveToFile(string file);
+	virtual void update();
+	virtual void render();
+	virtual void handleEvents();
+	virtual void saveToFile();
+	void loadFromFile();
 	Arrow* collision(ArrowsGameObject* obj, int cols, int rows);
 	void shoot(Arrow* arrow);
 	int changeScore(int value);

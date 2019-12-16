@@ -1,11 +1,8 @@
 #pragma once
 #include "SDLGameObject.h"
-#include "PlayState.h"
-#include <iostream>
-#include <fstream>
 //#include <list>
 
-class GameState;
+class PlayState;
 
 class ArrowsGameObject : public SDLGameObject
 {

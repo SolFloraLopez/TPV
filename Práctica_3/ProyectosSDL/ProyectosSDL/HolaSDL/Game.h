@@ -8,14 +8,14 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <fstream>
-#include "Balloon.h"
-#include "Arrow.h"
-#include "Bow.h"
-#include "Butterfly.h"
-#include "Reward.h"
+#include <fstream>//
+#include "Balloon.h"//
+#include "Arrow.h"//
+#include "Bow.h"//
+#include "Butterfly.h"//
+#include "Reward.h"//
 #include "EventHandler.h"
-#include "ScoreBoard.h"
+#include "ScoreBoard.h"//
 #include "GameStateMachine.h"
 #include "PlayState.h"
 #include "PauseState.h"
@@ -42,8 +42,7 @@ public:
 	void handleEvents();
 	void update();
 	void saveToFile();
-	/* */void loadFromFile(string route);
-	bool getSaving();
+	/* */void loadFromFile();
 	bool getExit();
 	void exitGame();
 	Texture* getTexture(int num);

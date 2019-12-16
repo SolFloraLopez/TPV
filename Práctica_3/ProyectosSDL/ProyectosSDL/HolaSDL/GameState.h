@@ -19,7 +19,8 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void handleEvents() = 0;
-	virtual void saveToFile(string file) = 0;
+	virtual void saveToFile();
+	virtual void loadFromFile();
 	void exitGame();
 	bool getExit();
 	Texture* getTexture(int num);

@@ -17,3 +17,13 @@ Texture* GameState::getTexture(int num)
 {
 	return game->getTexture(num);
 }
+
+void GameState::loadFromFile()
+{
+	game->loadFromFile();
+}
+
+void GameState::saveToFile()
+{
+	game->saveToFile();
+}

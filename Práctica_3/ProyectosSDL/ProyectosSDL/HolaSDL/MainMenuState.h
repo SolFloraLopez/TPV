@@ -14,6 +14,4 @@ public:
 	MainMenuState(SDLApplication* game);
 	virtual void render() {};
 	virtual void handleEvents() {};
-	virtual void loadFromFile(string route) {};
-
 };
