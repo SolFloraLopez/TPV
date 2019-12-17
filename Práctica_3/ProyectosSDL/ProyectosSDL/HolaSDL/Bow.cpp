@@ -3,7 +3,7 @@
 
 
 //Constructor
-Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTex, bool cargado, GameState* thisGame, int id) :
+Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture, Texture* arrowTex, bool cargado, PlayState* thisGame, int id) :
 	ArrowsGameObject(pos, vel, ancho, alto, texture, thisGame, id)
 {
 	arrowTexture = arrowTex;
@@ -55,7 +55,7 @@ void Bow::handleEvent(SDL_Event& event)
 
 		else if (event.key.keysym.sym == SDLK_LEFT && playState->changeAvaliableArrows(0) > 0 && arrow == nullptr) //Si hay flechas disponibles, crea una nueva
 		{
-			arrow = new Arrow (arrowHeight, arrowWidth, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, game, 4);
+			arrow = new Arrow (arrowHeight, arrowWidth, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, playState, 4);
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr) //Si hay una flecha cargada llama al metodo disparar de game y el puntero a arrow se pone en null
 		{

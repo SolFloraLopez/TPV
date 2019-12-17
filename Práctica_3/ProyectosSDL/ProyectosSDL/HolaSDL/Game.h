@@ -18,7 +18,9 @@
 #include "ScoreBoard.h"//
 #include "GameStateMachine.h"
 #include "PlayState.h"
+#include "MainMenuState.h"
 #include "PauseState.h"
+#include "EndState.h"
 #include "Constants.h"
 #include <time.h> /* */
 
@@ -31,19 +33,29 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	GameStateMachine* stateMachine;
 	bool exit = false;
-	string file = "";
 	Texture* textures[NUM_TEXTURES];
 
 public:
-	SDLApplication(bool load, string route);
+	SDLApplication();
 	~SDLApplication();
 	void run();
 	void render();
 	void handleEvents();
-	void update();
+	void update(){};
 	void saveToFile();
 	/* */void loadFromFile();
 	bool getExit();
 	void exitGame();
 	Texture* getTexture(int num);
+	void goMainMenu();
+	void Pause();
+	void Resume();
+	void Play();
+	void checkStateMachine();
+	static void saveAction(SDLApplication* a) { a->saveToFile(); }
+	static void loadAction(SDLApplication* a) { a->loadFromFile(); }
+	static void mainMenuAction(SDLApplication* a) { a->goMainMenu(); }
+	static void resAction(SDLApplication* a) { a->Resume(); }
+	static void playAction(SDLApplication* a) { a->Play(); }
+	static void exitAction(SDLApplication* a) { a->exitGame(); }
 };

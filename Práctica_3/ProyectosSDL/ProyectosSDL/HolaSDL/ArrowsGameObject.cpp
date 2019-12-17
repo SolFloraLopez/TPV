@@ -1,12 +1,12 @@
 #include "ArrowsGameObject.h"
 #include "PlayState.h"
 
-ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D velocity, double width, double height, Texture* texture, GameState* game, int id):
+ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D velocity, double width, double height, Texture* texture, PlayState* game, int id):
 	SDLGameObject(pos, width, height, texture, game)
 {
 	vel = velocity;
 	ID = id;
-	playState = dynamic_cast<PlayState*>(game);
+	playState = game;
 };
 
 ArrowsGameObject::~ArrowsGameObject() {};

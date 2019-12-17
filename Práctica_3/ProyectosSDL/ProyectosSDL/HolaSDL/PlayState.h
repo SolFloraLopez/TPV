@@ -25,12 +25,13 @@ private:
 	bool load = false;
 	string file = "";
 public:
-	PlayState(SDLApplication* game, bool load);
+	PlayState(SDLApplication* game, bool load, string file);
+	~PlayState();
 	virtual void update();
 	virtual void render();
 	virtual void handleEvents();
 	virtual void saveToFile();
-	void loadFromFile();
+	void loadFromFile(string file);
 	Arrow* collision(ArrowsGameObject* obj, int cols, int rows);
 	void shoot(Arrow* arrow);
 	int changeScore(int value);

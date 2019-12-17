@@ -19,7 +19,7 @@ private:
 	bool loaded;
 	
 public:
-	Bow(Point2D pos, double width, double height, Vector2D vel, Texture* texture, Texture* arrowTex, bool loaded, GameState* game, int ID);
+	Bow(Point2D pos, double width, double height, Vector2D vel, Texture* texture, Texture* arrowTex, bool loaded, PlayState* game, int ID);
 	~Bow();
 	virtual void render() /*const*/;
 	virtual void update();

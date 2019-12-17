@@ -22,7 +22,7 @@ private:
 
 public:
 	Reward(Point2D pos, Vector2D vel, double width, double height, bool state, int type, Texture* texture, 
-		Texture* bubbleTex, Arrow* arrowPointer, GameState* game, int ID);
+		Texture* bubbleTex, Arrow* arrowPointer, PlayState* game, int ID);
 	~Reward();
 	virtual void render();
 	virtual void update();

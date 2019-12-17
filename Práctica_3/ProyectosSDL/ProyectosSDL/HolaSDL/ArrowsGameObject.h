@@ -13,7 +13,7 @@ protected:
 	//list<GameObject*>::iterator it;
 	PlayState* playState;
 
-	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, GameState* game, int ID);
+	ArrowsGameObject(Point2D pos, Vector2D vel, double width, double height, Texture* texture, PlayState* game, int ID);
 
 public:
 	//virtual void render();

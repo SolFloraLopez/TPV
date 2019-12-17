@@ -1,10 +1,10 @@
 #include "ScoreBoard.h"
 #include "Game.h"
 
-ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, GameState* thisGame) : 
+ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, PlayState* thisGame) :
 	SDLGameObject(scorePos, numberWidth, numberHeight, numbersTex, thisGame)
 {
-	playState = dynamic_cast<PlayState*>(thisGame);
+	playState = thisGame;
 	numbersTex = numTex;
 	arrowTex = arrTex;
 	game = thisGame;

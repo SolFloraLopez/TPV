@@ -16,6 +16,7 @@ protected:
 	SDLApplication* game;
 public:
 	GameState(SDLApplication* game);
+	~GameState();
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void handleEvents() = 0;
@@ -24,4 +25,6 @@ public:
 	void exitGame();
 	bool getExit();
 	Texture* getTexture(int num);
+	void Pause();
+	void Resume();
 };

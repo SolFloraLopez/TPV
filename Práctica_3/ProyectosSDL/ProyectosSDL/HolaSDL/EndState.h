@@ -1,10 +1,16 @@
 #pragma once
 #include "GameState.h"
+#include "MenuButton.h"
 
 class EndState : public GameState
 {
-	void render();
-	void handleEvents();
-	virtual void saveToFile() {};
-	virtual void loadFromFile() {};
+private:
+	Texture* buttonMainTexture;
+	Texture* buttonExitTexture;
+public:
+	EndState(SDLApplication* game);
+	~EndState();
+	virtual void render();
+	virtual void update() {};
+	virtual void handleEvents();
 };

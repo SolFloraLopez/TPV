@@ -2,7 +2,7 @@
 #include "Reward.h"
 
 Reward::Reward(Point2D pos, Vector2D vel, double width, double height, bool estado, int tipo, Texture* texture, 
-	Texture* bubbleTex, Arrow* ArrowPointer, GameState* game, int id) : ArrowsGameObject(pos, vel, width, height, texture, game, id)
+	Texture* bubbleTex, Arrow* ArrowPointer, PlayState* game, int id) : ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;
 	bubbleTexture = bubbleTex;

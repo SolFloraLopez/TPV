@@ -16,7 +16,7 @@ private:
 	
 
 public:
-	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, GameState* game, int ID);
+	Balloon(Point2D pos, double width, double height, Vector2D vel, bool state, Texture* tex, int colour, PlayState* game, int ID);
 	~Balloon();
 	virtual void render() /*const*/;
 	virtual void update();

@@ -28,7 +28,7 @@ private:
 
 	list<GameObject*>::iterator it;
 public:
-	ScoreBoard(Texture* numbers, Texture* arrows, GameState* game);
+	ScoreBoard(Texture* numbers, Texture* arrows, PlayState* game);
 	virtual void render();
 	virtual void update();
 	virtual void loadFromFile(fstream& input);

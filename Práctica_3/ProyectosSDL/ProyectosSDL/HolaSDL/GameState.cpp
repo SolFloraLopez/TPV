@@ -3,6 +3,8 @@
 
 GameState::GameState(SDLApplication* game) : game(game) {}
 
+GameState::~GameState() {};
+
 void GameState::exitGame()
 {
 	game->exitGame();
@@ -26,4 +28,12 @@ void GameState::loadFromFile()
 void GameState::saveToFile()
 {
 	game->saveToFile();
+}
+
+void GameState::Pause() {
+	game->Pause();
+}
+
+void GameState::Resume() {
+	game->Resume();
 }

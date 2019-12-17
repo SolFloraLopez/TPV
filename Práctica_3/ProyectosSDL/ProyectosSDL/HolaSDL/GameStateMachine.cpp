@@ -21,3 +21,13 @@ void GameStateMachine::popState()
 {
 	stateStack.pop();
 }
+
+void GameStateMachine::setFlag(string thisFlag) 
+{
+	flag = thisFlag;
+}
+
+string GameStateMachine::getFlag()
+{
+	return flag;
+}

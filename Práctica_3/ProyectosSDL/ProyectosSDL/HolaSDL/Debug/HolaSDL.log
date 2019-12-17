@@ -1,4 +1,5 @@
-﻿  Reward.cpp
+﻿  Game.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(9,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe

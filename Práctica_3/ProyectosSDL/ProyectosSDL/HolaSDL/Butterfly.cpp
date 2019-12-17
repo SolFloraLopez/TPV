@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <cmath>
 
-Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, GameState* game, int id):
+Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, PlayState* game, int id):
 ArrowsGameObject(pos, vel, width, height, texture, game, id)
 {
 	state = estado;

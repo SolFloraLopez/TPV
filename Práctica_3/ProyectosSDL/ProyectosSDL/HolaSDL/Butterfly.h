@@ -10,7 +10,7 @@ private:
 	const int rows = 4;
 	const int value = -5;
 public:
-	Butterfly(Point2D pos, Vector2D vel, double width, double height, bool state, Texture* texture, GameState* game, int ID);
+	Butterfly(Point2D pos, Vector2D vel, double width, double height, bool state, Texture* texture, PlayState* game, int ID);
 	~Butterfly();
 	virtual void render();
 	virtual void update();

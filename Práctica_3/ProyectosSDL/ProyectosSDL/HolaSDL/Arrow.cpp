@@ -1,7 +1,7 @@
 #include "Arrow.h"
 #include "Game.h"
 
-Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, GameState* game, int id) :
+Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, PlayState* game, int id) :
 	ArrowsGameObject(pos, vel, width, height, tex, game, id) {}; //Constructor
 
 Arrow::~Arrow() //Destructor

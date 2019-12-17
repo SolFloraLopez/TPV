@@ -1,6 +1,6 @@
 #include "PlayState.h"
 
-PlayState::PlayState(SDLApplication* game, bool load) :
+PlayState::PlayState(SDLApplication* game, bool load, string file) :
 GameState(game)
 {
 	ScoreBoard* scoreBoard = new ScoreBoard(getTexture(DigitsTexture), getTexture(ScoreArrowTexture), this);
@@ -17,8 +17,10 @@ GameState(game)
 		butterflySpawner();
 	}
 
-	else loadFromFile();
+	else loadFromFile(file);
 }
+
+PlayState::~PlayState() {};
 
 void PlayState::update()
 {
@@ -51,6 +53,7 @@ void PlayState::update()
 		currentMap++;
 		currentMaxPoints += BASE_POINT_MAX * ((currentMap % MAP_AMOUNT) + 1);
 		availableArrows = BASE_ARROWS_AMOUNT * ((currentMap % MAP_AMOUNT) + 1);
+		currentArrows = 0;
 		butterflySpawner();
 	}
 
@@ -95,7 +98,7 @@ void PlayState::handleEvents()
 	{
 		while (SDL_PollEvent(&event) && !PlayState::getExit()) {
 
-			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) PlayState::getExit();
+			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) GameState::Pause();
 
 			if (!recordingInput && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_s)
 			{
@@ -212,6 +215,7 @@ int PlayState::changeCurrentArrows(int amount)
 void PlayState::saveToFile()
 {
 	string file;
+	cout << "Introduzca el codigo para el archivo de guardado: ";
 	cin >> file;
 
 	ofstream output(file);
@@ -232,21 +236,16 @@ void PlayState::saveToFile()
 	}
 
 	output.close();
+
+	cout << "Archivo guardado";
 }
 
-void PlayState::loadFromFile()
+void PlayState::loadFromFile(string file)
 {
-	string file;
-	cin >> file;
-
 	fstream input(file);
 
 	input >> availableArrows; input >> currentButterflies; input >> currentArrows; input >> points;
 	input >> currentMap; input >> currentMaxPoints;
-
-	ScoreBoard* scoreBoard = new ScoreBoard(getTexture(DigitsTexture), getTexture(ScoreArrowTexture), this);
-	objects.push_back(scoreBoard);
-	scoreBoard->setItList(objects.end());
 
 	int size, aux;
 	input >> size;

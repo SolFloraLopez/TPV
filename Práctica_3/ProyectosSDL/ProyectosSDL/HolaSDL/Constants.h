@@ -27,6 +27,8 @@ const double BALLOON_VELOCITY = 0.5;
 const double ARROW_VELOCITY = 10;
 const double BOW_HEIGHT = 61;
 const double BOW_WIDTH = 142;//
+const double BUTTON_WIDTH = 100;
+const double BUTTON_HEIGHT = 100;
 
 const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
 											{"..\\images\\bg_spring_trees_1.png", 1, 1},

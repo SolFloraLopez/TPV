@@ -4,7 +4,7 @@
 
 
 //Constructor
-Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, GameState* thisGame, int id) :
+Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool estado, Texture* tex, int colour, PlayState* thisGame, int id) :
 	ArrowsGameObject(pos, vel, ancho, alto, tex, thisGame, id)
 {
 	state = estado;

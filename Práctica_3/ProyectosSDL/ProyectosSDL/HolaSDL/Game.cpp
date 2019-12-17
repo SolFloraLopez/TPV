@@ -4,7 +4,7 @@ using namespace std;
 
 using uint = unsigned int;
 
-SDLApplication::SDLApplication(bool load, string route) 
+SDLApplication::SDLApplication() 
 {
 	srand(time(NULL));
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -19,21 +19,21 @@ SDLApplication::SDLApplication(bool load, string route)
 		textures[i] = new Texture(renderer, INFOTEXT[i].route, INFOTEXT[i].rows, INFOTEXT[i].columns);
 	}
 
+
 	stateMachine = new GameStateMachine();
-	stateMachine->pushState(new PlayState(this, false));
+	stateMachine->pushState(new MainMenuState(this));
 }
 
 void SDLApplication::run() {//Bucle principal
 	while (!SDL_QuitRequested() && !exit)
 	{
+		if (stateMachine->getFlag() != "") checkStateMachine();
+
 		GameState* s = stateMachine->currentState();
 		stateMachine->currentState()->handleEvents();
 		stateMachine->currentState()->update();
 		render();
 
-		//handleEvents();
-		//update();
-		//render();
 		SDL_Delay(1000 / FRAME_RATE);
 	}
 }
@@ -87,60 +87,6 @@ void SDLApplication::handleEvents() //Llama a HandleEvents del bow mientras que 
 	//}//
 }
 
-void SDLApplication::update() //Llama a los update de los elementos del juego, si estos devuelven false se elimina el elemento correspondiente
-{
-	//if (saving) {//
-	//	saveToFile();
-	//}
-
-	//list<GameObject*>::iterator it;
-	//GameObject* aux;
-
-	//it = objects.begin();
-
-	//while (it != objects.end())
-	//{
-	//	(*it)->update();
-	//	++it;
-	//}
-
-	//if (points >= currentMaxPoints)
-	//{
-	//	it = next(objects.begin(), 2);
-	//	int j = objects.size();
-
-	//	for (int i = 2; i < j; i++)
-	//	{
-	//		aux = *it;
-	//		if (dynamic_cast<EventHandler*>(aux) != nullptr) events.remove(dynamic_cast<EventHandler*>(aux));
-	//		it = objects.erase(it);
-	//		delete aux;
-	//	}
-
-	//	currentMap++;
-	//	currentMaxPoints += BASE_POINT_MAX * ((currentMap % MAP_AMOUNT) + 1);
-	//	availableArrows = BASE_ARROWS_AMOUNT * ((currentMap % MAP_AMOUNT) + 1);
-	//	butterflyspawner();
-	//}
-
-	//if(!objectsToErase.empty()) 
-	//{
-	//	it = *objectsToErase.begin();
-
-	//	for(int i = 0; i < objectsToErase.size(); i++)
-	//	{
-	//		aux = *it;
-	//		if (dynamic_cast<EventHandler*>(aux) != nullptr) events.remove(dynamic_cast<EventHandler*>(aux));
-	//		it = objects.erase(it);
-	//		delete aux;
-	//	}
-
-	//	objectsToErase.clear();
-	//}
-
-	//if (currentButterflies <= 0) exit = true;//
-}
-
 bool SDLApplication::getExit()
 {
 	return exit;
@@ -153,63 +99,11 @@ void SDLApplication::exitGame()
 
 void SDLApplication::loadFromFile()
 {
-	stateMachine->currentState()->loadFromFile();
-
-	//fstream input(route);
-
-	//input >> availableArrows; input >> currentButterflies; input >> currentArrows; input >> points;
-	//input >> currentMap; input >> currentMaxPoints;
-
-	//ScoreBoard* scoreBoard = new ScoreBoard(textures[DigitsTexture], textures[ScoreArrowTexture], this);
-	//objects.push_back(scoreBoard);
-	//scoreBoard->setItList(objects.end());
-
-	//int size, aux;
-	//input >> size;
-
-	//for(int i = 0; i < size; i++)
-	//{
-	//	input >> aux;
-	//	switch (aux)
-	//	{
-	//	case 0:
-	//	{Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,
-	//		{ 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this, 0); //Crea el arco
-
-	//	objects.push_back(bow);
-	//	events.push_back(bow);
-	//	bow->setItList(objects.end());
-	//	bow->loadFromFile(input);
-	//	break; }
-	//	case 1:
-	//	{Butterfly* newButterfly = new Butterfly({ 0, 0 }, { 0, 0 }, (double)0, (double)0, true, textures[ButterflyTexture], this, 1);
-	//	newButterfly->setItList(objects.insert(objects.end(), newButterfly));
-	//	newButterfly->loadFromFile(input);
-	//	break; }
-	//	case 2:
-	//	{Reward* newReward = new Reward({ 0, 0 }, { 0, 0 },
-	//		(double)0, (double)0, true, 0, textures[RewardTexture], textures[BubbleTexture], nullptr, this, 2);
-	//	newReward->setItList(objects.insert(objects.end(), newReward));
-	//	events.push_back(newReward);
-	//	newReward->loadFromFile(input);
-	//	break; }
-	//	case 3:
-	//	{Balloon* newBalloon = new Balloon({ 0, 0 }, (double)0, (double)0, { 0, 0 }, true, textures[Balloons], 0, this, 3);
-	//	newBalloon->setItList(objects.insert(objects.end(), newBalloon));
-	//	newBalloon->loadFromFile(input);
-	//	break; }
-	//	case 4:
-	//	{Arrow* arrow = new Arrow(0, 0, { 0, 0 }, { 0, 0 }, textures[ArrowTexture], this, 4);
-	//	shotArrows.push_back(arrow);
-	//	arrow->setItList(objects.insert(objects.end(), arrow));
-	//	arrow->loadFromFile(input);
-	//	break; }
-	//	default:
-	//		break;
-	//	}
-	//}
-
-	//input.close();
+	stateMachine->setFlag("LoadState");
+	/*string file;
+	cout << "\n Codigo del archivo de guardado: ";
+	cin >> file;
+	stateMachine->changeState(new PlayState(this, true, file));*/
 }
 
 void SDLApplication::saveToFile()
@@ -232,4 +126,51 @@ SDLApplication::~SDLApplication() //Destructor del juego
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+void SDLApplication::Pause() 
+{
+	stateMachine->pushState(new PauseState(this));
+}
+
+void SDLApplication::Resume() {
+
+	stateMachine->popState();
+}
+
+void SDLApplication::Play() 
+{
+	stateMachine->setFlag("PlayState");
+}
+
+void SDLApplication::goMainMenu() 
+{
+	stateMachine->setFlag("MainMenu");
+}
+
+void SDLApplication::checkStateMachine()
+{
+	string flag = stateMachine->getFlag();
+
+	if (flag == "MainMenu")
+	{
+		stateMachine->changeState(new MainMenuState(this));
+		stateMachine->setFlag("");
+	}
+	else if (flag == "PlayState") 
+	{
+		stateMachine->changeState(new PlayState(this, false, ""));
+		stateMachine->setFlag("");
+	}
+	else if (flag == "LoadState") 
+	{
+		string file;
+		cout << "\n Codigo del archivo de guardado: ";
+		cin >> file;
+		stateMachine->changeState(new PlayState(this, true, file));
+		//stateMachine->setFlag("PlayState");
+		stateMachine->setFlag("");
+	}
+	else if (flag == "PauseState") stateMachine->changeState(new PauseState(this));
+	else if (flag == "EndState") stateMachine->changeState(new EndState(this));;
 }
