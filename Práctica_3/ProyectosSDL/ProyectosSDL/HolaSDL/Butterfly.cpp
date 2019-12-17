@@ -14,12 +14,12 @@ void Butterfly::render() /*const*/ { //Crear un rectangulo destino con las propo
 	SDL_Rect destRect = ArrowsGameObject::getDestRect(cols,rows);
 	
 	if (state) {
-		texture->renderFrame(destRect,0,(SDL_GetTicks()/FRAME_RATE) % 10);
+		SDLGameObject::texture->renderFrame(destRect,0,(SDL_GetTicks()/FRAME_RATE) % 10);
 	}
 
 	else 
 	{
-		texture->renderFrame(destRect, 0, 1);
+		SDLGameObject::texture->renderFrame(destRect, 0, 1);
 	}
 
 };

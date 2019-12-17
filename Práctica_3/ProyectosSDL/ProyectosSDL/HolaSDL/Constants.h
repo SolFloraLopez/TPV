@@ -41,5 +41,6 @@ const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
 											{"..\\images\\Arrow1.png", 1, 1},
 											{"..\\images\\butterfly2.png", 4, 10},
 											{"..\\images\\rewards.png", 10, 8},
-											{"..\\images\\bubble.png", 1, 1}
+											{"..\\images\\bubble.png", 1, 1},
+											{"..\\images\\button.png", 1, 1}
 };

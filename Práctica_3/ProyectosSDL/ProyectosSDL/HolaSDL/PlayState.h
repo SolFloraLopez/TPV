@@ -25,7 +25,7 @@ private:
 	bool load = false;
 	string file = "";
 public:
-	PlayState(list<GameObject*> objects, list<EventHandler*> events, SDLApplication* game);
+	PlayState(SDLApplication* game, bool load);
 	virtual void update();
 	virtual void render();
 	virtual void handleEvents();

@@ -16,10 +16,9 @@ Balloon::~Balloon() //Destructor
 }
 
 void Balloon::render() /*const*/ { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura
-	SDL_Rect destRect = ArrowsGameObject::getDestRect(cols,rows);
-	if (inst == 0) texture->renderFrame(destRect, color, inst);
-	else texture->renderFrame(destRect, color, (SDL_GetTicks() - inst) / FRAME_RATE);
-
+	SDL_Rect destRect = SDLGameObject::getDestRect(cols,rows);
+	if (inst == 0) SDLGameObject::texture->renderFrame(destRect, color, inst);
+	else SDLGameObject::texture->renderFrame(destRect, color, (SDL_GetTicks() - inst) / FRAME_RATE);
 };
 
 void Balloon::update()

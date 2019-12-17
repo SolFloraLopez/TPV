@@ -19,31 +19,21 @@ SDLApplication::SDLApplication(bool load, string route)
 		textures[i] = new Texture(renderer, INFOTEXT[i].route, INFOTEXT[i].rows, INFOTEXT[i].columns);
 	}
 
-	//ScoreBoard* scoreBoard = new ScoreBoard(textures[DigitsTexture], textures[ScoreArrowTexture], this);
-	//objects.push_back(scoreBoard);
-	//scoreBoard->setItList(objects.end());
-
-	//if (!load) {
-	//	Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,
-	//		{ 0, BOW_VELOCITY }, textures[BowTexture], textures[ArrowTexture], true, this, 0); //Crea el arco
-
-	//	objects.push_back(bow);
-	//	events.push_back(bow);
-	//	bow->setItList(objects.end());
-
-	//	butterflyspawner();
-	//}
-	//else {
-	//	loadFromFile(route);
-	//}
+	stateMachine = new GameStateMachine();
+	stateMachine->pushState(new PlayState(this, false));
 }
 
 void SDLApplication::run() {//Bucle principal
 	while (!SDL_QuitRequested() && !exit)
 	{
-		handleEvents();
-		update();
+		GameState* s = stateMachine->currentState();
+		stateMachine->currentState()->handleEvents();
+		stateMachine->currentState()->update();
 		render();
+
+		//handleEvents();
+		//update();
+		//render();
 		SDL_Delay(1000 / FRAME_RATE);
 	}
 }
@@ -51,18 +41,9 @@ void SDLApplication::run() {//Bucle principal
 void SDLApplication::render() //Llama a los metodos render de los elementos del juego
 {
 	SDL_RenderClear(renderer);
-	//textures[currentMap % MAP_AMOUNT]->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
-	//list<GameObject*>::iterator it;//
+	stateMachine->currentState()->render();
 
-	//it = objects.begin();
-
-	//while (it != objects.end())
-	//{
-	//	(*it)->render();
-	//	++it;
-	//}//
-	
 	SDL_RenderPresent(renderer);
 };
 

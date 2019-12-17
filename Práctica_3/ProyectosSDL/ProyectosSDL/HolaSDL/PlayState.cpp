@@ -1,10 +1,29 @@
 #include "PlayState.h"
 
-PlayState::PlayState(list<GameObject*> objects, list<EventHandler*> events, SDLApplication* game) : 
-GameState(game) {}
+PlayState::PlayState(SDLApplication* game, bool load) :
+GameState(game)
+{
+	ScoreBoard* scoreBoard = new ScoreBoard(getTexture(DigitsTexture), getTexture(ScoreArrowTexture), this);
+	objects.push_back(scoreBoard);
+	scoreBoard->setItList(objects.end());
+
+	if (!load) {
+		Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,{ 0, BOW_VELOCITY }, 
+			getTexture(BowTexture), getTexture(ArrowTexture), true, this, 0); //Crea el arco
+
+		objects.push_back(bow);
+		events.push_back(bow);
+		bow->setItList(objects.end());
+		butterflySpawner();
+	}
+
+	else loadFromFile();
+}
 
 void PlayState::update()
 {
+	balloonspawner();
+
 	list<GameObject*>::iterator it;
 	GameObject* aux;
 
@@ -55,6 +74,8 @@ void PlayState::update()
 
 void PlayState::render()
 {
+	getTexture(currentMap % MAP_AMOUNT)->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
+
 	list<GameObject*>::iterator it;
 
 	it = objects.begin();

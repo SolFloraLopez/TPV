@@ -14,9 +14,9 @@ Reward::~Reward() {}
 
 void Reward::render()
 {
-	SDL_Rect destRect = ArrowsGameObject::getDestRect(cols, rows);
+	SDL_Rect destRect = SDLGameObject::getDestRect(cols, rows);
 
-	texture->renderFrame(destRect, type, (SDL_GetTicks() / FRAME_RATE) % cols);
+	SDLGameObject::texture->renderFrame(destRect, type, (SDL_GetTicks() / FRAME_RATE) % cols);
 
 	if (state) bubbleTexture->render({ (int)(pos.getX() - bubbleWidth / 6), (int)(pos.getY() - bubbleHeight / 3), bubbleHeight, bubbleWidth });
 }
