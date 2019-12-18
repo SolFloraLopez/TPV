@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "SDLApplication.h"
 #include "Reward.h"
 
 Reward::Reward(Point2D pos, Vector2D vel, double width, double height, bool estado, int tipo, Texture* texture, 

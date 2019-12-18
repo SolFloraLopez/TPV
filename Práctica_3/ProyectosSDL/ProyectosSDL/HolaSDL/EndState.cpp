@@ -1,13 +1,13 @@
 #include "EndState.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 EndState::EndState(SDLApplication* game) : GameState(game)
 {
-	buttonMainTexture = GameState::getTexture(Button);
-	buttonExitTexture = GameState::getTexture(Button);
+	buttonMainTexture = GameState::getTexture(MainButton);
+	buttonExitTexture = GameState::getTexture(ExitButton);
 
 	MenuButton* buttonMainMenu = new MenuButton(buttonPos, BUTTON_WIDTH, BUTTON_HEIGHT, buttonMainTexture, this, game->mainMenuAction, game);
-	MenuButton* buttonExit = new MenuButton(buttonPos, BUTTON_WIDTH, BUTTON_HEIGHT, buttonExitTexture, this, game->exitAction, game);
+	MenuButton* buttonExit = new MenuButton({ buttonPos.getX() - 200, buttonPos.getY() }, BUTTON_WIDTH, BUTTON_HEIGHT, buttonExitTexture, this, game->exitAction, game);
 
 	objects.push_back(buttonMainMenu);
 	objects.push_back(buttonExit);
@@ -16,7 +16,12 @@ EndState::EndState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonExit);
 
 }
-EndState::~EndState() {};
+EndState::~EndState() {
+	for (GameObject* ob : objects)
+	{
+		delete ob;
+	}
+};
 
 void EndState::render()
 {

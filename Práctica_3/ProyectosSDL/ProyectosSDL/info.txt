@@ -2,4 +2,7 @@ Eva Lucas Leiro
 Tomás López Antón
 
 Todas las partes obligatorias.
-Error ocasional de listas.
+Excepción de infracción de acceso en la clase "list" al tratar de eliminar el estado PlayState,
+la cual persiste desde la práctica 2.
+Tras tratar de solucionarla durante horas sin éxito hemos decidido consultarlo contigo
+en el laboratorio del miercoles 18.

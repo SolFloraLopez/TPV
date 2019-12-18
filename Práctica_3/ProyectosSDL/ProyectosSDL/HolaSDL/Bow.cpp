@@ -1,5 +1,5 @@
 #include "Bow.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 
 //Constructor

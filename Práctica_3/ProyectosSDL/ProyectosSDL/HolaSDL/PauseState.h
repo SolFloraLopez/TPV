@@ -12,6 +12,7 @@ private:
 	Texture* buttonMenuTexture;
 public:
 	PauseState(SDLApplication* game);
+	~PauseState();
 	virtual void render();
 	virtual void handleEvents();
 	virtual void update() {};

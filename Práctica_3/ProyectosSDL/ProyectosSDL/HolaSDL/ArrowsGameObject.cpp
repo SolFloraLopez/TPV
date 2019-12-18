@@ -42,16 +42,21 @@ SDL_Rect* ArrowsGameObject::getCollisionRect(int cols, int rows)
 //}
 
 void ArrowsGameObject::loadFromFile(fstream& input)
+
 {
-	double aux, aux2;
-	input >> aux;
-	input >> aux2;
-	pos = { aux, aux2};
-	input >> aux;
-	input >> aux2;
-	vel = { aux, aux2 };
-	input >> width;
-	input >> height;
+	try
+	{
+		double aux, aux2;
+		input >> aux;
+		input >> aux2;
+		pos = { aux, aux2 };
+		input >> aux;
+		input >> aux2;
+		vel = { aux, aux2 };
+		input >> width;
+		input >> height;
+	}
+	catch (exception) { throw exception(); }
 }
 
 void ArrowsGameObject::saveToFile(ofstream& output)

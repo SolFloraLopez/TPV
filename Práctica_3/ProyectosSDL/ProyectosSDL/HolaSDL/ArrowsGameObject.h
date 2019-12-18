@@ -1,5 +1,6 @@
 #pragma once
 #include "SDLGameObject.h"
+#include "FileFormatError.h"
 //#include <list>
 
 class PlayState;

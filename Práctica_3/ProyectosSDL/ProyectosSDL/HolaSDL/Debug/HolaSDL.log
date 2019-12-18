@@ -1,5 +1,42 @@
-﻿  Game.cpp
+﻿  Arrow.cpp
+  ArrowsGameObject.cpp
+  Balloon.cpp
+  Bow.cpp
+  Butterfly.cpp
+  EndState.cpp
+  EventHandler.cpp
+  Game.cpp
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Balloon.cpp(42,33): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+  GameObject.cpp
+  GameState.cpp
 C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\Game.cpp(9,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+  GameStateMachine.cpp
+  Main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+  MainMenuState.cpp
+  MenuButton.cpp
+  PauseState.cpp
+  PlayState.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+  Reward.cpp
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\PlayState.cpp(62,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+  ScoreBoard.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(51,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  SDLGameObject.cpp
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\ScoreBoard.cpp(52,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\SDLGameObject.cpp(14,22): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\SDLGameObject.cpp(15,21): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\SDLGameObject.cpp(16,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Texture.cpp
+  Generando código...
+  Compilando...
+  Vector2D.cpp
+  Generando código...
+C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\HolaSDL\SDLGameObject.cpp(17,23): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   HolaSDL.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\Práctica_3\ProyectosSDL\ProyectosSDL\bin\HolaSDLDebug.exe

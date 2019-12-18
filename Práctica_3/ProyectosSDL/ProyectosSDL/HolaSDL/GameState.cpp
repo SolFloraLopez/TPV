@@ -1,9 +1,17 @@
-#include "Game.h"
+#include "SDLApplication.h"
 #include "GameState.h"
 
 GameState::GameState(SDLApplication* game) : game(game) {}
 
-GameState::~GameState() {};
+GameState::~GameState() 
+{
+	for (GameObject* ob : objects)
+	{
+		delete ob;
+	}
+
+	objects.clear();
+};
 
 void GameState::exitGame()
 {
@@ -36,4 +44,8 @@ void GameState::Pause() {
 
 void GameState::Resume() {
 	game->Resume();
+}
+
+void GameState::End() {
+	game->End();
 }

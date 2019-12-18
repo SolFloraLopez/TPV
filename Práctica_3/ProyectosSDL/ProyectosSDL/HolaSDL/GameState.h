@@ -27,4 +27,5 @@ public:
 	Texture* getTexture(int num);
 	void Pause();
 	void Resume();
+	void End();
 };

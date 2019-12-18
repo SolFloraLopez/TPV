@@ -3,6 +3,7 @@
 
 #include "SDL.h" // Windows
 #include "SDL_image.h" // Windows
+#include <SDL_error.h>
 
 #include <string>
 

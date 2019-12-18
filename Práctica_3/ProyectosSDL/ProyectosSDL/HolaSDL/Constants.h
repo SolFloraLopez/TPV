@@ -4,7 +4,8 @@ using uint = unsigned int;
 
 enum {
 	Background1, Background2, Background3, Background4, Background5, Background6,
-	ScoreArrowTexture, DigitsTexture, BowTexture, Balloons, ArrowTexture, ButterflyTexture, RewardTexture, BubbleTexture, Button
+	ScoreArrowTexture, DigitsTexture, BowTexture, Balloons, ArrowTexture, ButterflyTexture, RewardTexture, BubbleTexture, ExitButton, LoadButton,
+	MainButton, PlayButton, SaveButton
 };
 
 struct infoTexturas
@@ -16,7 +17,7 @@ struct infoTexturas
 
 const uint WIN_WIDTH = 800;//
 const uint WIN_HEIGHT = 600;
-const uint NUM_TEXTURES = 15;
+const uint NUM_TEXTURES = 19;
 const uint FRAME_RATE = 50;
 const uint BASE_ARROWS_AMOUNT = 3;
 const uint BASE_BUTTERFLY_AMOUNT = 3;
@@ -44,5 +45,9 @@ const infoTexturas INFOTEXT[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},
 											{"..\\images\\butterfly2.png", 4, 10},
 											{"..\\images\\rewards.png", 10, 8},
 											{"..\\images\\bubble.png", 1, 1},
-											{"..\\images\\button.png", 1, 1}
+											{"..\\images\\exit-button.png", 1, 1},
+											{"..\\images\\load-button.png", 1, 1},
+											{"..\\images\\mainMenu-button.png", 1, 1},
+											{"..\\images\\play-button.png", 1, 1},
+											{"..\\images\\save-button.png", 1, 1}
 };

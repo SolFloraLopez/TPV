@@ -20,8 +20,6 @@ GameState(game)
 	else loadFromFile(file);
 }
 
-PlayState::~PlayState() {};
-
 void PlayState::update()
 {
 	balloonspawner();
@@ -65,6 +63,7 @@ void PlayState::update()
 		{
 			aux = *it;
 			if (dynamic_cast<EventHandler*>(aux) != nullptr) events.remove(dynamic_cast<EventHandler*>(aux));
+			if (dynamic_cast<Arrow*>(aux) != nullptr) shotArrows.remove(dynamic_cast<Arrow*>(aux));
 			it = objects.erase(it);
 			delete aux;
 		}
@@ -72,7 +71,7 @@ void PlayState::update()
 		objectsToErase.clear();
 	}
 
-	if (currentButterflies <= 0) GameState::exitGame();
+	if (currentButterflies <= 0) GameState::End();
 }
 
 void PlayState::render()
@@ -100,22 +99,6 @@ void PlayState::handleEvents()
 
 			if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) GameState::Pause();
 
-			if (!recordingInput && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_s)
-			{
-				recordingInput = true;
-			}
-
-			if (recordingInput && event.type == SDL_KEYDOWN && event.key.keysym.sym >= SDLK_0 && event.key.keysym.sym <= SDLK_9)
-			{
-				file += event.key.keysym.sym;
-			}
-
-			else if (recordingInput && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)
-			{
-				recordingInput = false;
-				saving = true;
-			}
-
 			list<EventHandler*>::iterator eh;
 
 			eh = events.begin();
@@ -131,12 +114,17 @@ void PlayState::handleEvents()
 
 Arrow* PlayState::collision(ArrowsGameObject* object, int cols, int rows)
 {
-	for (uint i = 0; i < shotArrows.size(); i++)
+	list<Arrow*>::iterator it;
+
+	it = shotArrows.begin();
+
+	while (it != shotArrows.end())
 	{
-		if (SDL_HasIntersection(object->getCollisionRect(cols, rows), shotArrows[i]->returnPointRect()))
+		if (SDL_HasIntersection(object->getCollisionRect(cols, rows), (*it)->returnPointRect()))
 		{
-			return shotArrows[i];
+			return *it;
 		}
+		++it;
 	}
 
 	return nullptr;
@@ -244,52 +232,61 @@ void PlayState::loadFromFile(string file)
 {
 	fstream input(file);
 
+	if (!input.is_open()) throw FileNotFoundError(file);
+
 	input >> availableArrows; input >> currentButterflies; input >> currentArrows; input >> points;
 	input >> currentMap; input >> currentMaxPoints;
 
 	int size, aux;
 	input >> size;
 
-	for (int i = 0; i < size; i++)
+	try
 	{
-		input >> aux;
-		switch (aux)
+		for (int i = 0; i < size; i++)
 		{
-		case 0:
-		{Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,
-			{ 0, BOW_VELOCITY }, getTexture(BowTexture), getTexture(ArrowTexture), true, this, 0); //Crea el arco
+			input >> aux;
+			switch (aux)
+			{
+			case 0:
+			{Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,
+				{ 0, BOW_VELOCITY }, getTexture(BowTexture), getTexture(ArrowTexture), true, this, 0); //Crea el arco
 
-		objects.push_back(bow);
-		events.push_back(bow);
-		bow->setItList(objects.end());
-		bow->loadFromFile(input);
-		break; }
-		case 1:
-		{Butterfly* newButterfly = new Butterfly({ 0, 0 }, { 0, 0 }, (double)0, (double)0, true, getTexture(ButterflyTexture), this, 1);
-		newButterfly->setItList(objects.insert(objects.end(), newButterfly));
-		newButterfly->loadFromFile(input);
-		break; }
-		case 2:
-		{Reward* newReward = new Reward({ 0, 0 }, { 0, 0 },
-			(double)0, (double)0, true, 0, getTexture(RewardTexture), getTexture(BubbleTexture), nullptr, this, 2);
-		newReward->setItList(objects.insert(objects.end(), newReward));
-		events.push_back(newReward);
-		newReward->loadFromFile(input);
-		break; }
-		case 3:
-		{Balloon* newBalloon = new Balloon({ 0, 0 }, (double)0, (double)0, { 0, 0 }, true, getTexture(Balloons), 0, this, 3);
-		newBalloon->setItList(objects.insert(objects.end(), newBalloon));
-		newBalloon->loadFromFile(input);
-		break; }
-		case 4:
-		{Arrow* arrow = new Arrow(0, 0, { 0, 0 }, { 0, 0 }, getTexture(ArrowTexture), this, 4);
-		shotArrows.push_back(arrow);
-		arrow->setItList(objects.insert(objects.end(), arrow));
-		arrow->loadFromFile(input);
-		break; }
-		default:
-			break;
+			objects.push_back(bow);
+			events.push_back(bow);
+			bow->setItList(objects.end());
+			bow->loadFromFile(input);
+			break; }
+			case 1:
+			{Butterfly* newButterfly = new Butterfly({ 0, 0 }, { 0, 0 }, (double)0, (double)0, true, getTexture(ButterflyTexture), this, 1);
+			newButterfly->setItList(objects.insert(objects.end(), newButterfly));
+			newButterfly->loadFromFile(input);
+			break; }
+			case 2:
+			{Reward* newReward = new Reward({ 0, 0 }, { 0, 0 },
+				(double)0, (double)0, true, 0, getTexture(RewardTexture), getTexture(BubbleTexture), nullptr, this, 2);
+			newReward->setItList(objects.insert(objects.end(), newReward));
+			events.push_back(newReward);
+			newReward->loadFromFile(input);
+			break; }
+			case 3:
+			{Balloon* newBalloon = new Balloon({ 0, 0 }, (double)0, (double)0, { 0, 0 }, true, getTexture(Balloons), 0, this, 3);
+			newBalloon->setItList(objects.insert(objects.end(), newBalloon));
+			newBalloon->loadFromFile(input);
+			break; }
+			case 4:
+			{Arrow* arrow = new Arrow(0, 0, { 0, 0 }, { 0, 0 }, getTexture(ArrowTexture), this, 4);
+			shotArrows.push_back(arrow);
+			arrow->setItList(objects.insert(objects.end(), arrow));
+			arrow->loadFromFile(input);
+			break; }
+			default:
+				break;
+			}
 		}
+	}
+	catch (exception)
+	{
+		throw FileFormatError(file);
 	}
 
 	input.close();

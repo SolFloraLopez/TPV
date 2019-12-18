@@ -2,9 +2,8 @@
 
 void GameStateMachine::changeState(GameState* state)
 {
-	delete stateStack.top();
-	stateStack.pop();
-	stateStack.push(state);
+	popState();
+	pushState(state);
 }
 
 void GameStateMachine::pushState(GameState* state)
@@ -19,6 +18,7 @@ GameState* GameStateMachine::currentState()
 
 void GameStateMachine::popState()
 {
+	delete stateStack.top();
 	stateStack.pop();
 }
 

@@ -1,5 +1,5 @@
 #include "Butterfly.h"
-#include "Game.h"
+#include "SDLApplication.h"
 #include <cmath>
 
 Butterfly::Butterfly(Point2D pos, Vector2D vel, double width, double height, bool estado, Texture* texture, PlayState* game, int id):

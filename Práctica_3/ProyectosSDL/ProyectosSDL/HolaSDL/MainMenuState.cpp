@@ -1,11 +1,11 @@
 #include "MainMenuState.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
 {
-	buttonLoadTexture = GameState::getTexture(Button);
-	buttonExitTexture = GameState::getTexture(Button);
-	buttonPlayTexture = GameState::getTexture(Button);
+	buttonLoadTexture = GameState::getTexture(LoadButton);
+	buttonExitTexture = GameState::getTexture(ExitButton);
+	buttonPlayTexture = GameState::getTexture(PlayButton);
 
 	MenuButton* buttonLoad = new MenuButton(buttonPos, BUTTON_WIDTH, BUTTON_HEIGHT, buttonLoadTexture, this, game->loadAction, game);
 	MenuButton* buttonExit = new MenuButton({ buttonPos.getX() - 200, buttonPos.getY() }, BUTTON_WIDTH, BUTTON_HEIGHT, buttonExitTexture, this, game->exitAction, game);
@@ -20,7 +20,12 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonPlay);
 }
 
-MainMenuState::~MainMenuState() {};
+MainMenuState::~MainMenuState() {
+	for (GameObject* ob : objects)
+	{
+		delete ob;
+	}
+};
 
 void MainMenuState::render()
 {

@@ -8,13 +8,16 @@
 #include "Bow.h"
 #include <vector>
 #include "Constants.h"
+#include "FileFormatError.h"
+#include "FileNotFoundError.h"
+#include "SDLError.h"
+
 
 class PlayState : public GameState 
 {
 private:
-	vector<Arrow*> shotArrows;
+	list<Arrow*> shotArrows;
 	list<list<GameObject*>::iterator> objectsToErase;
-	bool recordingInput = false;
 	bool saving = false;
 	int availableArrows = BASE_ARROWS_AMOUNT;
 	int currentButterflies = 0;
@@ -26,7 +29,6 @@ private:
 	string file = "";
 public:
 	PlayState(SDLApplication* game, bool load, string file);
-	~PlayState();
 	virtual void update();
 	virtual void render();
 	virtual void handleEvents();

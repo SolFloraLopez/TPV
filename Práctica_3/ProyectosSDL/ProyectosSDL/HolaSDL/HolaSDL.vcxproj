@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="ArrowsError.h" />
     <ClInclude Include="ArrowsGameObject.h" />
     <ClInclude Include="Balloon.h" />
     <ClInclude Include="Bow.h" />
@@ -98,7 +99,9 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="EventHandler.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="FileFormatError.h" />
+    <ClInclude Include="FileNotFoundError.h" />
+    <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
@@ -108,6 +111,7 @@
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="Reward.h" />
     <ClInclude Include="ScoreBoard.h" />
+    <ClInclude Include="SDLError.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector2D.h" />

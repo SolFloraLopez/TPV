@@ -1,5 +1,5 @@
 #include "ScoreBoard.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 ScoreBoard::ScoreBoard(Texture* numTex, Texture* arrTex, PlayState* thisGame) :
 	SDLGameObject(scorePos, numberWidth, numberHeight, numbersTex, thisGame)

@@ -1,11 +1,11 @@
 #include "PauseState.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 PauseState::PauseState(SDLApplication* game) : GameState(game)
 {
-	buttonSaveTexture =  GameState::getTexture(Button);
-	buttonResumeTexture =  GameState::getTexture(Button);
-	buttonMenuTexture =  GameState::getTexture(Button);
+	buttonSaveTexture =  GameState::getTexture(SaveButton);
+	buttonResumeTexture =  GameState::getTexture(PlayButton);
+	buttonMenuTexture =  GameState::getTexture(MainButton);
 
 	MenuButton* buttonResume = new MenuButton(buttonPos, BUTTON_WIDTH, BUTTON_HEIGHT, buttonResumeTexture, this, game->resAction, game);
 	MenuButton* buttonMenu = new MenuButton({ buttonPos.getX() - 200, buttonPos.getY() }, BUTTON_WIDTH, BUTTON_HEIGHT, buttonMenuTexture, this, game->mainMenuAction, game);
@@ -19,6 +19,13 @@ PauseState::PauseState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonMenu);
 	events.push_back(buttonSave);
 }
+
+PauseState::~PauseState() {
+	for (GameObject* ob : objects)
+	{
+		delete ob;
+	}
+};
 
 void PauseState::render()
 {

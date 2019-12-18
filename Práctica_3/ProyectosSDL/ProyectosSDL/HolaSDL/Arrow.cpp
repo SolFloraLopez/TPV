@@ -1,5 +1,5 @@
 #include "Arrow.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, PlayState* game, int id) :
 	ArrowsGameObject(pos, vel, width, height, tex, game, id) {}; //Constructor
@@ -14,7 +14,7 @@ void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 	
 	if (pos.getX() - width > WIN_WIDTH)
 	{
-		if (playState->changeCurrentArrows(-1) <= 0 && playState->changeAvaliableArrows(0) <= 0) game->exitGame();
+		if (playState->changeCurrentArrows(-1) <= 0 && playState->changeAvaliableArrows(0) <= 0) game->End();
 		playState->killObject(it);
 	}
 }

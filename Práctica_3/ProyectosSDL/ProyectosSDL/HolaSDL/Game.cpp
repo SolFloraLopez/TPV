@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "SDLApplication.h"
 
 using namespace std;
 
@@ -108,9 +108,7 @@ void SDLApplication::loadFromFile()
 
 void SDLApplication::saveToFile()
 {
-	stateMachine->popState();
-	stateMachine->currentState()->saveToFile();
-	stateMachine->pushState(new PauseState(this));
+	stateMachine->setFlag("Save");
 }
 
 Texture* SDLApplication::getTexture(int num)
@@ -135,7 +133,7 @@ void SDLApplication::Pause()
 
 void SDLApplication::Resume() {
 
-	stateMachine->popState();
+	stateMachine->setFlag("Resume");
 }
 
 void SDLApplication::Play() 
@@ -148,12 +146,19 @@ void SDLApplication::goMainMenu()
 	stateMachine->setFlag("MainMenu");
 }
 
+void SDLApplication::End()
+{
+	stateMachine->setFlag("EndState");
+}
+
 void SDLApplication::checkStateMachine()
 {
 	string flag = stateMachine->getFlag();
 
 	if (flag == "MainMenu")
+
 	{
+		stateMachine->popState();
 		stateMachine->changeState(new MainMenuState(this));
 		stateMachine->setFlag("");
 	}
@@ -171,6 +176,21 @@ void SDLApplication::checkStateMachine()
 		//stateMachine->setFlag("PlayState");
 		stateMachine->setFlag("");
 	}
-	else if (flag == "PauseState") stateMachine->changeState(new PauseState(this));
-	else if (flag == "EndState") stateMachine->changeState(new EndState(this));;
+	else if(flag == "Save")
+	{
+		stateMachine->popState();
+		stateMachine->currentState()->saveToFile();
+		stateMachine->pushState(new PauseState(this));
+		stateMachine->setFlag("");
+	}
+	else if (flag == "Resume")
+	{
+		stateMachine->popState();
+		stateMachine->setFlag("");
+	}
+	else if (flag == "EndState")
+	{
+		stateMachine->changeState(new EndState(this));
+		stateMachine->setFlag("");
+	}
 }

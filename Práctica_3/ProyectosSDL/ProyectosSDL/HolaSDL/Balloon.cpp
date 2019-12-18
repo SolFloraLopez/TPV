@@ -1,5 +1,5 @@
 #include "Balloon.h"
-#include "Game.h"
+#include "SDLApplication.h"
 #include <cmath>
 
 
@@ -25,7 +25,7 @@ void Balloon::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del globo
 
-	if (pos.getY() < 0 - height * rows) //Devuelve false si el globo se sale de lo alto de la pantalla
+	if (pos.getY() < 0 - height / rows) //Devuelve false si el globo se sale de lo alto de la pantalla
 	{
 		playState->killObject(it);
 	}
