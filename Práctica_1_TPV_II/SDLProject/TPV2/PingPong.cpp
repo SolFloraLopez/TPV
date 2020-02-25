@@ -10,6 +10,8 @@
 #include "PaddleMouseCtrl.h"
 #include "PaddleMoveBehaviour.h"
 #include "Rectangle.h"
+#include "FighterViewer.h"
+#include "Health.h"
 #include "ScoreManager.h"
 #include "ScoreViewer.h"
 #include "SimpleMoveBahviour.h"
@@ -54,19 +56,20 @@ void PingPong::initGame() {
 			game_->getWindowHeight() / 2 - 25);
 	rightPaddleTR->setWH(10, 50);
 
-	Entity *ball = entityManager_->addEntity();
-	Transform *ballTR = ball->addComponent<Transform>();
-	ball->addComponent<BallMoveBehaviour>();
-	ball->addComponent<Rectangle>();
-	ballTR->setPos(game_->getWindowWidth() / 2 - 6,
+	Entity *fighter = entityManager_->addEntity();
+	Transform *fighterTR = fighter->addComponent<Transform>();
+	fighter->addComponent<BallMoveBehaviour>();
+	fighter->addComponent<FighterViewer>();
+	fighter->addComponent<Health>();
+	fighterTR->setPos(game_->getWindowWidth() / 2 - 6,
 			game_->getWindowHeight() / 2 - 6);
-	ballTR->setWH(11, 11);
+	fighterTR->setWH(50, 50);
 
 	Entity *gameManager = entityManager_->addEntity();
 	gameManager->addComponent<ScoreManager>(1);
-	gameManager->addComponent<GameLogic>(ballTR, leftPaddleTR, rightPaddleTR);
+	gameManager->addComponent<GameLogic>(fighterTR, leftPaddleTR, rightPaddleTR);
 	gameManager->addComponent<ScoreViewer>();
-	gameManager->addComponent<GameCtrl>(GETCMP2(ball, Transform));
+	gameManager->addComponent<GameCtrl>(GETCMP2(fighter, Transform));
 }
 
 void PingPong::closeGame() {

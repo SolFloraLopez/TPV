@@ -1,5 +1,4 @@
 #include "Rectangle.h"
-#include "Entity.h"
 
 Rectangle::Rectangle() :
 		Rectangle( { COLOR(0xFFFFFFFF) }) {
