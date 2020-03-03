@@ -9,12 +9,15 @@
 class Health : public Component
 {
 public:
-	Health();
+	Health(int maxHealth);
 	virtual ~Health();
 	void init() override;
 	void draw() override;
+	void loseLife();
+	void resetHealth();
 private:
-	SDL_Color color_;
 	SDL_Rect  destRect_;
 	Texture* tex_;
+	int currentHealth_;
+	int maxHealth_;
 };

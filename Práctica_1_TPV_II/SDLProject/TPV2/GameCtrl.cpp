@@ -28,7 +28,7 @@ void GameCtrl::update() {
 			Vector2D v(dx * r->nextInt(6, 7), // 2 to 6
 			dy * r->nextInt(2, 7) // 2 to 6
 					);
-			ballTR_->setVel(v.normalize() * 5);
+			//ballTR_->setVel(v.normalize() * 5);
 
 			// rest the score if the game is over
 			if (scoreManager_->isGameOver()) {

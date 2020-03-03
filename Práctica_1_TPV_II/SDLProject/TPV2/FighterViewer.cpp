@@ -17,5 +17,5 @@ void FighterViewer::draw()
 		RECT(tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(),
 			tr_->getH());
 
-	tex_->render(game_->getRenderer(), rect, clip_);
+	tex_->render(game_->getRenderer(), rect, tr_->getRot(), clip_);
 }

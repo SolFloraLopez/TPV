@@ -1,6 +1,6 @@
 #include "Health.h"
 
-Health::Health(): Component(ecs::Health) 
+Health::Health(int maxHealth): Component(ecs::Health), maxHealth_(maxHealth), currentHealth_(maxHealth)
 {
 	destRect_ = RECT(0, 0, 50, 50);
 }
@@ -14,5 +14,21 @@ void Health::init()
 
 void Health::draw()
 {
-	tex_->render(game_->getRenderer(), destRect_);
+	for(int i = 0; i < currentHealth_; i++)
+	{
+		tex_->render(game_->getRenderer(), destRect_);
+		destRect_.x += destRect_.w;
+	}
+
+	destRect_.x = 0;
+}
+
+void Health::loseLife()
+{
+	currentHealth_--;
+}
+
+void Health::resetHealth()
+{
+	currentHealth_ = maxHealth_;
 }

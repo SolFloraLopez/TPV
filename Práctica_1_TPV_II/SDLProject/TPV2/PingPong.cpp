@@ -7,6 +7,8 @@
 #include "GameLogic.h"
 #include "InputHandler.h"
 #include "PaddleKBCtrl.h"
+#include "FighterCtrl.h"
+#include "FighterMotion.h"
 #include "PaddleMouseCtrl.h"
 #include "PaddleMoveBehaviour.h"
 #include "Rectangle.h"
@@ -58,9 +60,10 @@ void PingPong::initGame() {
 
 	Entity *fighter = entityManager_->addEntity();
 	Transform *fighterTR = fighter->addComponent<Transform>();
-	fighter->addComponent<BallMoveBehaviour>();
 	fighter->addComponent<FighterViewer>();
-	fighter->addComponent<Health>();
+	fighter->addComponent<Health>(3);
+	fighter->addComponent<FighterMotion>();
+	fighter->addComponent<FighterCtrl>();
 	fighterTR->setPos(game_->getWindowWidth() / 2 - 6,
 			game_->getWindowHeight() / 2 - 6);
 	fighterTR->setWH(50, 50);
