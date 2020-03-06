@@ -11,5 +11,7 @@ public:
 	void update() override;
 private:
 	Transform* tr_;
+	double speedLimit = 2.0;
 };
 
+                          

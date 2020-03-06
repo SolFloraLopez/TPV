@@ -11,7 +11,7 @@ public:
 	void init() override;
 	void update() override;
 private:
-	Transform* ballTR_;
+	Transform* fighterTR_;
 	Transform* leftPaddleTR_;
 	Transform* rightPaddleTR_;
 	ScoreManager *scoreManager_;

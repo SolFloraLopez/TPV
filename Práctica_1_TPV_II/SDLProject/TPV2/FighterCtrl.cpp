@@ -34,14 +34,10 @@ void FighterCtrl::update() {
 			tr_->setVel(tr_->getVel() + Vector2D(0, -1).rotate(tr_->getRot()) * 0.5);
 		}
 		else if (ih->isKeyDown(right_)) {
-			//tr_->setVelY(tr_->getVel().getY() + 2);
-			tr_->setRot((int)floor(tr_->getRot() + 5) % 360);
-			cout << tr_->getRot();
+			tr_->setRot((int)floor(tr_->getRot() + 5) % 360);			
 		}
 		else if (ih->isKeyDown(left_)) {
-			//tr_->setVelY(0);
-			tr_->setRot((int)floor(tr_->getRot() - 5) % 360);
-			cout << tr_->getRot();
+			tr_->setRot((int)floor(tr_->getRot() - 5) % 360);			
 		}
 	}	
 }
