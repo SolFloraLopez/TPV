@@ -68,6 +68,7 @@ void PingPong::initGame() {
 			game_->getWindowHeight() / 2 - 6);
 	fighterTR->setWH(50, 50);
 
+
 	Entity *gameManager = entityManager_->addEntity();
 	gameManager->addComponent<ScoreManager>(1);
 	gameManager->addComponent<GameLogic>(fighterTR, leftPaddleTR, rightPaddleTR);
