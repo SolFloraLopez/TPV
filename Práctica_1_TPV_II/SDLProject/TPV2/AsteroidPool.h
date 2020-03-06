@@ -22,7 +22,7 @@ public:
 	void generateAsteroids(int n);
 	void disablAll();
 	//void onCollision(Asteroid* a, Bullet* b);
-	void getNumOfAsteroid();
+	int getNumOfAsteroid();
 	void getPool();
 
 private:
