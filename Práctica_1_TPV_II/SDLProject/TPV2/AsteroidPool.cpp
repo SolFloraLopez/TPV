@@ -60,7 +60,7 @@
 
 				double m = SDLGame::instance()->getRandGen()->nextInt(1, 10);
 				o->vel_ = Vector2D((c - o->pos_).normalize() * (m / 10.0));
-			
+				o->rot_ = 0;
 				o->gen_ = SDLGame::instance()->getRandGen()->nextInt(1, 3);
 				o->height_ = o->width_ = 10 + 3 * o->gen_;
 				o->inUse_ = true;
@@ -73,7 +73,30 @@
 		}
 
 	}
-	//void AsteroidPool::onCollision(Asteroid* a, Bullet* b);
+	
+	void AsteroidPool::onCollision(Asteroid* a/*, BulletsPool::Bullet* b*/)
+	{
+		a->inUse_ = false;
+		if (a->gen_ > 0)
+		{
+			for (int i = 0; i < 2; i++) {
+				Asteroid* o = pool_.getObj();
+				if (o != nullptr) {
+
+					Vector2D v = a->vel_.rotate(i * 45);
+					Vector2D p = a->pos_ + v.normalize();
+
+					o->vel_ = v;
+					o->pos_ = p;
+					o->rot_ = 0;
+					o->gen_ = a->gen_-1;
+					o->height_ = o->width_ = 10 + 3 * o->gen_;
+					o->inUse_ = true;
+				}
+			}
+
+		}
+	}
 
 	int AsteroidPool::getNumOfAsteroid() {
 		int cont = 0;

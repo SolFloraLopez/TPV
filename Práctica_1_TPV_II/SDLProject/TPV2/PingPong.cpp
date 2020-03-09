@@ -77,18 +77,20 @@ void PingPong::initGame() {
 	Transform* fighterTR = fighter->addComponent<Transform>();
 	fighter->addComponent<FighterViewer>();
 	fighter->addComponent<Health>(3);
+	health_ = fighter->addComponent<Health>(3);
 	fighter->addComponent<FighterMotion>();
 	fighter->addComponent<FighterCtrl>();
 	fighter->addComponent<Gun>(bulletsPool_);
 	fighterTR->setPos(game_->getWindowWidth() / 2 - 6,
 		game_->getWindowHeight() / 2 - 6);
 	fighterTR->setWH(50, 50);
-
+	
+	
 	Entity *gameManager = entityManager_->addEntity();
 	gameManager->addComponent<ScoreManager>(1);
-	gameManager->addComponent<GameLogic>(fighterTR, leftPaddleTR, rightPaddleTR);
+	gameManager->addComponent<GameLogic>(fighterTR, asteroidPool_, bulletsPool_,health_ );
 	gameManager->addComponent<ScoreViewer>();
-	gameManager->addComponent<GameCtrl>(GETCMP2(fighter, Transform));
+	gameManager->addComponent<GameCtrl>(asteroidPool_,health_);
 }
 
 void PingPong::closeGame() {

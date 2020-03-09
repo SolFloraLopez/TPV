@@ -9,7 +9,7 @@
 
 class GameLogic: public Component {
 public:
-	GameLogic(Transform* ballTR, AsteroidPool* asteroidPool, BulletsPool* bulletsPool, Health* health);
+	GameLogic(Transform* fighterTR, AsteroidPool* asteroidPool, BulletsPool* bulletsPool, Health* health);
 	virtual ~GameLogic();
 	void init() override;
 	void update() override;

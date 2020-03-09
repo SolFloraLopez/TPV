@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "ObjectPool.h"
+#include "BulletsPool.h"
 
 class AsteroidPool : public Component {
 
@@ -20,7 +21,7 @@ public:
 	virtual ~AsteroidPool();
 	void generateAsteroids(int n);
 	void disablAll();
-	void onCollision(Asteroid* a, Bullet* b);
+	void onCollision(Asteroid* a/*, BulletsPool::Bullet* b*/);
 	int getNumOfAsteroid();
 	const std::vector<Asteroid*>& getPool()
 	{
@@ -30,3 +31,4 @@ public:
 private:
 	ObjectPool<Asteroid, 30>pool_;
 };
+

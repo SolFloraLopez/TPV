@@ -4,6 +4,7 @@
 #include "ObjectPool.h"
 #include "AsteroidPool.h"
 
+
 class BulletsPool : public Component {
 
 public:
@@ -21,7 +22,7 @@ public:
 
 	void shoot(Vector2D pos, Vector2D vel, double w, double h);
 	void disablAll();
-	void onCollision(Bullet* b, Asteroid* a);
+	void onCollision(Bullet* b/*, AsteroidPool::Asteroid*a*/);
 
 	const std::vector<Bullet*>& getPool()
 	{
@@ -32,3 +33,4 @@ private:
 	ObjectPool<Bullet, 10>pool_;
 
 };
+

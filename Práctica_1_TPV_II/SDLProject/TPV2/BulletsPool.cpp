@@ -29,7 +29,7 @@
 
 	}
 
-	void AsteroidPool::onCollision(Asteroid* a, Bullet* b)
+	void BulletsPool::onCollision(Bullet* b/*, AsteroidPool::Asteroid* a*/)
 	{
-
+		b->inUse_ = false;
 	}

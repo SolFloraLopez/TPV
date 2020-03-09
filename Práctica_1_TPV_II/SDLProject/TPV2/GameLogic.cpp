@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "Entity.h"
 
-GameLogic::GameLogic(Transform *fighterTR, AsteroidPool* asteroidPool, BulletsPool* bulletsPool, Health* health) :
+GameLogic::GameLogic(Transform* fighterTR, AsteroidPool* asteroidPool, BulletsPool* bulletsPool, Health* health) :
 		Component(ecs::GameLogic), //
 		fighterTR_(fighterTR), //
 		asteroidPool_(asteroidPool), //
@@ -28,33 +28,50 @@ void GameLogic::update() {
 	int i = 0; int j = 0;
 	bool collided = false;
 
-	while(i < asteroidPool_->getNumOfAsteroid() && !collided)
-	{
-		if (Collisions::collides(fighterTR_->getPos(), fighterTR_->getW(),
-			fighterTR_->getH(), asteroidPool_->getPool()[i]->pos_, asteroidPool_->getPool()[i]->width_,
-			asteroidPool_->getPool()[i]->height_))
+	
+		while (i < asteroidPool_->getNumOfAsteroid() && !collided)
 		{
-			asteroidPool_->disablAll();
-			bulletsPool_->disablAll();
-			scoreManager_->setStopped(true);
-			if (health_->getHealth() <= 0) scoreManager_->setFinished(true);
-			fighterTR_->setPos({ 0, 0 });
-			fighterTR_->setRot(0);
-		}
-			
-		else while (j < bulletsPool_->getPool().size)
-		{
-			if (bulletsPool_->getPool()[i]->inUse_ && Collisions::collides(bulletsPool_->getPool()[i]->pos_,
-					bulletsPool_->getPool()[i]->width_, bulletsPool_->getPool()[i]->height_, asteroidPool_->getPool()[i]->pos_,
-					asteroidPool_->getPool()[i]->width_, asteroidPool_->getPool()[i]->height_))
+			if (Collisions::collidesWithRotation(fighterTR_->getPos(), fighterTR_->getW(),
+				fighterTR_->getH(),fighterTR_->getRot(), asteroidPool_->getPool()[i]->pos_, asteroidPool_->getPool()[i]->width_,
+				asteroidPool_->getPool()[i]->height_, asteroidPool_->getPool()[i]->rot_))
 			{
+				asteroidPool_->disablAll();
+				bulletsPool_->disablAll();
+				scoreManager_->setStopped(true);
+				if (health_->getHealth() <= 0) scoreManager_->setFinished(true);
+				fighterTR_->setPos({ 0, 0 });
+				fighterTR_->setRot(0);
+
+				collided = true;
+			}
+
+			else while (j < bulletsPool_->getPool().size())
+			{
+				if (bulletsPool_->getPool()[j]->inUse_ && Collisions::collidesWithRotation(bulletsPool_->getPool()[j]->pos_,
+					bulletsPool_->getPool()[j]->width_, bulletsPool_->getPool()[j]->height_, bulletsPool_->getPool()[j]->rot_, asteroidPool_->getPool()[i]->pos_,
+					asteroidPool_->getPool()[i]->width_, asteroidPool_->getPool()[i]->height_, asteroidPool_->getPool()[i]->rot_))
+				{
+					scoreManager_->setScore(scoreManager_->getScore() + 1);
+					bulletsPool_->onCollision(bulletsPool_->getPool()[j]);
+					asteroidPool_->onCollision(asteroidPool_->getPool()[i]);
+					
+
+					if (asteroidPool_->getNumOfAsteroid() <= 0) {
+						fighterTR_->setPos({ 0, 0 });
+						fighterTR_->setRot(0);
+						scoreManager_->setFinished(true);
+					}
+				}
+
+				j++;
+
 
 			}
 
-			j++;
+			i++;
 		}
 
-		i++;
-	}
+		collided = false;
+	
 }
 
