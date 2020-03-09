@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "Transform.h"
+#include "AsteroidPool.h"
 
 class AsteroidsMotion : public Component {
 public:
@@ -10,6 +10,6 @@ public:
 	void init() override;
 	void update() override;
 private:
-	Transform* tr_;
+	AsteroidPool* pool_;
 };
 

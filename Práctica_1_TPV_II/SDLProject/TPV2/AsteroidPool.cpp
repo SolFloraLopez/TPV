@@ -1,5 +1,15 @@
 #include "AsteroidPool.h"
 
+	struct Asteroid {
+		Vector2D pos_;
+		Vector2D vel_;
+		int width_;
+		int height_;
+		int rot_;
+		int gen_;
+		bool inUse_ = false;
+	};
+
 	AsteroidPool::AsteroidPool() : Component(ecs::AsteroidPool),
 		pool_([](Asteroid* o) {
 			return o->inUse_;
@@ -18,11 +28,34 @@
 			Asteroid* o = pool_.getObj();
 			if (o != nullptr) {
 
-				//o->pos_  en los bordes de la ventana
+				double rand;
+				double x;
+				double y;
+
+				if (i % 2 == 0) 
+				{
+					rand = SDLGame::instance()->getRandGen()->nextInt(0, 100);
+					x = (game_->getWindowWidth() * rand) / 100;
+
+
+					rand = SDLGame::instance()->getRandGen()->nextInt(0, 2);
+					y = (game_->getWindowHeight() * rand) - 10 * rand;
+				}
+
+				else 
+				{
+					rand = SDLGame::instance()->getRandGen()->nextInt(0, 2);
+					x = (game_->getWindowWidth() * rand) - 10 * rand;
+
+					rand = SDLGame::instance()->getRandGen()->nextInt(0, 100);
+					y = (game_->getWindowHeight() * rand) / 100;
+				}
+
+				o->pos_ = Vector2D(x, y); //en los bordes de la ventana
 			
 			
-				double x = SDLGame::instance()->getRandGen()->nextInt(-50,50);
-				double y = SDLGame::instance()->getRandGen()->nextInt(-50,50);
+				x = SDLGame::instance()->getRandGen()->nextInt(-50,50);
+				y = SDLGame::instance()->getRandGen()->nextInt(-50,50);
 				Vector2D c = Vector2D((cx+x), (cy + y)); //posicion aleatoria en el centro de la ventana
 
 				double m = SDLGame::instance()->getRandGen()->nextInt(1, 10);
@@ -50,7 +83,4 @@
 			}
 		}
 		return cont;
-	}
-	void AsteroidPool::getPool() {
-		/*return*/pool_.getPool();
 	}

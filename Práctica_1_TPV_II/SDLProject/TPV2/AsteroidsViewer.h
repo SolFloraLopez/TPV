@@ -4,7 +4,7 @@
 #include "Component.h"
 #include "Entity.h"
 #include "SDL_macros.h"
-#include "Transform.h"
+#include "AsteroidPool.h"
 
 class AsteroidsViewer : public Component {
 public:
@@ -13,6 +13,6 @@ public:
 	void init() override;
 	void draw() override;
 private:
-	Transform* tr_;
+	AsteroidPool* pool_;
 	Texture* tex_;
 };

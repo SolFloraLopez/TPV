@@ -15,6 +15,7 @@ public:
 	void draw() override;
 	void loseLife();
 	void resetHealth();
+	int getHealth();
 private:
 	SDL_Rect  destRect_;
 	Texture* tex_;

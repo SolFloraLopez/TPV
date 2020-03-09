@@ -26,7 +26,8 @@ public:
 		// text
 		HelloWorld,
 		PresAnyKey,
-		GameOver
+		GameOverWon,
+		GameOverLost
 	};
 
 	enum AudioId : int {

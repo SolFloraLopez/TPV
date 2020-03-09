@@ -32,3 +32,8 @@ void Health::resetHealth()
 {
 	currentHealth_ = maxHealth_;
 }
+
+int Health::getHealth()
+{
+	return currentHealth_;
+}

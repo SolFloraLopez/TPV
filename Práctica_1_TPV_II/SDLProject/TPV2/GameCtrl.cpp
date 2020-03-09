@@ -3,9 +3,10 @@
 #include "Entity.h"
 #include "InputHandler.h"
 
-GameCtrl::GameCtrl(Transform *ballTR) :
+GameCtrl::GameCtrl(AsteroidPool* asteroidPool, Health* health) :
 		Component(ecs::GameCtrl), //
-		ballTR_(ballTR), //
+	    asteroidPool_(asteroidPool), //
+	    health_(health), //
 		scoreManager_(nullptr) //
 {
 }
@@ -20,20 +21,14 @@ void GameCtrl::init() {
 void GameCtrl::update() {
 
 	if (InputHandler::instance()->keyDownEvent()) {
-		if (!scoreManager_->isRunning()) {
-			RandomNumberGenerator *r = game_->getRandGen();
-			scoreManager_->setRunning(true);
-			int dx = 1 - 2 * r->nextInt(0, 2); // 1 or -1
-			int dy = 1 - 2 * r->nextInt(0, 2); // 1 or -1
-			Vector2D v(dx * r->nextInt(6, 7), // 2 to 6
-			dy * r->nextInt(2, 7) // 2 to 6
-					);
-			//ballTR_->setVel(v.normalize() * 5);
+		if (scoreManager_->isStopped()) {
+			asteroidPool_->generateAsteroids(10);
+			scoreManager_->setStopped(false);
 
 			// rest the score if the game is over
-			if (scoreManager_->isGameOver()) {
-				scoreManager_->setLeftScore(0);
-				scoreManager_->setRightScore(0);
+			if (scoreManager_->isFinished()) {
+				scoreManager_->setScore(0);
+				health_->resetHealth();
 			}
 		}
 	}
@@ -41,7 +36,7 @@ void GameCtrl::update() {
 
 void GameCtrl::draw() {
 
-	if (!scoreManager_->isRunning()) {
+	if (scoreManager_->isStopped()) {
 		Texture *hitanykey = game_->getTextureMngr()->getTexture(
 				Resources::PresAnyKey);
 		hitanykey->render(
@@ -50,9 +45,11 @@ void GameCtrl::draw() {
 	}
 
 	// game over message when game is over
-	if (scoreManager_->isGameOver()) {
-		Texture *gameOver = game_->getTextureMngr()->getTexture(
-				Resources::GameOver);
+	if (scoreManager_->isFinished()) {
+		Texture* gameOver;
+
+		if(health_->getHealth() <= 0) gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverWon);
+		else gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverLost);
 		gameOver->render(game_->getWindowWidth() / 2 - gameOver->getWidth() / 2,
 				game_->getWindowHeight() - gameOver->getHeight() - 150);
 	}

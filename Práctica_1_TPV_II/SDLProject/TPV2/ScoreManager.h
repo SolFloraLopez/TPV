@@ -4,49 +4,37 @@
 
 class ScoreManager: public Component {
 public:
+
 	ScoreManager();
 	ScoreManager(int rounds);
 	virtual ~ScoreManager();
 
-	int getLeftScore() const {
-		return leftScore_;
+	int getScore() const {
+		return Score_;
 	}
 
-	void setLeftScore(int leftScore) {
-		leftScore_ = leftScore;
+	void setScore(int score) {
+		Score_ = score;
 	}
 
-	int getRightScore() const {
-		return rightScore_;
+	void setFinished(bool finished) {
+		stopped_ = finished;
 	}
 
-	void setRightScore(int rightScore) {
-		rightScore_ = rightScore;
+	bool isFinished() const {
+		return finished_;
 	}
 
-	int getRounds() const {
-		return rounds_;
+	void setStopped(bool stopped) {
+		stopped_ = stopped;
 	}
 
-	void setRounds(int rounds) {
-		rounds_ = rounds;
-	}
-
-	bool isRunning() const {
-		return running_;
-	}
-
-	void setRunning(bool running) {
-		running_ = running;
-	}
-
-	bool isGameOver() {
-		return leftScore_ == rounds_ || rightScore_ == rounds_;
+	bool isStopped() {
+		return stopped_;
 	}
 
 private:
-	bool running_;
-	int leftScore_;
-	int rightScore_;
-	int rounds_;
+	bool stopped_;
+	bool finished_;
+	int Score_;
 };

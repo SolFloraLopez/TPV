@@ -4,6 +4,8 @@
 
 #include "Manager.h"
 #include "SDLGame.h"
+#include "AsteroidPool.h"
+#include "BulletsPool.h"
 
 class PingPong {
 
@@ -24,6 +26,8 @@ private:
 
 	SDLGame* game_;
 	EntityManager* entityManager_;
+	AsteroidPool* asteroidPool_;
+	BulletsPool* bulletsPool_;
 	bool exit_;
 
 	const static int _WINDOW_WIDTH_ = 640;

@@ -1,20 +1,26 @@
 #include "AsteroidsViewer.h"
 
-AsteroidsViewer::AsteroidsViewer() : Component(ecs::AsteroidsViewer), tr_(nullptr) {}
+AsteroidsViewer::AsteroidsViewer() : Component(ecs::AsteroidsViewer) {}
 
 AsteroidsViewer::~AsteroidsViewer() {}
 
 void AsteroidsViewer::init()
 {
-	tr_ = GETCMP1_(Transform);
 	tex_ = game_->getTextureMngr()->getTexture(Resources::Asteroids);
+	pool_ = GETCMP1_(AsteroidPool);
 }
 
 void AsteroidsViewer::draw()
 {
-	SDL_Rect rect
-		RECT(tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(),
-			tr_->getH());
+	for(int i = 0; i < pool_->getPool().size(); i++)
+	{
+		if(pool_->getPool()[i]->inUse_)
+		{
+			SDL_Rect rect
+				RECT(pool_->getPool()[i]->pos_.getX(), pool_->getPool()[i]->pos_.getY(), pool_->getPool()[i]->width_,
+					pool_->getPool()[i]->height_);
 
-	tex_->render(game_->getRenderer(), rect, tr_->getRot());
+			tex_->render(game_->getRenderer(), rect, pool_->getPool()[i]->rot_);
+		}
+	}
 }

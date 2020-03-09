@@ -2,10 +2,10 @@
 #include "InputHandler.h"
 #include "Entity.h"
 #include "Transform.h"
-//#include "BulletPool.h"
 
-Gun::Gun() :
-	Gun(SDLK_SPACE) {
+Gun::Gun(BulletsPool* pool) : Gun(SDLK_SPACE)
+{
+	pool_ = pool;
 }
 
 Gun::Gun(SDL_Keycode space) :
@@ -26,9 +26,14 @@ void Gun::update() {
 
 	InputHandler* ih = InputHandler::instance();
 
+	Vector2D bulletPos = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2) + Vector2D(0, -(tr_->getH() / 2 + 5.0)).rotate(tr_->getRot());
+	Vector2D bulletVel = Vector2D(0, -1).rotate(tr_->getRot())*2;
+
+
 	if (ih->keyDownEvent()) {
-		if (ih->isKeyDown(space_)) {
-			//bulletsPool.shoot();
+		if (ih->isKeyDown(space_) && game_->getTime() - time_ > 250) {
+			pool_->shoot(bulletPos, bulletVel, 5, 5);
+			time_ = game_->getTime();
 		}
 	}
 }

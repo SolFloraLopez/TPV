@@ -6,10 +6,9 @@ ScoreManager::ScoreManager() :
 
 ScoreManager::ScoreManager(int rounds) :
 		Component(ecs::ScoreManager), //
-		running_(false), //
-		leftScore_(0), //
-		rightScore_(0), //
-		rounds_(rounds) //
+		stopped_(true), //
+		finished_(false), //
+		Score_(0)//
 {
 }
 

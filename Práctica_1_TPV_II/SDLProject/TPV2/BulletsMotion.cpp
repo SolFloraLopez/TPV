@@ -2,28 +2,29 @@
 #include "Entity.h"
 
 BulletsMotion::BulletsMotion() :
-	Component(ecs::BulletsMotion), tr_(nullptr) {
+	Component(ecs::BulletsMotion) {
 }
 
 BulletsMotion::~BulletsMotion() {
 }
 
 void BulletsMotion::init() {
-	tr_ = GETCMP1_(Transform);
+	pool_ = GETCMP1_(BulletsPool);
 }
 
 void BulletsMotion::update() {
 
-	Vector2D v = tr_->getPos() + tr_->getVel();
+	for (int i = 0; i < pool_->getPool().size(); i++)
+	{
+		if (pool_->getPool()[i]->inUse_)
+		{
+			Vector2D v = pool_->getPool()[i]->pos_ + pool_->getPool()[i]->vel_;
 
-	double y = v.getY();
-	double x = v.getX();
+			if (v.getX() < 0 || v.getX() > game_->getWindowWidth() || v.getY() < 0 || v.getY() > game_->getWindowHeight()) 
+				pool_->getPool()[i]->inUse_ = false;
 
-	if (y <= 0 || y + tr_->getH() >= game_->getWindowHeight() || x <= 0 || x + tr_->getW() >= game_->getWindowWidth()) {
-		//marcar como no usado		
+			pool_->getPool()[i]->pos_ = v;
+		}
 	}
-	
-	tr_->setPos(v);
-	tr_->setRot((int)floor(tr_->getRot() + 0.5) % 360);
 }
 

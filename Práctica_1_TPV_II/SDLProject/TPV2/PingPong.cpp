@@ -9,6 +9,11 @@
 #include "PaddleKBCtrl.h"
 #include "FighterCtrl.h"
 #include "FighterMotion.h"
+#include "AsteroidsMotion.h"
+#include "AsteroidsViewer.h"
+#include "BulletsMotion.h"
+#include "BulletsViewer.h"
+#include "Gun.h"
 #include "PaddleMouseCtrl.h"
 #include "PaddleMoveBehaviour.h"
 #include "Rectangle.h"
@@ -58,16 +63,26 @@ void PingPong::initGame() {
 			game_->getWindowHeight() / 2 - 25);
 	rightPaddleTR->setWH(10, 50);
 
-	Entity *fighter = entityManager_->addEntity();
-	Transform *fighterTR = fighter->addComponent<Transform>();
+	Entity* asteroids = entityManager_->addEntity();
+	asteroidPool_ = asteroids->addComponent<AsteroidPool>();
+	asteroids->addComponent<AsteroidsMotion>();
+	asteroids->addComponent<AsteroidsViewer>();
+
+	Entity* bullets = entityManager_->addEntity();
+	bulletsPool_ = bullets->addComponent<BulletsPool>();
+	bullets->addComponent<BulletsMotion>();
+	bullets->addComponent<BulletsViewer>();
+
+	Entity* fighter = entityManager_->addEntity();
+	Transform* fighterTR = fighter->addComponent<Transform>();
 	fighter->addComponent<FighterViewer>();
 	fighter->addComponent<Health>(3);
 	fighter->addComponent<FighterMotion>();
 	fighter->addComponent<FighterCtrl>();
+	fighter->addComponent<Gun>(bulletsPool_);
 	fighterTR->setPos(game_->getWindowWidth() / 2 - 6,
-			game_->getWindowHeight() / 2 - 6);
+		game_->getWindowHeight() / 2 - 6);
 	fighterTR->setWH(50, 50);
-
 
 	Entity *gameManager = entityManager_->addEntity();
 	gameManager->addComponent<ScoreManager>(1);

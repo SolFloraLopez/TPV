@@ -2,11 +2,12 @@
 
 #include "Component.h"
 #include "Transform.h"
+#include "BulletsPool.h"
 
 
 class Gun : public Component {
 public:
-	Gun();
+	Gun(BulletsPool* pool);
 	Gun(SDL_Keycode space);
 	virtual ~Gun();
 
@@ -20,4 +21,6 @@ public:
 private:
 	SDL_Keycode space_;
 	Transform* tr_;
+	BulletsPool* pool_;
+	Uint32 time_;
 };

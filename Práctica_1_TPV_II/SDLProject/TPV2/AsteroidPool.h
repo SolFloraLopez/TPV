@@ -11,21 +11,22 @@ public:
 		Vector2D vel_;
 		int width_;
 		int height_;
-		int rot_;
+		double rot_;
 		int gen_;
 		bool inUse_ = false;
 	};
 
 	AsteroidPool();
 	virtual ~AsteroidPool();
-
 	void generateAsteroids(int n);
 	void disablAll();
-	//void onCollision(Asteroid* a, Bullet* b);
+	void onCollision(Asteroid* a, Bullet* b);
 	int getNumOfAsteroid();
-	void getPool();
+	const std::vector<Asteroid*>& getPool()
+	{
+		return pool_.getPool();
+	}
 
 private:
 	ObjectPool<Asteroid, 30>pool_;
-
 };
