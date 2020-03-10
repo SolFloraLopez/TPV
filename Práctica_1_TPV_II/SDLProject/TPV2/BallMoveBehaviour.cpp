@@ -22,7 +22,7 @@ void BallMoveBehaviour::update() {
 
 	if (y <= 0 || y + tr_->getH() >= game_->getWindowHeight()) {
 		tr_->setVelY(-tr_->getVel().getY());
-		game_->getAudioMngr()->playChannel(Resources::Wall_Hit, 0);
+		//game_->getAudioMngr()->playChannel(Resources::Wall_Hit, 0);
 	}
 }
 

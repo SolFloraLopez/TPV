@@ -33,6 +33,7 @@ void Gun::update() {
 	if (ih->keyDownEvent()) {
 		if (ih->isKeyDown(space_) && game_->getTime() - time_ > 250) {
 			pool_->shoot(bulletPos, bulletVel, 5, 5);
+			game_->getAudioMngr()->playChannel(Resources::Gunshot, 0);
 			time_ = game_->getTime();
 		}
 	}

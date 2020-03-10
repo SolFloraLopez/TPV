@@ -37,6 +37,8 @@ void GameLogic::update() {
 				fighterTR_->getH(),fighterTR_->getRot(), asteroidPool_->getPool()[i]->pos_, asteroidPool_->getPool()[i]->width_,
 				asteroidPool_->getPool()[i]->height_, asteroidPool_->getPool()[i]->rot_))
 			{
+				game_->getAudioMngr()->haltMusic();
+				game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
 				asteroidPool_->disablAll();
 				bulletsPool_->disablAll();
 				scoreManager_->setStopped(true);
@@ -60,6 +62,7 @@ void GameLogic::update() {
 					bulletsPool_->getPool()[j]->width_, bulletsPool_->getPool()[j]->height_, bulletsPool_->getPool()[j]->rot_, asteroidPool_->getPool()[i]->pos_,
 					asteroidPool_->getPool()[i]->width_, asteroidPool_->getPool()[i]->height_, asteroidPool_->getPool()[i]->rot_))
 				{
+					game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
 					scoreManager_->setScore(scoreManager_->getScore() + 1);
 					bulletsPool_->onCollision(bulletsPool_->getPool()[j]);
 					asteroidPool_->onCollision(asteroidPool_->getPool()[i]);

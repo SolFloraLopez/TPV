@@ -22,6 +22,7 @@ void GameCtrl::update() {
 
 	if (InputHandler::instance()->keyDownEvent()) {
 		if (scoreManager_->isStopped()) {
+			game_->getAudioMngr()->playMusic(Resources::ImperialMarch);
 			asteroidPool_->generateAsteroids(10);
 			scoreManager_->setStopped(false);
 
@@ -56,7 +57,5 @@ void GameCtrl::draw() {
 		}
 		gameOver->render(game_->getWindowWidth() / 2 - gameOver->getWidth() / 2,
 			game_->getWindowHeight() - gameOver->getHeight() - 150);
-		
-		
 	}
 }

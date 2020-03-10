@@ -76,7 +76,6 @@ void PingPong::initGame() {
 	Entity* fighter = entityManager_->addEntity();
 	Transform* fighterTR = fighter->addComponent<Transform>();
 	fighter->addComponent<FighterViewer>();
-	fighter->addComponent<Health>(3);
 	health_ = fighter->addComponent<Health>(3);
 	fighter->addComponent<FighterMotion>();
 	fighter->addComponent<FighterCtrl>();

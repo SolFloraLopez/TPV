@@ -29,6 +29,6 @@ public:
 	}
 
 private:
-	ObjectPool<Asteroid, 30>pool_;
+	ObjectPool<Asteroid, 5>pool_;
 };
 

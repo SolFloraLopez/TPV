@@ -32,13 +32,11 @@ public:
 
 	enum AudioId : int {
 		// music
-		Beat,
-		Cheer,
-		Boooo,
+		ImperialMarch,
 
 		// sound effects
-		Wall_Hit,
-		Paddle_Hit
+		Gunshot,
+		Explosion
 	};
 
 	enum FontId : int {
