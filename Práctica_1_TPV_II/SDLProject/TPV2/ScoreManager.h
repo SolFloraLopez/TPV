@@ -18,7 +18,7 @@ public:
 	}
 
 	void setFinished(bool finished) {
-		stopped_ = finished;
+		finished_ = finished;
 	}
 
 	bool isFinished() const {

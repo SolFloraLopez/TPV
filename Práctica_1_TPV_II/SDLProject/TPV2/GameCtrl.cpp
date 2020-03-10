@@ -29,6 +29,7 @@ void GameCtrl::update() {
 			if (scoreManager_->isFinished()) {
 				scoreManager_->setScore(0);
 				health_->resetHealth();
+				scoreManager_->setFinished(false);
 			}
 		}
 	}
@@ -46,11 +47,16 @@ void GameCtrl::draw() {
 
 	// game over message when game is over
 	if (scoreManager_->isFinished()) {
-		Texture* gameOver;
 
-		if(health_->getHealth() <= 0) gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverWon);
-		else gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverLost);
+		if (gameOver == nullptr)
+		{
+			if (health_->getHealth() <= 0) gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverLost);
+			else gameOver = game_->getTextureMngr()->getTexture(Resources::GameOverWon);
+			
+		}
 		gameOver->render(game_->getWindowWidth() / 2 - gameOver->getWidth() / 2,
-				game_->getWindowHeight() - gameOver->getHeight() - 150);
+			game_->getWindowHeight() - gameOver->getHeight() - 150);
+		
+		
 	}
 }

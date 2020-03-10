@@ -14,6 +14,8 @@ public:
 	void update() override;
 	void draw() override;
 private:
+	Texture* gameOver = nullptr;
+
 	AsteroidPool* asteroidPool_;
 	Health* health_;
 	ScoreManager *scoreManager_;

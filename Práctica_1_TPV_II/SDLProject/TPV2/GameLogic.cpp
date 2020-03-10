@@ -1,6 +1,8 @@
 #include "GameLogic.h"
 #include "Collisions.h"
 #include "Resources.h"
+#include <iostream>
+
 #include "Entity.h"
 
 GameLogic::GameLogic(Transform* fighterTR, AsteroidPool* asteroidPool, BulletsPool* bulletsPool, Health* health) :
@@ -28,7 +30,7 @@ void GameLogic::update() {
 	int i = 0; int j = 0;
 	bool collided = false;
 
-	
+		
 		while (i < asteroidPool_->getNumOfAsteroid() && !collided)
 		{
 			if (Collisions::collidesWithRotation(fighterTR_->getPos(), fighterTR_->getW(),
@@ -38,13 +40,20 @@ void GameLogic::update() {
 				asteroidPool_->disablAll();
 				bulletsPool_->disablAll();
 				scoreManager_->setStopped(true);
-				if (health_->getHealth() <= 0) scoreManager_->setFinished(true);
-				fighterTR_->setPos({ 0, 0 });
+				health_->loseLife();
+
+				if (health_->getHealth() <= 0) {
+					scoreManager_->setFinished(true);
+				}
+
+				fighterTR_->setPos({ game_->getWindowWidth() / 2.0, game_->getWindowHeight() / 2.0 });				
 				fighterTR_->setRot(0);
+				fighterTR_->setVel(0.0, 0.0);
 
 				collided = true;
 			}
 
+			
 			else while (j < bulletsPool_->getPool().size())
 			{
 				if (bulletsPool_->getPool()[j]->inUse_ && Collisions::collidesWithRotation(bulletsPool_->getPool()[j]->pos_,
@@ -57,16 +66,17 @@ void GameLogic::update() {
 					
 
 					if (asteroidPool_->getNumOfAsteroid() <= 0) {
-						fighterTR_->setPos({ 0, 0 });
+						fighterTR_->setPos({ game_->getWindowWidth() / 2.0, game_->getWindowHeight()/2.0 });
 						fighterTR_->setRot(0);
+						fighterTR_->setVel(0.0, 0.0);
 						scoreManager_->setFinished(true);
 					}
 				}
 
 				j++;
-
-
 			}
+
+			j = 0;
 
 			i++;
 		}
