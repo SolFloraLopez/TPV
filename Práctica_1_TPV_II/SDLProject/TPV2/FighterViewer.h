@@ -5,6 +5,8 @@
 #include "Entity.h"
 #include "SDL_macros.h"
 #include "Transform.h"
+#include "Resources.h"
+
 
 class FighterViewer : public Component {
 public:
@@ -12,6 +14,8 @@ public:
 	virtual ~FighterViewer();
 	void init() override;
 	void draw() override;
+	void setTexture(Resources::TextureId tex) { tex_ = game_->getTextureMngr()->getTexture(tex); };
+
 private:
 	Transform* tr_;
 	Texture* tex_;

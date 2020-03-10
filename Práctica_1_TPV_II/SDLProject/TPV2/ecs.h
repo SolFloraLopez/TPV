@@ -7,15 +7,8 @@ using CmpIdType = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
-	SimpleMoveBehavior,
-	BallMoveBehaviour,
-	PaddleMoveBehaviour,
-	StopOnBorders,
-	Rectangle,
 	ScoreManager,
 	ScoreViewer,
-	PaddleKBCtrl,
-	PaddleMouseCtrl,
 	GameCtrl,
 	GameLogic,
 	FighterViewer,

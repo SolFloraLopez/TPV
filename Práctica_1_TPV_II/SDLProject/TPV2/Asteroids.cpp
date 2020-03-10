@@ -2,11 +2,9 @@
 #include "Asteroids.h"
 #include <assert.h>
 
-#include "BallMoveBehaviour.h"
 #include "GameCtrl.h"
 #include "GameLogic.h"
 #include "InputHandler.h"
-#include "PaddleKBCtrl.h"
 #include "FighterCtrl.h"
 #include "FighterMotion.h"
 #include "AsteroidsMotion.h"
@@ -14,14 +12,10 @@
 #include "BulletsMotion.h"
 #include "BulletsViewer.h"
 #include "Gun.h"
-#include "PaddleMouseCtrl.h"
-#include "PaddleMoveBehaviour.h"
-#include "Rectangle.h"
 #include "FighterViewer.h"
 #include "Health.h"
 #include "ScoreManager.h"
 #include "ScoreViewer.h"
-#include "SimpleMoveBahviour.h"
 #include "Transform.h"
 #include "SDLGame.h"
 
@@ -46,22 +40,7 @@ void Asteroids::initGame() {
 
 	entityManager_ = new EntityManager(game_);
 
-	Entity* leftPaddle = entityManager_->addEntity();
-	Transform* leftPaddleTR = leftPaddle->addComponent<Transform>();
-	leftPaddle->addComponent<PaddleKBCtrl>();
-	leftPaddle->addComponent<PaddleMoveBehaviour>();
-	leftPaddle->addComponent<Rectangle, SDL_Color>({ COLOR(0xAA0000FF) });
-	leftPaddleTR->setPos(5, game_->getWindowHeight() / 2 - 25);
-	leftPaddleTR->setWH(10, 50);
-
-	Entity* rightPaddle = entityManager_->addEntity();
-	Transform* rightPaddleTR = rightPaddle->addComponent<Transform>();
-	rightPaddle->addComponent<PaddleMouseCtrl>();
-	rightPaddle->addComponent<PaddleMoveBehaviour>();
-	rightPaddle->addComponent<Rectangle, SDL_Color>({ COLOR(0x0000AAFF) });
-	rightPaddleTR->setPos(game_->getWindowWidth() - 15,
-		game_->getWindowHeight() / 2 - 25);
-	rightPaddleTR->setWH(10, 50);
+	
 
 	Entity* asteroids = entityManager_->addEntity();
 	asteroidPool_ = asteroids->addComponent<AsteroidPool>();

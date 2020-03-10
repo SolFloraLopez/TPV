@@ -12,9 +12,6 @@ public:
 	enum TextureId : int {
 		// images
 		Blank,
-		TennisBall,
-		KeyBoardIcon,
-		MouseIcon,
 		AIIcon,
 		SpaceShips,
 		Airplanes,
