@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include "SDL_macros.h"
-#include "LifeTime.h"
+#include "AsteroidLifeTime.h"
 #include "System.h"
 #include "Transform.h"
 #include "Entity.h"
@@ -45,7 +45,7 @@ public:
 				return;
 
 			Transform *tr = e->getComponent<Transform>();
-			LifeTime *st = e->getComponent<LifeTime>();
+			AsteroidLifeTime *st = e->getComponent<AsteroidLifeTime>();
 			auto *rot = e->getComponent<Rotation>();
 			tr->position_ = tr->position_ + tr->velocity_;
 			tr->rotation_ += rot->rotation_;

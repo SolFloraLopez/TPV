@@ -4,8 +4,6 @@
 #include "ImageComponent.h"
 #include "ObjectPool.h"
 #include "Singleton.h"
-#include "LifeTime.h"
-#include "Rotation.h"
 #include "Transform.h"
 
 
@@ -17,7 +15,7 @@ public:
 
 	template<typename ...Targs>
 	inline static Entity* construct(Targs&&...args) {
-		return StarsPool::instance()->construct_(std::forward<Targs>(args)...);
+		return BulletsPool::instance()->construct_(std::forward<Targs>(args)...);
 	}
 
 	inline static void destroy(Entity* p) {
@@ -53,9 +51,9 @@ private:
 		pool_(n) {
 		for (Entity* e : pool_.getPool()) {
 			e->addComponent<Transform>();
-			e->addComponent<LifeTime>();
-			e->addComponent<Rotation>();
-			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Star));
+			//e->addComponent<LifeTime>();
+			//e->addComponent<Rotation>();
+			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bullets));
 		}
 	}
 

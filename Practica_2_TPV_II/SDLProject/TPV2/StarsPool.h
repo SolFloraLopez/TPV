@@ -4,7 +4,7 @@
 #include "ImageComponent.h"
 #include "ObjectPool.h"
 #include "Singleton.h"
-#include "LifeTime.h"
+#include "AsteroidLifeTime.h"
 #include "Rotation.h"
 #include "Transform.h"
 
@@ -32,9 +32,9 @@ public:
 			tr->position_.set(x,y);
 			tr->width_ = w;
 			tr->height_ = w;
-			LifeTime *st = e->getComponent<LifeTime>();
+			AsteroidLifeTime *st = e->getComponent<AsteroidLifeTime>();
 			st->lifeTime_ = lifeTime*1000;
-			st->creatiomTime_ = SDLGame::instance()->getTime();
+			//st->creatiomTime_ = SDLGame::instance()->getTime();
 			e->getComponent<Rotation>()->rotation_ = r;
 		}
 		return e;
@@ -52,7 +52,7 @@ private:
 			pool_(n) {
 		for (Entity *e : pool_.getPool()) {
 			e->addComponent<Transform>();
-			e->addComponent<LifeTime>();
+			e->addComponent<AsteroidLifeTime>();
 			e->addComponent<Rotation>();
 			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Star));
 		}

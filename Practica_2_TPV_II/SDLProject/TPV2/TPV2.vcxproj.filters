@@ -314,9 +314,6 @@
     <ClInclude Include="ImageComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LifeTime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="mpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -354,6 +351,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VelocityVectorViewer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidsSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletsSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterGunSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderGunSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidLifeTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
