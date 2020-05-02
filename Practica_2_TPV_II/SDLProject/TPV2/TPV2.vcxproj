@@ -103,6 +103,7 @@
     <ClInclude Include="GameCtrl.h" />
     <ClInclude Include="GameCtrlSystem.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="ImageComponent.h" />

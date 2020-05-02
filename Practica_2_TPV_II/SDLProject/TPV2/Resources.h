@@ -20,6 +20,7 @@ public:
 		Airplanes,
 		Star,
 		PacMan,
+		Fighter,
 		Asteroids,
 		Bullets,
 

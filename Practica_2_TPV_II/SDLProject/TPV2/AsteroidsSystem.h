@@ -8,21 +8,23 @@
 #include "Manager.h"
 #include "AsteroidPool.h"
 #include "SDLGame.h"
+#include "GameState.h"
 
 
 class AsteroidsSystem : public System {
+private:
+	double cy = game_->getWindowHeight() / 2;
+	double cx = game_->getWindowWidth() / 2;
+	double x;
+	double y;
+	Vector2D pos;
+	Vector2D vel;
+	double w, h, gen;
+
 public:
 	// - añadir n asteroides al juego como en la práctica 1 pero usando entidades.
 	// - no olvidar añadir los asteroides al grupo _grp_Asteroid.
-	void addAsteroids(int n) {
-
-		double cy = game_->getWindowHeight() / 2;
-		double cx = game_->getWindowWidth()/2;
-		double x;
-		double y;
-		Vector2D pos;
-		Vector2D vel;
-		double w, h, gen;
+	void addAsteroids(int n) {		
 		
 		for (int i = 0; i < n; i++) {
 			/*if (a != nullptr) {*/
@@ -60,6 +62,7 @@ public:
 
 			Entity* a = mngr_->addEntity<AsteroidPool>(pos,vel,w,h,gen);
 			if (a != nullptr)
+				a->setActive(true);
 				a->addToGroup<_grp_Asteroid>();
 			//}
 		}
@@ -79,6 +82,7 @@ public:
 
 				Entity* ast = mngr_->addEntity<AsteroidPool>(p, v, 10 + 3 * st->lifeTime_, 10 + 3 * st->lifeTime_, st->lifeTime_ - 1);
 				if (ast != nullptr)
+					ast->setActive(true);
 					ast->addToGroup<_grp_Asteroid>();
 			}
 
@@ -88,7 +92,28 @@ public:
 	// - si el juego está parado no hacer nada.
 	// - mover los asteroides como en la práctica 1.
 	void update() override {
-	
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		if (gt->state_ != gt->Parado) {
+			
+			for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>())
+			{
+				if (a->isActive())					
+				{
+					auto atr = a->getComponent<Transform>();
+					Vector2D v = atr->position_ + atr->velocity_;
+
+					if (v.getX() < 0) v.setX(game_->getWindowWidth());
+					else if (v.getX() > game_->getWindowWidth()) v.setX(0);
+
+					if (v.getY() < 0) v.setY(game_->getWindowHeight());
+					else if (v.getY() > game_->getWindowHeight()) v.setY(0);
+
+					atr->position_ = v;
+					atr->rotation_ = atr->rotation_ + 0.5;
+				}
+			}
+		}
+		
 	};
 private:
 	std::size_t numOfAsteroids_;

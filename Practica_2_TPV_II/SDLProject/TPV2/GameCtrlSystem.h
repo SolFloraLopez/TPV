@@ -11,18 +11,34 @@ public:
 	// - a este método se le va a llamar cuando muere el caza.
 	// - desactivar todos los asteroides y las balas.
 	// - actualizar los componentes correspondientes (Score, Heath, GameState, …).
-	void onFighterDeath() {};
+	void onFighterDeath() {
+		for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>()) {
+			a->setActive(false);
+		}
+		for (auto& b : mngr_->getGroupEntities<_grp_Bullet>()) {
+			b->setActive(false);
+		}
+		mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->loseLife();
+		//mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_ 
+		//mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()
+	};
 
 		// - a este método se le va a llamar cuando no haya más asteroides.
 		// - desactivar todas las balas.
 		// - actualizar los componentes correspondientes (Score, GameState, …).
-	void onAsteroidsExtenction() {};
+	void onAsteroidsExtenction() {
+		for (auto& b : mngr_->getGroupEntities<_grp_Bullet>()) {
+			b->setActive(false);
+		}
+
+	};
 
 		// - crear una entidad, añade sus componentes (Score y GameState) y asociarla
 		// con el handler _hndlr_GameState.
 	void init() override {
 		Entity* e = mngr_->addEntity();
 		auto sc = e->addComponent<Score>();
+		auto gs = e->addComponent<GameState>();
 		sc->points_ = 0;
 		mngr_->setHandler<_hdlr_GameState>(e);
 	}
@@ -32,7 +48,14 @@ public:
 		// 2) actualizar el estado del juego y el número de vidas (si es necesario)
 		// en los componentes correspondientes (Score, Heath, GameState, …).
 	void update() override {
+		
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
 		auto ih = game_->getInputHandler();
+		if (gt->state_ == gt->Parado && ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN))
+		{
+			mngr_->getSystem<AsteroidsSystem>()->addAsteroids(10);
+		}
+		
 
 		if ( ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
 			mngr_->getSystem<StarsSystem>()->addStars(10);

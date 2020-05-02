@@ -570,21 +570,30 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(48,9
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   RandomNumberGenerator.cpp
   RenderSystem.cpp
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,42): error C2065: '_grp_Star': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,23): error C2672: 'Manager::getGroupEntities': no se encontró una función sobrecargada que coincida
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,1): error C2974: 'Manager::getGroupEntities': argumento de plantilla no válido para 'TG'; se esperaba un tipo
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(79): message : vea la declaración de 'Manager::getGroupEntities'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,1): error C2530: 'e': se deben inicializar las referencias
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,1): error C3531: 'e': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,16): error C2143: error de sintaxis: falta ';' delante de ':'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,54): error C2143: error de sintaxis: falta ';' delante de ')'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(42,1): error C2664: 'void RenderSystem::draw(Entity *)': el argumento 1 no puede convertirse de 'int' a 'Entity *'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(42,9): message : La conversión de un tipo entero a un tipo de puntero requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(18,7): message : vea la declaración de 'RenderSystem::draw'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(46,26): error C2065: '_hdlr_PacMan': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(46,13): error C2672: 'Manager::getHandler': no se encontró una función sobrecargada que coincida
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(46,1): error C2974: 'Manager::getHandler': argumento de plantilla no válido para 'TH'; se esperaba un tipo
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(54): message : vea la declaración de 'Manager::getHandler'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,23): error C2065: 'lifes_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,30): error C2065: 'currentHealth_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(43,4): error C2065: 'tex_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(43,39): error C2065: 'destRect_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(44,4): error C2065: 'destRect_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(44,19): error C2065: 'destRect_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(47,3): error C2065: 'destRect_': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,1): error C2665: 'std::to_string': ninguna de las 9 sobrecargas pudo convertir todos los tipos de argumento
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(539,26): message : puede ser 'std::string std::to_string(long double)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(535,26): message : o       'std::string std::to_string(float)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(528,26): message : o       'std::string std::to_string(double)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(524,26): message : o       'std::string std::to_string(unsigned __int64)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(520,26): message : o       'std::string std::to_string(__int64)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(516,26): message : o       'std::string std::to_string(unsigned long)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(512,26): message : o       'std::string std::to_string(long)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(508,26): message : o       'std::string std::to_string(unsigned int)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(504,26): message : o       'std::string std::to_string(int)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,1): message : al hacer coincidir la lista de argumentos '(T *)'
+          with
+          [
+              T=Health
+          ]
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,19): error C2661: 'Texture::Texture': ninguna función sobrecargada acepta 3 argumentos
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(51,49): error C2065: 'scoreMsg': identificador no declarado
   Resources.cpp
   ScoreManager.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreManager.cpp(8,30): error C2653: 'ecs': no es un nombre de clase o espacio de nombres
