@@ -17,7 +17,7 @@ public:
 	// una bala al juego -- se puede disparar sólo una bala cada 0.25sec.
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado) 
+		if (!gt->isStopped())
 		{
 			auto tr_ = mngr_->getHandler<_hdlr_Fighter>()->getComponent<Transform>();
 			auto ih = InputHandler::instance();
@@ -29,12 +29,10 @@ public:
 					Vector2D bulletVel = Vector2D(0, -1).rotate(tr_->rotation_) * 2;
 
 					mngr_->getSystem<BulletsSystem>()->shoot(bulletPos, bulletVel, 5, 5);
-					//game_->getAudioMngr()->playChannel(Resources::Gunshot, 0);
+					game_->getAudioMngr()->playChannel(Resources::Gunshot, 0);
 					time_ = game_->getTime();
 				}
 			}
 		}
-		
-		
 	};
 };

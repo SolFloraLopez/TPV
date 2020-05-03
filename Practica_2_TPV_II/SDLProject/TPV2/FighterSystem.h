@@ -29,22 +29,33 @@ public:
 			game_->getWindowWidth() / 2 - 6, game_->getWindowHeight() / 2 - 6), Vector2D(),
 			50, 50, 0);
 		Health* fighterH = fighter->addComponent<Health>(3);
-		fighter->addComponent<ImageComponent>(game_->getTextureMngr()->getTexture(Resources::Fighter));
-		//fighter->addComponent<FighterViewer>();
-		/*fighter->addComponent<FighterMotion>();
-		fighter->addComponent<FighterCtrl>();
-		fighter->addComponent<Gun>(bulletsPool_);*/
-
+		fighter->addComponent<ImageComponent>(game_->getTextureMngr()->getTexture(Resources::Airplanes));
+		
 		mngr_->setHandler<_hdlr_Fighter>(fighter);
 	};
 	// - si el juego está parado no hacer nada.
 	// - actualizar la velocidad del caza y moverlo como en la práctica 1.
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado) 
-		{			
-			Vector2D v = ftr->position_ + ftr->velocity_;
+		if (!gt->isStopped())
+		{	
+			InputHandler* ih = InputHandler::instance();
 
+			//movimiento
+			if (ih->keyDownEvent()) {
+				if (ih->isKeyDown(SDLK_UP)) { //acelerar
+					ftr->velocity_.set(ftr->velocity_ + Vector2D(0, -1).rotate(ftr->rotation_) * 0.5);
+				}
+				else if (ih->isKeyDown(SDLK_RIGHT)) {
+					ftr->rotation_=(int)floor(ftr->rotation_ + 5) % 360;
+				}
+				else if (ih->isKeyDown(SDLK_LEFT)) {
+					ftr->rotation_ = (int)floor(ftr->rotation_ - 5) % 360;
+				}
+			}
+
+			//rebote
+			Vector2D v = ftr->position_ + ftr->velocity_;
 			double y = v.getY();
 			double x = v.getX();
 

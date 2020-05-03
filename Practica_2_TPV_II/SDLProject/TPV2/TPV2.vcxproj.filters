@@ -365,9 +365,6 @@
     <ClInclude Include="FighterGunSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderGunSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AsteroidLifeTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -13,6 +13,8 @@
 
 class AsteroidsSystem : public System {
 private:
+	std::size_t numOfAsteroids_;
+
 	double cy = game_->getWindowHeight() / 2;
 	double cx = game_->getWindowWidth() / 2;
 	double x;
@@ -27,7 +29,7 @@ public:
 	void addAsteroids(int n) {		
 		
 		for (int i = 0; i < n; i++) {
-			/*if (a != nullptr) {*/
+			
 		
 			double rand;				
 		
@@ -57,14 +59,13 @@ public:
 			vel = Vector2D((c - pos).normalize() * (m / 10.0));
 			//o->rot_ = 0;
 			gen = SDLGame::instance()->getRandGen()->nextInt(1, 3);
-			h= w = 10 + 3 * gen;
-			//o->inUse_ = true;
+			h= w = 10 + 3 * gen;			
 
 			Entity* a = mngr_->addEntity<AsteroidPool>(pos,vel,w,h,gen);
 			if (a != nullptr)
 				a->setActive(true);
 				a->addToGroup<_grp_Asteroid>();
-			//}
+			
 		}
 	};
 
@@ -93,7 +94,7 @@ public:
 	// - mover los asteroides como en la práctica 1.
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado) {
+		if (!gt->isStopped()) {
 			
 			for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>())
 			{
@@ -115,6 +116,5 @@ public:
 		}
 		
 	};
-private:
-	std::size_t numOfAsteroids_;
+	
 };

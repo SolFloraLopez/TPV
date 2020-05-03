@@ -118,7 +118,6 @@
     <ClInclude Include="PacMan.h" />
     <ClInclude Include="PacManSystem.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
-    <ClInclude Include="RenderGunSystem.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Rotation.h" />

@@ -33,7 +33,7 @@ public:
 		// - mover las balas y desactivar las que se salen de la ventana
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado) {
+		if (!gt->isStopped()) {
 
 			for (auto& b : mngr_->getGroupEntities<_grp_Bullet>())
 			{

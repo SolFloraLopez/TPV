@@ -17,7 +17,7 @@ public:
 	// y continue, piensa porque son necesarias).
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado)
+		if (!gt->isStopped())
 		{
 			auto ftr = mngr_->getHandler<_hdlr_Fighter>()->getComponent<Transform>();
 			for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>()) {

@@ -44,27 +44,8 @@ void PacMan::closeGame() {
 }
 
 void PacMan::start() {
-	exit_ = false;
-	auto ih = InputHandler::instance();
-	while (!exit_) {
-		SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
-		SDL_RenderClear(game_->getRenderer());
-		Uint32 startTime = game_->getTime();
-		ih->update();
-		if (ih->keyDownEvent() && ih->isKeyDown(SDLK_ESCAPE)) {
-			exit_ = true;
-			break;
-		}
-		entityManager_->refresh();
-		gameCtrlSystem_->update();
-		//…
-			Uint32 frameTime = game_->getTime() - startTime;
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
-		SDL_RenderPresent(game_->getRenderer());
-	}
 	
-	/*exit_ = false;
+	exit_ = false;
 	auto ih = InputHandler::instance();
 
 	while (!exit_) {
@@ -94,7 +75,7 @@ void PacMan::start() {
 		Uint32 frameTime = game_->getTime() - startTime;
 		if (frameTime < 10)
 			SDL_Delay(10 - frameTime);
-	}*/
+	}
 }
 
 

@@ -26,7 +26,7 @@ void GameCtrl::update() {
 			asteroidPool_->generateAsteroids(10);
 			scoreManager_->setStopped(false);
 
-			// rest the score if the game is over
+			// reset the score if the game is over
 			if (scoreManager_->isFinished()) {
 				scoreManager_->setScore(0);
 				health_->resetHealth();

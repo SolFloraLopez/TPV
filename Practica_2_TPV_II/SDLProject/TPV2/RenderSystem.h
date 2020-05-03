@@ -48,7 +48,7 @@ public:
 
 	void update() override {
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
-		if (gt->state_ != gt->Parado)
+		if (!gt->isStopped())
 		{
 			// draw asteroids
 			for (auto& e : mngr_->getGroupEntities<_grp_Asteroid>()) {
@@ -67,15 +67,21 @@ public:
 			//draw health
 			drawLifes();
 		}
-		else if (gt->state_ == gt->Terminado) {
-			//mensaje de game over
+		else if (gt->isFinished()) {
+			if (mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->getHealth() <= 0) {
+				Texture msg(game_->getRenderer(), "GAME OVER", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xff0000ff) });
+				msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
+			}
+			else {
+				Texture msg(game_->getRenderer(), "YOU WIN", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xff0000ff) });
+				msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
+			}
 		}
 		else{
-			//mensaje de Press ENTER to start
+			Texture msg(game_->getRenderer(), "Press ENTER to start", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xff0000ff) });
+			msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
 		}
-		// info message
-		/*Texture msg(game_->getRenderer(),"Press ENTER to add More Stars", game_->getFontMngr()->getFont(Resources::ARIAL24),{COLOR(0xff0000ff)});
-		msg.render(game_->getWindowWidth()/2-msg.getWidth()/2,game_->getWindowHeight()-msg.getHeight()-10);*/
+		
 	}
 };
 

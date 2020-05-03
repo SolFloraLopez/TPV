@@ -20,7 +20,7 @@ public:
 		}
 		mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->loseLife();
 		//mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_ 
-		//mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()
+		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setStopped(true);
 	};
 
 		// - a este método se le va a llamar cuando no haya más asteroides.
@@ -30,7 +30,7 @@ public:
 		for (auto& b : mngr_->getGroupEntities<_grp_Bullet>()) {
 			b->setActive(false);
 		}
-
+		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setStopped(true);
 	};
 
 		// - crear una entidad, añade sus componentes (Score y GameState) y asociarla
@@ -50,16 +50,20 @@ public:
 	void update() override {
 		
 		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto health = mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>();
 		auto ih = game_->getInputHandler();
-		if (gt->state_ == gt->Parado && ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN))
+		if (gt->isStopped() && ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN))
 		{
+			game_->getAudioMngr()->playMusic(Resources::ImperialMarch);
+			if (health->getHealth() <= 0) {
+				
+				mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_ = 0;
+				mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->resetHealth();				
+			}			
 			mngr_->getSystem<AsteroidsSystem>()->addAsteroids(10);
+			gt->setStopped(false);
 		}
 		
-
-		if ( ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
-			mngr_->getSystem<StarsSystem>()->addStars(10);
-		}
 	}
 
 };

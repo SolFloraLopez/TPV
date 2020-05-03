@@ -3,10 +3,19 @@
 
 struct GameState : Component {
 	GameState() :
-		state_(Parado) //
+		 stopped_(true),
+		 finished_(false)//
 	{
-	}
+	}	
+	void setFinished(bool finished) {finished_ = finished;}
 
-	enum states {Parado,Terminado,EnCurso};
-	unsigned int state_;
+	bool isFinished() const {return finished_;}
+
+	void setStopped(bool stopped) {stopped_ = stopped;	}
+
+	bool isStopped() {return stopped_;}
+
+private:
+	bool stopped_;
+	bool finished_;
 };
