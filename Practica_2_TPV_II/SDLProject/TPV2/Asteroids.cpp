@@ -1,13 +1,18 @@
-#include "SDL_macros.h"
 #include "Asteroids.h"
-#include <assert.h>
 
+#include "Manager.h"
+#include "GameCtrlSystem.h"
+#include "FighterSystem.h"
+#include "FighterGunSystem.h"
+#include "AsteroidsSystem.h"
+#include "BulletsSystem.h"
+#include "RenderSystem.h"
+#include "CollisionSystem.h"
 
 #include "InputHandler.h"
 #include "Health.h"
 #include "Transform.h"
-#include "SDLGame.h"
-#include "SDL_macros.h"
+
 
 using namespace std;
 
@@ -29,6 +34,7 @@ void Asteroids::initGame() {
 	mngr_ = new Manager(game_);
 
 	AsteroidPool::init(10);
+	BulletsPool::init(10);
 
 	renderSystem_ = mngr_->addSystem<RenderSystem>();
 	collisionSystem_ = mngr_->addSystem<CollisionSystem>();
@@ -72,6 +78,11 @@ void Asteroids::start() {
 		mngr_->refresh();
 		gameCtrlSystem_->update();
 		renderSystem_->update(); 
+		collisionSystem_->update();
+		fighterSystem_->update();
+		fighterGunSystem_->update();
+		asteroidsSystem_->update();
+		bulletsSystem_->update();
 		
 		
 			Uint32 frameTime = game_->getTime() - startTime;

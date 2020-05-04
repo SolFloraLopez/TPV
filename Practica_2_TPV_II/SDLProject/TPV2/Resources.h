@@ -18,8 +18,6 @@ public:
 		AIIcon,
 		SpaceShips,
 		Airplanes,
-		Star,
-		PacMan,
 		Asteroids,
 		Bullets,
 		Heart,

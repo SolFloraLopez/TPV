@@ -1,21 +1,21 @@
 #pragma once
-#pragma once
 
 #include <vector>
+#include <assert.h>
 
-#include "CollisionSystem.h"
-#include "GameCtrlSystem.h"
-#include "Manager.h"
-#include "FighterSystem.h"
-#include "FighterGunSystem.h"
-#include "AsteroidsSystem.h"
-#include "BulletsSystem.h"
-#include "RenderSystem.h"
+#include "SDL_macros.h"
+
 #include "SDLGame.h"
 
-//#include "AsteroidPool.h"
-//#include "BulletsPool.h"
-//#include "Health.h"
+class Manager;
+class GameCtrlSystem;
+class CollisionSystem;
+class FighterSystem;
+class FighterGunSystem;
+class AsteroidsSystem;
+class BulletsSystem;
+class RenderSystem;
+
 
 class Asteroids {
 

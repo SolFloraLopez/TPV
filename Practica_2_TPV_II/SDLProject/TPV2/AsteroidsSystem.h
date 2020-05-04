@@ -16,8 +16,7 @@ private:
 	//std::size_t numOfAsteroids_;
 	int numOfAsteroids_;
 
-	double cy = game_->getWindowHeight() / 2;
-	double cx = game_->getWindowWidth() / 2;
+	
 	double x;
 	double y;
 	Vector2D pos;
@@ -25,14 +24,28 @@ private:
 	double w, h, gen;
 
 public:
-	int getNumAsteroids() {return numOfAsteroids_;}
+	int getNumAsteroids() 
+	{
+		numOfAsteroids_ = 0;
+		for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>())
+		{
+			if (a->isActive()) { numOfAsteroids_++; }
+		}
+		return numOfAsteroids_;
+	}
 
-
+	void disableAll() {
+		for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>())
+		{
+			a->setActive(false);			
+		}
+	}
 	// - añadir n asteroides al juego como en la práctica 1 pero usando entidades.
 	// - no olvidar añadir los asteroides al grupo _grp_Asteroid.
 	void addAsteroids(int n) {		
 		
-		numOfAsteroids_ = n;
+		double cy = game_->getWindowHeight() / 2;
+		double cx = game_->getWindowWidth() / 2;
 		for (int i = 0; i < n; i++) {
 			
 		
@@ -67,17 +80,18 @@ public:
 			h= w = 10 + 3 * gen;			
 
 			Entity* a = mngr_->addEntity<AsteroidPool>(pos,vel,w,h,gen);
-			if (a != nullptr)
+			if (a != nullptr) {
 				a->setActive(true);
 				a->addToGroup<_grp_Asteroid>();
+			}
+				
 			
 		}
 	};
 
 	// - desactivar el asteroide “a” y crear 2 asteroides como en la práctica 1.
 	void onCollisionWithBullet(Entity* a, Entity* b) {
-		a->setActive(false);
-		numOfAsteroids_--; //restas el eliminado
+		a->setActive(false);		
 		AsteroidLifeTime* st = a->getComponent<AsteroidLifeTime>();
 		Transform* tr = a->getComponent<Transform>();
 		if (st->lifeTime_ > 0)
@@ -92,7 +106,7 @@ public:
 					ast->setActive(true);
 					ast->addToGroup<_grp_Asteroid>();
 				}					
-				numOfAsteroids_++; //sumas los dos que se crean
+				//sumas los dos que se crean
 			}
 
 		}
@@ -101,7 +115,7 @@ public:
 	// - si el juego está parado no hacer nada.
 	// - mover los asteroides como en la práctica 1.
 	void update() override {
-		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>();
 		if (!gt->isStopped()) {
 			
 			for (auto& a : mngr_->getGroupEntities<_grp_Asteroid>())
@@ -123,6 +137,8 @@ public:
 					
 				}
 			}
+		}
+		else {
 		}
 		
 	};

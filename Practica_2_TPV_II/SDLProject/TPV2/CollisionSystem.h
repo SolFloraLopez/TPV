@@ -17,7 +17,7 @@ public:
 	// - comprobar colisiones usando el esquema abajo (nota las instrucciones break
 	// y continue, piensa porque son necesarias).
 	void update() override {
-		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>();
 		if (!gt->isStopped())
 		{
 			auto ftr = mngr_->getHandler<_hdlr_Fighter>()->getComponent<Transform>();
@@ -29,10 +29,15 @@ public:
 					game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
 
 					mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->loseLife();
+					mngr_->getHandler<_hdlr_GameState>()->getComponent<Score>()->points_=0;
 
 					if (mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->getHealth() <= 0) {
 						mngr_->getSystem<GameCtrlSystem>()->onFighterDeath();
 					}
+					mngr_->getSystem<AsteroidsSystem>()->disableAll();
+					mngr_->getSystem<BulletsSystem>()->disableAll();
+
+					mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>()->setStopped(true);
 
 					break;
 				}
@@ -46,14 +51,13 @@ public:
 						// - llamar a onCollisionWithBullet(...) del AsteroidsSystem.
 						// …
 						game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
-						mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_++;
+						mngr_->getHandler<_hdlr_GameState>()->getComponent<Score>()->points_++;
 						mngr_->getSystem<BulletsSystem>()->onCollisionWithAsteroid(b, a);
-						mngr_->getSystem<AsteroidsSystem>()->onCollisionWithBullet(a, b);
+  						mngr_->getSystem<AsteroidsSystem>()->onCollisionWithBullet(a, b);
 
 						if (mngr_->getSystem<AsteroidsSystem>()->getNumAsteroids() <= 0) {
 							mngr_->getSystem<GameCtrlSystem>()->onAsteroidsExtenction();
 						}
-
 					}
 				}
 			}

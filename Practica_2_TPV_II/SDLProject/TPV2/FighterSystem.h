@@ -25,9 +25,8 @@ public:
 	// y asociarla con el handler _hndlr_Fighter.
 	void init() override {
 		Entity* fighter = mngr_->addEntity();
-		ftr = fighter->addComponent<Transform>(Vector2D(
-			game_->getWindowWidth() / 2 - 6, game_->getWindowHeight() / 2 - 6), Vector2D(),
-			50, 50, 0);
+		Vector2D pos(game_->getWindowWidth() / 2 - 6, game_->getWindowHeight() / 2 - 6);
+		ftr = fighter->addComponent<Transform>(pos, Vector2D(),	50, 50, 0);
 		Health* fighterH = fighter->addComponent<Health>(3);
 		fighter->addComponent<ImageComponent>(game_->getTextureMngr()->getTexture(Resources::Airplanes));
 		
@@ -36,7 +35,7 @@ public:
 	// - si el juego está parado no hacer nada.
 	// - actualizar la velocidad del caza y moverlo como en la práctica 1.
 	void update() override {
-		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>();
 		if (!gt->isStopped())
 		{	
 			InputHandler* ih = InputHandler::instance();

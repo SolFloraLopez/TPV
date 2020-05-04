@@ -4,7 +4,6 @@
 #include <cmath>
 #include "SDL_macros.h"
 #include "AsteroidLifeTime.h"
-#include "System.h"
 #include "Transform.h"
 #include "Entity.h"
 #include "Manager.h"
@@ -14,6 +13,13 @@
 
 class BulletsSystem : public System {
 public:
+
+	void disableAll() {
+		for (auto& b : mngr_->getGroupEntities<_grp_Bullet>()) {
+			b->setActive(false);
+		}
+	}
+
 	// - añadir una bala al juego, como en la práctica 1 pero usando entidades.
 	// - no olvidar añadir la bala al grupo _grp_Bullet
 	void shoot(Vector2D pos, Vector2D vel, double width, double height) {
@@ -32,7 +38,7 @@ public:
 		// - si el juego está parado no hacer nada.
 		// - mover las balas y desactivar las que se salen de la ventana
 	void update() override {
-		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>();
 		if (!gt->isStopped()) {
 
 			for (auto& b : mngr_->getGroupEntities<_grp_Bullet>())

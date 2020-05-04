@@ -12,6 +12,7 @@ public:
 	Health(int maxHealth): maxHealth_(maxHealth), currentHealth_(maxHealth) 
 	{
 	};
+	Health() {};
 
 	
 	void loseLife() {currentHealth_--;};

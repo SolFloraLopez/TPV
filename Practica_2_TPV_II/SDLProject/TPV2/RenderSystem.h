@@ -58,7 +58,7 @@ public:
 	// práctica 1: Press ENTER to start, Game Over, etc.)
 
 	void update() override {
-		auto gt = mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>();
+		auto gt = mngr_->getHandler<_hdlr_GameState>()->getComponent<GameState>();
 		if (!gt->isStopped())
 		{
 			// draw asteroids
@@ -71,12 +71,7 @@ public:
 			}
 			// draw fighter
 			draw(mngr_->getHandler<_hdlr_Fighter>());
-
-			// draw score
-			drawScore();
-
-			//draw health
-			drawLifes();
+			
 		}
 		else if (gt->isFinished()) {
 			if (mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->getHealth() <= 0) {
@@ -92,6 +87,11 @@ public:
 			Texture msg(game_->getRenderer(), "Press ENTER to start", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xff0000ff) });
 			msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
 		}
+		// draw score
+		drawScore();
+
+		//draw health
+		drawLifes();
 		
 	}
 };

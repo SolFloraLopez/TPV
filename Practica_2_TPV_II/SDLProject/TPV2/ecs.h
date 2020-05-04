@@ -47,11 +47,11 @@ class AsteroidsSystem; // sistema de los asteroids (para mover los asteroides)
 class BulletsSystem; // sistema de las balas (para mover las balas)
 class FighterSystem; // sistema del caza (para gestionar el movimiento del caza)
 class FighterGunSystem; // sistema del arma (para disparar -- arma para el caza)
-class CollisionsSystem; // sistema de colisiones (para comprobar todas las colisiones)
+class CollisionSystem; // sistema de colisiones (para comprobar todas las colisiones)
 class RenderSystem; // sistema de rendering (para dibujar las entidades, etc.)
 
 using SystemsList =
-mpl::TypeList<GameCtrlSystem, AsteroidsSystem, BulletsSystem, FighterSystem, FighterGunSystem, CollisionsSystem, RenderSystem>;
+mpl::TypeList<GameCtrlSystem, AsteroidsSystem, BulletsSystem, FighterSystem, FighterGunSystem, CollisionSystem, RenderSystem>;
 
 constexpr std::size_t maxComponents = ComponentsList::size;
 constexpr std::size_t maxGroups = GroupsList::size;

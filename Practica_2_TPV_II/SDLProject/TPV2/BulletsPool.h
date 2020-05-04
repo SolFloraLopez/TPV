@@ -51,8 +51,6 @@ private:
 		pool_(n) {
 		for (Entity* e : pool_.getPool()) {
 			e->addComponent<Transform>();
-			//e->addComponent<LifeTime>();
-			//e->addComponent<Rotation>();
 			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bullets));
 		}
 	}
