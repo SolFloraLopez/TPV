@@ -3,11 +3,12 @@
 #include "Collisions.h"
 #include "System.h"
 #include "Manager.h"
-#include "StarsSystem.h"
 #include "FighterSystem.h"
 #include "AsteroidsSystem.h"
 #include "BulletsSystem.h"
+#include "GameCtrlSystem.h"
 #include "Transform.h"
+#include "Score.h"
 
 class CollisionSystem: public System {
 public:

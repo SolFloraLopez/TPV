@@ -1,11 +1,12 @@
 #pragma once
 
 #include "ecs.h"
-#include "StarsSystem.h"
 #include "System.h"
 #include "Score.h"
 #include "Health.h"
 #include "GameState.h"
+#include "Manager.h"
+#include "AsteroidsSystem.h"
 
 
 class GameCtrlSystem: public System {
