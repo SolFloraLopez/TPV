@@ -4,6 +4,8 @@
 #include "StarsSystem.h"
 #include "System.h"
 #include "Score.h"
+#include "Health.h"
+#include "GameState.h"
 
 
 class GameCtrlSystem: public System {
@@ -19,7 +21,8 @@ public:
 			b->setActive(false);
 		}
 		mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->loseLife();
-		//mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_ 
+		mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_ = 0;
+		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setFinished(true);
 		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setStopped(true);
 	};
 
@@ -30,6 +33,7 @@ public:
 		for (auto& b : mngr_->getGroupEntities<_grp_Bullet>()) {
 			b->setActive(false);
 		}
+		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setFinished(true);
 		mngr_->getHandler<_hdlr_GameState>()->addComponent<GameState>()->setStopped(true);
 	};
 

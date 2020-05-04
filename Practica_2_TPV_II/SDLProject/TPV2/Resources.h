@@ -22,6 +22,7 @@ public:
 		PacMan,
 		Asteroids,
 		Bullets,
+		Heart,
 
 		// text
 		HelloWorld,

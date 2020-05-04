@@ -1,13 +1,16 @@
 #include <iostream>
 
-#include "PacMan.h"
+#include "Asteroids.h"
 
 using namespace std;
 
 
 void start() {
-	PacMan g;
+	//PacMan g;
+	//g.start();
+	Asteroids g;
 	g.start();
+
 }
 
 int main(int ac, char **av) {

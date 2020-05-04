@@ -24,6 +24,15 @@ public:
 				auto atr = a->getComponent<Transform>();
 				if (Collisions::collides(ftr->position_, ftr->width_, ftr->height_, atr->position_, atr->width_, atr->height_)) {
 					mngr_->getSystem<FighterSystem>()->onCollisionWithAsteroid(a);
+					game_->getAudioMngr()->haltMusic();
+					game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
+
+					mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->loseLife();
+
+					if (mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>()->getHealth() <= 0) {
+						mngr_->getSystem<GameCtrlSystem>()->onFighterDeath();
+					}
+
 					break;
 				}
 
@@ -35,8 +44,15 @@ public:
 						// - llamar a onCollisionWithAsteroid(...) del BulletsSystem.
 						// - llamar a onCollisionWithBullet(...) del AsteroidsSystem.
 						// …
+						game_->getAudioMngr()->playChannel(Resources::Explosion, 0);
+						mngr_->getHandler<_hdlr_GameState>()->addComponent<Score>()->points_++;
 						mngr_->getSystem<BulletsSystem>()->onCollisionWithAsteroid(b, a);
 						mngr_->getSystem<AsteroidsSystem>()->onCollisionWithBullet(a, b);
+
+						if (mngr_->getSystem<AsteroidsSystem>()->getNumAsteroids() <= 0) {
+							mngr_->getSystem<GameCtrlSystem>()->onAsteroidsExtenction();
+						}
+
 					}
 				}
 			}

@@ -13,7 +13,8 @@
 
 class AsteroidsSystem : public System {
 private:
-	std::size_t numOfAsteroids_;
+	//std::size_t numOfAsteroids_;
+	int numOfAsteroids_;
 
 	double cy = game_->getWindowHeight() / 2;
 	double cx = game_->getWindowWidth() / 2;
@@ -24,10 +25,14 @@ private:
 	double w, h, gen;
 
 public:
+	int getNumAsteroids() {return numOfAsteroids_;}
+
+
 	// - añadir n asteroides al juego como en la práctica 1 pero usando entidades.
 	// - no olvidar añadir los asteroides al grupo _grp_Asteroid.
 	void addAsteroids(int n) {		
 		
+		numOfAsteroids_ = n;
 		for (int i = 0; i < n; i++) {
 			
 		
@@ -72,6 +77,7 @@ public:
 	// - desactivar el asteroide “a” y crear 2 asteroides como en la práctica 1.
 	void onCollisionWithBullet(Entity* a, Entity* b) {
 		a->setActive(false);
+		numOfAsteroids_--; //restas el eliminado
 		AsteroidLifeTime* st = a->getComponent<AsteroidLifeTime>();
 		Transform* tr = a->getComponent<Transform>();
 		if (st->lifeTime_ > 0)
@@ -82,9 +88,11 @@ public:
 				Vector2D p = tr->position_ + v.normalize();
 
 				Entity* ast = mngr_->addEntity<AsteroidPool>(p, v, 10 + 3 * st->lifeTime_, 10 + 3 * st->lifeTime_, st->lifeTime_ - 1);
-				if (ast != nullptr)
+				if (ast != nullptr) {
 					ast->setActive(true);
 					ast->addToGroup<_grp_Asteroid>();
+				}					
+				numOfAsteroids_++; //sumas los dos que se crean
 			}
 
 		}
@@ -111,6 +119,8 @@ public:
 
 					atr->position_ = v;
 					atr->rotation_ = atr->rotation_ + 0.5;
+
+					
 				}
 			}
 		}

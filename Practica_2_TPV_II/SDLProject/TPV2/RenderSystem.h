@@ -9,6 +9,7 @@
 #include "Entity.h"
 #include "Manager.h"
 #include "Score.h"
+#include "Health.h"
 #include "SDLGame.h"
 #include "Texture.h"
 #include "GameState.h"
@@ -37,7 +38,17 @@ public:
 	}
 
 	void drawLifes() {
+		auto h =
+			mngr_->getHandler<_hdlr_Fighter>()->getComponent<Health>();
+		Texture *tex_(game_->getTextureMngr()->getTexture(Resources::Heart));
+		SDL_Rect destRect_ =
+			RECT(0, 0, 50, 50);
 		
+		for (int i = 0; i < h->getHealth(); i++) {
+			tex_->render(destRect_);
+			destRect_.x += destRect_.w;
+		}
+		destRect_.x = 0;
 	}
 
 	

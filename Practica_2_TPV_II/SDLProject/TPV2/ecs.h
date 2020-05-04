@@ -42,16 +42,16 @@ mpl::TypeList<_hdlr_Fighter,_hdlr_GameState>;
 //
 // they must match the name of the systems classes
 
-class _sys_GameCtrl; // sistema de control del juego (para empezar el juego, etc.)
-class _sys_Asteroids; // sistema de los asteroids (para mover los asteroides)
-class _sys_Bullets; // sistema de las balas (para mover las balas)
-class _sys_Fighter; // sistema del caza (para gestionar el movimiento del caza)
-class _sys_FighterGun; // sistema del arma (para disparar -- arma para el caza)
-class _sys_Collisions; // sistema de colisiones (para comprobar todas las colisiones)
-class _sys_Render; // sistema de rendering (para dibujar las entidades, etc.)
+class GameCtrlSystem; // sistema de control del juego (para empezar el juego, etc.)
+class AsteroidsSystem; // sistema de los asteroids (para mover los asteroides)
+class BulletsSystem; // sistema de las balas (para mover las balas)
+class FighterSystem; // sistema del caza (para gestionar el movimiento del caza)
+class FighterGunSystem; // sistema del arma (para disparar -- arma para el caza)
+class CollisionsSystem; // sistema de colisiones (para comprobar todas las colisiones)
+class RenderSystem; // sistema de rendering (para dibujar las entidades, etc.)
 
 using SystemsList =
-mpl::TypeList<_sys_GameCtrl, _sys_Asteroids, _sys_Bullets, _sys_Fighter, _sys_FighterGun, _sys_Collisions, _sys_Render>;
+mpl::TypeList<GameCtrlSystem, AsteroidsSystem, BulletsSystem, FighterSystem, FighterGunSystem, CollisionsSystem, RenderSystem>;
 
 constexpr std::size_t maxComponents = ComponentsList::size;
 constexpr std::size_t maxGroups = GroupsList::size;

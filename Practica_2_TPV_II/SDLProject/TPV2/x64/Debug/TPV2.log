@@ -1,12 +1,39 @@
-﻿  AsteroidPool.cpp
-  Asteroids.cpp
+﻿  Asteroids.cpp
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,19): error C2065: '_grp_Star': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,6): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,42): error C2065: '_grp_Star': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,23): error C2672: 'Manager::getGroupEntities': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,1): error C2974: 'Manager::getGroupEntities': argumento de plantilla no válido para 'TG'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(79): message : vea la declaración de 'Manager::getGroupEntities'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,1): error C2530: 'e': se deben inicializar las referencias
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,1): error C3531: 'e': un símbolo cuyo tipo contiene 'auto' debe tener un inicializador
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,16): error C2143: error de sintaxis: falta ';' delante de ':'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(42,54): error C2143: error de sintaxis: falta ';' delante de ')'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(47,1): error C2059: error de sintaxis: ')'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(48,1): error C2059: error de sintaxis: ')'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(49,1): error C2059: error de sintaxis: ')'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(51,1): error C3536: 'rot': no se puede usar antes de inicializarse
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(53,1): error C2039: "creatiomTime_": no es un miembro de "AsteroidLifeTime"
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidLifeTime.h(6): message : vea la declaración de 'AsteroidLifeTime'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,21): error C2065: '_grp_Star': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(14,7): error C3668: 'Health::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(15,7): error C3668: 'Health::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.h(30,15): error C2143: error de sintaxis: falta ';' delante de '*'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.h(30,15): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.h(30,31): error C2238: símbolos (token) inesperados delante de ';'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,34): error C2065: '_sys_Fighter': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,22): error C2672: 'Manager::getSystem': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,1): error C2974: 'Manager::getSystem': argumento de plantilla no válido para 'T'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(72): message : vea la declaración de 'Manager::getSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(34,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C3867: 'AsteroidsSystem::getNumAsteroids': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2296: '<=': no es válido; el operando izquierdo es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2297: '<=': no es válido; el operando derecho es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(54,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(13,7): error C3668: 'GameCtrl::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(14,7): error C3668: 'GameCtrl::update': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(15,7): error C3668: 'GameCtrl::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
@@ -33,21 +60,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterViewer.h(16,
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterViewer.h(17,53): error C2065: 'game_': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreViewer.h(10,7): error C3668: 'ScoreViewer::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreViewer.h(11,7): error C3668: 'ScoreViewer::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(28,2): error C2614: 'Asteroids': inicialización de miembro no válida: 'entityManager_' no es una base o miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(41,2): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(41,36): error C2061: error de sintaxis: identificador 'EntityManager'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(45,22): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(50,20): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(55,20): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(62,19): error C2039: "setPos": no es un miembro de "Transform"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Transform.h(6): message : vea la declaración de 'Transform'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(64,18): error C2039: "setWH": no es un miembro de "Transform"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Transform.h(6): message : vea la declaración de 'Transform'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(67,24): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(75,9): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(75,23): error C2541: 'delete': no se pueden eliminar objetos que no sean punteros
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(124,2): error C2065: 'entityManager_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Asteroids.cpp(131,2): error C2065: 'entityManager_': identificador no declarado
   AsteroidsMotion.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidsMotion.h(10,7): error C3668: 'AsteroidsMotion::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidsMotion.h(11,7): error C3668: 'AsteroidsMotion::update': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
@@ -160,7 +172,19 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,21
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(9): fatal error C1075: "{": no se encontró ningún token coincidente
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,34): error C2065: '_sys_Fighter': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,22): error C2672: 'Manager::getSystem': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,1): error C2974: 'Manager::getSystem': argumento de plantilla no válido para 'T'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(72): message : vea la declaración de 'Manager::getSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(34,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C3867: 'AsteroidsSystem::getNumAsteroids': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2296: '<=': no es válido; el operando izquierdo es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2297: '<=': no es válido; el operando derecho es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(54,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
   Component.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Component.cpp(3,33): error C2653: 'ecs': no es un nombre de clase o espacio de nombres
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Component.cpp(3,27): error C2065: 'CmpId': identificador no declarado
@@ -176,7 +200,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Component.cpp(6,9):
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Component.cpp(7,1): error C2448: 'id_': el inicializador de estilo de función parece ser una definición de función
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Component.cpp(10,25): error C2600: 'Component::~Component': no se puede definir una función miembro especial generada por el compilador (se debe declarar primero en la clase)
   DefFactory.cpp
-  Entity.cpp
   FighterCtrl.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterCtrl.h(9,66): error C2061: error de sintaxis: identificador 'SDL_Keycode'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterCtrl.h(9,66): error C2535: 'FighterCtrl::FighterCtrl(void)': función miembro ya definida o declarada
@@ -308,12 +331,9 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterViewer.cpp(2
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\FighterViewer.cpp(20,54): error C2039: "getRot": no es un miembro de "Transform"
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Transform.h(6): message : vea la declaración de 'Transform'
   Font.cpp
-  FontsManager.cpp
   GameCtrl.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(14,7): error C3668: 'Health::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(15,7): error C3668: 'Health::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(13,7): error C3668: 'GameCtrl::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(14,7): error C3668: 'GameCtrl::update': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.h(15,7): error C3668: 'GameCtrl::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
@@ -323,9 +343,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(18,27)
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreManager.h(5): message : vea la declaración de 'ScoreManager'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(18,18): error C3861: 'GETCMP1_': no se encontró el identificador
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(25,4): error C2065: 'game_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(25,48): error C2039: "ImperialMarch": no es un miembro de "Resources"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Resources.h(9): message : vea la declaración de 'Resources'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(25,61): error C2065: 'ImperialMarch': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(26,36): error C2039: "generateAsteroids": no es un miembro de "AsteroidPool"
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidPool.h(11): message : vea la declaración de 'AsteroidPool'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrl.cpp(42,24): error C2065: 'game_': identificador no declarado
@@ -367,13 +384,13 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,21
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
-  Generando código...
-  Compilando...
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameCtrlSystem.h(67,1): error C2027: uso del tipo 'AsteroidsSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(46): message : vea la declaración de 'AsteroidsSystem'
   GameLogic.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.H(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.H(9): message : vea la declaración de 'Health'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.H(14,7): error C3668: 'Health::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.H(15,7): error C3668: 'Health::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.h(14,7): error C3668: 'GameLogic::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.h(15,7): error C3668: 'GameLogic::update': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(9,27): error C2653: 'ecs': no es un nombre de clase o espacio de nombres
@@ -399,9 +416,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(36,20
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Collisions.h(12,14): message : vea la declaración de 'Collisions::collidesWithRotation'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(40,5): error C2065: 'game_': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(41,5): error C2065: 'game_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(41,51): error C2039: "Explosion": no es un miembro de "Resources"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Resources.h(9): message : vea la declaración de 'Resources'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(41,60): error C2065: 'Explosion': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(42,29): error C2039: "disablAll": no es un miembro de "AsteroidPool"
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidPool.h(11): message : vea la declaración de 'AsteroidPool'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(43,28): error C2039: "disablAll": no es un miembro de "BulletsPool"
@@ -427,9 +441,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\AsteroidPool.h(11):
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(61,59): error C2660: 'Collisions::collidesWithRotation': la función no acepta 1 argumentos
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Collisions.h(12,14): message : vea la declaración de 'Collisions::collidesWithRotation'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(65,6): error C2065: 'game_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(65,52): error C2039: "Explosion": no es un miembro de "Resources"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Resources.h(9): message : vea la declaración de 'Resources'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(65,61): error C2065: 'Explosion': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(67,31): error C2039: "onCollision": no es un miembro de "BulletsPool"
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\BulletsPool.h(10): message : vea la declaración de 'BulletsPool'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\GameLogic.cpp(67,53): error C2039: "getPool": no es un miembro de "BulletsPool"
@@ -475,24 +486,7 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(34,32): err
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(35,16): error C2039: "shoot": no es un miembro de "BulletsPool"
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\BulletsPool.h(10): message : vea la declaración de 'BulletsPool'
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(36,4): error C2065: 'game_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(36,50): error C2039: "Gunshot": no es un miembro de "Resources"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Resources.h(9): message : vea la declaración de 'Resources'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(36,57): error C2065: 'Gunshot': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Gun.cpp(37,12): error C2065: 'game_': identificador no declarado
-  Health.cpp
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(14,7): error C3668: 'Health::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(15,7): error C3668: 'Health::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(3,53): error C2653: 'ecs': no es un nombre de clase o espacio de nombres
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(3,47): error C2275: 'Health': uso no válido de este tipo como expresión
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(12,9): error C2065: 'game_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(12,56): error C2039: "Heart": no es un miembro de "Resources"
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Resources.h(9): message : vea la declaración de 'Resources'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(12,61): error C2065: 'Heart': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.cpp(19,16): error C2065: 'game_': identificador no declarado
-  InputHandler.cpp
-  jute.cpp
   main.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,19): error C2065: '_grp_Star': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,6): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
@@ -516,13 +510,22 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,21
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\main.cpp(5,7): error C2059: error de sintaxis: 'using namespace'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\main.cpp(5,20): error C2238: símbolos (token) inesperados delante de ';'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(9): fatal error C1075: "{": no se encontró ningún token coincidente
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,34): error C2065: '_sys_Fighter': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,22): error C2672: 'Manager::getSystem': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,1): error C2974: 'Manager::getSystem': argumento de plantilla no válido para 'T'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(72): message : vea la declaración de 'Manager::getSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(34,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C3867: 'AsteroidsSystem::getNumAsteroids': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2296: '<=': no es válido; el operando izquierdo es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2297: '<=': no es válido; el operando derecho es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(54,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+  Generando código...
+  Compilando...
   Manager.cpp
-  ObjectFactory.cpp
-  ObjectPool.cpp
-  OFFacotry.cpp
   PacMan.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,19): error C2065: '_grp_Star': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(37,6): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
@@ -546,21 +549,25 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,21
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8): error C2672: 'Entity::addToGroup': no se encontró una función sobrecargada que coincida
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\assert.h(14,1): error C2059: error de sintaxis: 'cadena'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\assert.h(14,1): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(14,7): error C2059: error de sintaxis: 'using namespace'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(14,20): error C2238: símbolos (token) inesperados delante de ';'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(16,18): error C3254: 'CollisionSystem': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(16,18): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(23,19): error C3254: 'CollisionSystem': la clase contiene la invalidación explícita '{dtor}', pero no deriva de una interfaz que contiene la declaración de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(23,19): error C2838: '{dtor}': nombre completo no válido en la declaración de miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(27,25): error C3254: 'CollisionSystem': la clase contiene la invalidación explícita 'initGame', pero no deriva de una interfaz que contiene la declaración de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(27,25): error C2838: 'initGame': nombre completo no válido en la declaración de miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(42,26): error C3254: 'CollisionSystem': la clase contiene la invalidación explícita 'closeGame', pero no deriva de una interfaz que contiene la declaración de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(42,26): error C2838: 'closeGame': nombre completo no válido en la declaración de miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(46,22): error C3254: 'CollisionSystem': la clase contiene la invalidación explícita 'start', pero no deriva de una interfaz que contiene la declaración de función
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacMan.cpp(46,22): error C2838: 'start': nombre completo no válido en la declaración de miembro
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(9): fatal error C1075: "{": no se encontró ningún token coincidente
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9,14): warning C4099: 'Health': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Health.h(9): message : vea la declaración de 'Health'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,34): error C2065: '_sys_Fighter': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,22): error C2672: 'Manager::getSystem': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(27,1): error C2974: 'Manager::getSystem': argumento de plantilla no válido para 'T'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(72): message : vea la declaración de 'Manager::getSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(34,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C3867: 'AsteroidsSystem::getNumAsteroids': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2296: '<=': no es válido; el operando izquierdo es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(53,1): error C2297: '<=': no es válido; el operando derecho es de tipo 'int (__cdecl AsteroidsSystem::* )(void)'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\CollisionSystem.h(54,1): error C2027: uso del tipo 'GameCtrlSystem' sin definir
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ecs.h(45): message : vea la declaración de 'GameCtrlSystem'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(24,21): error C2065: '_hdlr_PacMan': identificador no declarado
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(24,8): error C2672: 'Manager::setHandler': no se encontró una función sobrecargada que coincida
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(24,1): error C2974: 'Manager::setHandler': argumento de plantilla no válido para 'TH'; se esperaba un tipo
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(48): message : vea la declaración de 'Manager::setHandler'
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(48,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   PacManSystem.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(24,21): error C2065: '_hdlr_PacMan': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(24,8): error C2672: 'Manager::setHandler': no se encontró una función sobrecargada que coincida
@@ -569,32 +576,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Manager.h(48): mess
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(48,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   RandomNumberGenerator.cpp
-  RenderSystem.cpp
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,23): error C2065: 'lifes_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(41,30): error C2065: 'currentHealth_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(43,4): error C2065: 'tex_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(43,39): error C2065: 'destRect_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(44,4): error C2065: 'destRect_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(44,19): error C2065: 'destRect_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(47,3): error C2065: 'destRect_': identificador no declarado
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,1): error C2665: 'std::to_string': ninguna de las 9 sobrecargas pudo convertir todos los tipos de argumento
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(539,26): message : puede ser 'std::string std::to_string(long double)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(535,26): message : o       'std::string std::to_string(float)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(528,26): message : o       'std::string std::to_string(double)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(524,26): message : o       'std::string std::to_string(unsigned __int64)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(520,26): message : o       'std::string std::to_string(__int64)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(516,26): message : o       'std::string std::to_string(unsigned long)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(512,26): message : o       'std::string std::to_string(long)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(508,26): message : o       'std::string std::to_string(unsigned int)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\string(504,26): message : o       'std::string std::to_string(int)'
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,1): message : al hacer coincidir la lista de argumentos '(T *)'
-          with
-          [
-              T=Health
-          ]
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(48,19): error C2661: 'Texture::Texture': ninguna función sobrecargada acepta 3 argumentos
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\RenderSystem.h(51,49): error C2065: 'scoreMsg': identificador no declarado
-  Resources.cpp
   ScoreManager.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreManager.cpp(8,30): error C2653: 'ecs': no es un nombre de clase o espacio de nombres
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreManager.cpp(8,18): error C2275: 'ScoreManager': uso no válido de este tipo como expresión
@@ -614,18 +595,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Texture.h(12,2): me
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreViewer.cpp(25,15): error C2065: 'game_': identificador no declarado
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\ScoreViewer.cpp(26,4): error C2065: 'game_': identificador no declarado
   SDLAudioManager.cpp
-  SDLFontsManager.cpp
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\SDLFontsManager.cpp(38,19): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\SDLFontsManager.cpp(47,26): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\SDLFontsManager.cpp(50,13): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
-  SDLGame.cpp
-  Generando código...
-  Compilando...
-  SDLTexturesManager.cpp
-  sdl_macros.cpp
-  Singleton.cpp
-  SRandBasedGenerator.cpp
-D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\SRandBasedGenerator.cpp(11,8): warning C4244: 'inicializando': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
   StarsPool.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\mpl.h(26,35): error C2027: uso del tipo 'mpl::IndexOf<T,mpl::TypeList<>>' sin definir
           with
@@ -697,10 +666,6 @@ D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,8)
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\StarsSystem.h(68,1): error C2974: 'Entity::addToGroup': argumento de plantilla no válido para 'TG'; se esperaba un tipo
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\Entity.h(82): message : vea la declaración de 'Entity::addToGroup'
   System.cpp
-  Texture.cpp
-  TexturesManager.cpp
-  Transform.cpp
-  Vector2D.cpp
   VelocityVectorViewer.cpp
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\VelocityVectorViewer.h(10,7): error C3668: 'VelocityVectorViewer::init': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
 D:\Otros\Uni\TP\RepoTP\TPV\Practica_2_TPV_II\SDLProject\TPV2\VelocityVectorViewer.h(11,7): error C3668: 'VelocityVectorViewer::draw': el método con el especificador de invalidación 'override' no invalidó ningún método de clase base
