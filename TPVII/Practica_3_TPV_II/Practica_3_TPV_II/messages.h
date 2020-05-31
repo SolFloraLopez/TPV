@@ -17,6 +17,7 @@ enum MsgId : uint8_t {
 	_START_REQ, //
 	_START_GAME, //
 	_PLAYER_HIT, //
+	_FIGHTER_SHOOT, //
 
 
 
@@ -54,11 +55,12 @@ struct ClientDisconnectedMsg: Message {
 };
 
 struct PositionInfoMsg : Message {
-	PositionInfoMsg(double x, double y) :
-		Message(sizeof(PositionInfoMsg), _POSITION_INFO), x(x), y(y) {
+	PositionInfoMsg(double x, double y, double rotation) :
+		Message(sizeof(PositionInfoMsg), _POSITION_INFO), x(x), y(y), rot(rotation) {
 	}		
 	double x;
 	double y;
+	double rot;
 	//pasar la rotacion tambien y la pos como vector2 igual esta mejor
 };
 

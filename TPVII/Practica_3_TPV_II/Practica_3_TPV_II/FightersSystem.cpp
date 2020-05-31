@@ -40,11 +40,36 @@ void FightersSystem::recieve(const msg::Message& msg)
 
 		playerTR->position_.setX(static_cast<const msg::PositionInfoMsg&>(msg).x);
 		playerTR->position_.setY(static_cast<const msg::PositionInfoMsg&>(msg).y);
+		playerTR->rotation_ = static_cast<const msg::PositionInfoMsg&>(msg).rot;
 
 		break;
 	}
 	case msg::_START_GAME: {
 		//resetea la posicion de los jugadores con los parametros del msg
+		break;
+	}
+	case msg::_FIGHTER_SHOOT: {
+		if (msg.senderClientId == mngr_->getClientId())
+			return;
+
+		Transform* playerTR = nullptr;
+		if (msg.senderClientId == 0) {
+			playerTR = mngr_->getHandler(ecs::_hdlr_Fighter0)->getComponent<
+				Transform>(ecs::Transform);
+		}
+		else {
+			playerTR = mngr_->getHandler(ecs::_hdlr_Fighter1)->getComponent<
+				Transform>(ecs::Transform);
+		}
+
+		Vector2D p = playerTR->position_
+			+ Vector2D(playerTR->width_ / 2, playerTR->height_ / 2)
+			+ Vector2D(0, -(playerTR->height_ / 2 + 5.0)).rotate(
+				playerTR->rotation_);
+		Vector2D d = Vector2D(0, -1).rotate(playerTR->rotation_) * 2;
+
+		mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->shoot(p, d, 2, 5);
+
 		break;
 	}
 	default:
@@ -146,7 +171,7 @@ void FightersSystem::updateFighter(Entity* e) {
 			Vector2D d = Vector2D(0, -1).rotate(tr->rotation_) * 2;
 
 			mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->shoot(p, d, 2, 5);
-
+			mngr_->send<msg::Message>(msg::_FIGHTER_SHOOT);
 		}
 		
 
@@ -168,5 +193,5 @@ void FightersSystem::updateFighter(Entity* e) {
 		tr->position_ = oldPos;
 	}
 
-	mngr_->send<msg::PositionInfoMsg>(tr->position_.getX(), tr->position_.getY());
+	mngr_->send<msg::PositionInfoMsg>(tr->position_.getX(), tr->position_.getY(), tr->rotation_);
 }

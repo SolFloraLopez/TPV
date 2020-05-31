@@ -7,6 +7,7 @@
 #include "FighterInfo.h"
 #include "FightersSystem.h"
 #include "Manager.h"
+#include "BulletsSystem.h"
 
 using ecs::CmpId;
 
@@ -90,6 +91,7 @@ void GameCtrlSystem::onFighterDeath(uint8_t fighterId) {
 	uint8_t id = 1 - fighterId; // the id of the other player fighter
 
 	state_ = ROUNDOVER;
+	mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->disableAll();
 	score[id]++;
 	if (score[id] == 3)
 		state_ = GAMEOVER;

@@ -34,7 +34,7 @@ void NetworkingSystem::update() {
 		case msg::_POSITION_INFO: {
 			msg::PositionInfoMsg* m = static_cast<msg::PositionInfoMsg*>(msg);
 			mngr_->forwardMsg<msg::PositionInfoMsg>(msg->senderClientId, m->x,
-				m->y);
+				m->y, m->rot);
 			break;
 		}
 		case msg::_START_REQ: {
@@ -51,6 +51,11 @@ void NetworkingSystem::update() {
 		case msg::_PLAYER_HIT: {
 			mngr_->forwardMsg<msg::PlayerHitMsg>(msg->senderClientId,
 				static_cast<msg::PlayerHitMsg*>(msg)->player);
+			break;
+		}
+		case msg::_FIGHTER_SHOOT:
+		{
+			mngr_->forwardMsg<msg::Message>(msg->senderClientId, msg::_FIGHTER_SHOOT);
 			break;
 		}
 		default:
