@@ -37,6 +37,22 @@ void NetworkingSystem::update() {
 				m->y);
 			break;
 		}
+		case msg::_START_REQ: {
+			mngr_->forwardMsg<msg::Message>(msg->senderClientId,
+				msg::_START_REQ);
+			break;
+		}
+		case msg::_START_GAME: {
+			msg::StartGameMsg* m = static_cast<msg::StartGameMsg*>(msg);
+			/*mngr_->forwardMsg<msg::StartRoundMsg>(msg->senderClientId, m->x,
+				m->y);*/
+			break;
+		}
+		case msg::_PLAYER_HIT: {
+			mngr_->forwardMsg<msg::PlayerHitMsg>(msg->senderClientId,
+				static_cast<msg::PlayerHitMsg*>(msg)->player);
+			break;
+		}
 		default:
 			assert(false);
 			break;

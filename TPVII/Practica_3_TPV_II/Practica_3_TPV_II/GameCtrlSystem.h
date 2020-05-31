@@ -12,23 +12,26 @@ public:
 	};
 
 	GameCtrlSystem();
+	void recieve(const msg::Message& msg) override;
 	void init() override;
 	void update() override;
 	State getState() {
 		return state_;
 	}
-	void onFighterDeath(uint8_t fighterId);
 	uint8_t getScore(uint8_t fighterId) {
 		assert(fighterId >= 0 && fighterId <= 1);
 		return score[fighterId];
 	}
 
-	void receive(const msg::Message& msg);
+	
 
 private:
 	void resetScore();
 	void startGame();
 	void sendMyInfo();
+
+	void onFighterDeath(uint8_t fighterId);
+
 
 	uint8_t score[2];
 	State state_;

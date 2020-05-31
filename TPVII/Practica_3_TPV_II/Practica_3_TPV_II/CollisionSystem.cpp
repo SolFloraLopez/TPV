@@ -15,6 +15,7 @@ CollisionSystem::~CollisionSystem() {
 }
 
 void CollisionSystem::update() {
+	
 	auto gameCtrlSys = mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl);
 
 	if (gameCtrlSys->getState() != GameCtrlSystem::RUNNING)
@@ -38,7 +39,9 @@ void CollisionSystem::update() {
 
 				roundOver = true;
 				auto id = f->getComponent<FighterInfo>(ecs::FighterInfo)->fighterId;
-				mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onFighterDeath(id);
+				//mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onFighterDeath(id);
+
+				mngr_->send<msg::PlayerHitMsg>(id);
 			}
 		}
 	}

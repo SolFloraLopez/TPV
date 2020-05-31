@@ -39,7 +39,7 @@ void RenderSystem::drawImage(Entity *e) {
 void RenderSystem::drawCtrlMessages() {
 	auto gameState =
 		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->getState();
-	if (gameState != GameCtrlSystem::READY) {
+	if (gameState == GameCtrlSystem::WAITING) {
 		auto msgTex = game_->getTextureMngr()->getTexture(
 			Resources::WaitingForPlayer);
 		msgTex->render((game_->getWindowWidth() - msgTex->getWidth()) / 2,

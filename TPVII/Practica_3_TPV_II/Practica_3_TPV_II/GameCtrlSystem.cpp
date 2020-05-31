@@ -16,13 +16,16 @@ GameCtrlSystem::GameCtrlSystem() :
 	resetScore();
 }
 
-void GameCtrlSystem::receive(const msg::Message& msg)
+void GameCtrlSystem::recieve(const msg::Message& msg)
 {
 	switch (msg.id) {
 	case msg::_PLAYER_INFO: {
-		if (state_ == READY || msg.senderClientId == mngr_->getClientId())
+		if (state_ == READY || msg.senderClientId == mngr_->getClientId()) {
 			std::cout << "Client " << mngr_->getClientId() << " waiting" << endl;
+			std::cout << "sender: " << msg.senderClientId << endl;
+			std::cout << state_ << endl;
 			return;
+		}
 
 		state_ = READY;
 		std::cout << "Client " << mngr_->getClientId() << " ready" << endl;
@@ -34,7 +37,21 @@ void GameCtrlSystem::receive(const msg::Message& msg)
 		
 		state_ = WAITING;
 		//cambiar score a 0 y la ronda a 0
-		break; }
+		break; 
+	}
+	case msg::_START_REQ: {
+		if (state_ != RUNNING) 
+			mngr_->send<msg::StartGameMsg>();
+		break;
+	}		
+	case msg::_START_GAME: {
+		startGame();
+		break;
+	}
+	case msg::_PLAYER_HIT: {
+		onFighterDeath(static_cast<const msg::PlayerHitMsg&>(msg).player);
+		break;
+	}
 	default:
 		break; 
 	}
@@ -48,17 +65,18 @@ void GameCtrlSystem::init() {
 
 void GameCtrlSystem::update() {
 
-	if (state_ == READY) {
+	if (state_ == READY || state_ == ROUNDOVER) {
 		if (state_ != RUNNING) {
 			InputHandler* ih = game_->getInputHandler();
 			if (ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
-				startGame();
+				mngr_->send<msg::Message>(msg::_START_REQ);
 			}
 		}
 	}
 }
 
 void GameCtrlSystem::startGame() {
+	
 	if (state_ == GAMEOVER) {
 		resetScore();
 	}

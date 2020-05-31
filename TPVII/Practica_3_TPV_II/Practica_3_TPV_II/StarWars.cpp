@@ -68,8 +68,11 @@ void StarWars::start() {
 		bulletsSystem_->update();
 		networkingSystem_->update();
 
-		if (collisionSystem_ != nullptr)
-			collisionSystem_->update();
+		if (mngr_->getClientId() == 0) {
+			if (collisionSystem_ != nullptr)
+				collisionSystem_->update();
+		}
+
 		renderSystem_->update();
 
 		mngr_->flushMessages();

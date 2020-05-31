@@ -14,6 +14,10 @@ enum MsgId : uint8_t {
 	_CLIENT_DISCONNECTED, //
 	_PLAYER_INFO, //
 	_POSITION_INFO, //
+	_START_REQ, //
+	_START_GAME, //
+	_PLAYER_HIT, //
+
 
 
 	//
@@ -55,9 +59,24 @@ struct PositionInfoMsg : Message {
 	}		
 	double x;
 	double y;
+	//pasar la rotacion tambien y la pos como vector2 igual esta mejor
 };
 
+struct StartGameMsg : Message {
+	StartGameMsg() :
+		Message(sizeof(StartGameMsg), _START_GAME) {
+		//hay que pasar la posicion inicial de los jugadores
+	}
+};
 
+struct PlayerHitMsg : Message {
+	PlayerHitMsg(uint8_t player) :
+		Message(sizeof(PlayerHitMsg), _PLAYER_HIT), player(player) {
+	}
+	uint8_t player;
+};
+
+//crear mensajes para las balas
 #pragma pack(pop)
 
 }

@@ -15,7 +15,7 @@
 using ecs::CmpId;
 
 FightersSystem::FightersSystem() :
-		System(ecs::_sys_Fighters), fighter0_(nullptr), fighter1_(nullptr) {
+	System(ecs::_sys_Fighters), fighter0_(nullptr), fighter1_(nullptr) {
 }
 
 FightersSystem::~FightersSystem() {
@@ -43,6 +43,10 @@ void FightersSystem::recieve(const msg::Message& msg)
 
 		break;
 	}
+	case msg::_START_GAME: {
+		//resetea la posicion de los jugadores con los parametros del msg
+		break;
+	}
 	default:
 		break;
 	}
@@ -57,7 +61,7 @@ void FightersSystem::resetFighterPositions() {
 	auto f1Tr = fighter1_->getComponent<Transform>(ecs::Transform);
 	f1Tr->velocity_ = Vector2D(0.0, 0.0);
 	f1Tr->position_ = Vector2D(game_->getWindowWidth() - 50.0 - 10.0,
-			game_->getWindowHeight() / 2 - 25);
+		game_->getWindowHeight() / 2 - 25);
 	f1Tr->rotation_ = -90.0;
 }
 
@@ -72,10 +76,10 @@ void FightersSystem::init() {
 	f0Tr->height_ = 50.0;
 	f0Tr->rotation_ = 90.0;
 	fighter0_->addComponent<CtrlKeys>(SDLK_LEFT, SDLK_RIGHT, SDLK_UP, SDLK_DOWN,
-			SDLK_SPACE);
+		SDLK_SPACE);
 
 	fighter0_->addComponent<Image>(
-			game_->getTextureMngr()->getTexture(Resources::Fighter));
+		game_->getTextureMngr()->getTexture(Resources::Fighter));
 	fighter0_->addToGroup(ecs::_grp_Fighters);
 	mngr_->setHandler(ecs::_hdlr_Fighter0, fighter0_);
 	fighter0_->addComponent<FighterInfo>(0);
@@ -84,7 +88,7 @@ void FightersSystem::init() {
 	fighter1_ = mngr_->addEntity();
 	auto f1Tr = fighter1_->addComponent<Transform>();
 	f1Tr->position_ = Vector2D(game_->getWindowWidth() - 50.0 - 10.0,
-			game_->getWindowHeight() / 2 - 25);
+		game_->getWindowHeight() / 2 - 25);
 	f1Tr->velocity_ = Vector2D(0.0, 0.0);
 	f1Tr->width_ = 50.0;
 	f1Tr->height_ = 50.0;
@@ -93,7 +97,7 @@ void FightersSystem::init() {
 		SDLK_SPACE);
 
 	fighter1_->addComponent<Image>(
-			game_->getTextureMngr()->getTexture(Resources::Fighter));
+		game_->getTextureMngr()->getTexture(Resources::Fighter));
 	fighter1_->addToGroup(ecs::_grp_Fighters);
 	fighter1_->addComponent<FighterInfo>(1);
 	mngr_->setHandler(ecs::_hdlr_Fighter1, fighter1_);
@@ -101,18 +105,18 @@ void FightersSystem::init() {
 
 void FightersSystem::update() {
 	auto gameState =
-			mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->getState();
+		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->getState();
 	if (gameState != GameCtrlSystem::RUNNING)
 		return;
 
-	if(mngr_->getClientId() == 0) updateFighter(fighter0_);
+	if (mngr_->getClientId() == 0) updateFighter(fighter0_);
 	else updateFighter(fighter1_);
 
 }
 
-void FightersSystem::updateFighter(Entity *e) {
-	Transform *tr = e->getComponent<Transform>(ecs::Transform);
-	CtrlKeys *keys = e->getComponent<CtrlKeys>(ecs::CtrlKeys);
+void FightersSystem::updateFighter(Entity* e) {
+	Transform* tr = e->getComponent<Transform>(ecs::Transform);
+	CtrlKeys* keys = e->getComponent<CtrlKeys>(ecs::CtrlKeys);
 
 	auto ih = game_->getInputHandler();
 	if (ih->keyDownEvent()) {
@@ -144,6 +148,7 @@ void FightersSystem::updateFighter(Entity *e) {
 			mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->shoot(p, d, 2, 5);
 
 		}
+		
 
 	}
 
@@ -158,7 +163,7 @@ void FightersSystem::updateFighter(Entity *e) {
 	double x = newPos.getX();
 
 	if (y <= 0 || y + tr->height_ >= game_->getWindowHeight() || x <= 0
-			|| x + tr->width_ >= game_->getWindowWidth()) {
+		|| x + tr->width_ >= game_->getWindowWidth()) {
 		tr->velocity_ = Vector2D();
 		tr->position_ = oldPos;
 	}
