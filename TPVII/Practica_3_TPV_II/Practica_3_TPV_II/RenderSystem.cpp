@@ -53,7 +53,16 @@ void RenderSystem::drawCtrlMessages() {
 	}
 
 	if (gameState == GameCtrlSystem::GAMEOVER) {
-		auto msgTex = game_->getTextureMngr()->getTexture(Resources::GameOver);
+
+		auto gameCtrl = mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl);
+		Resources::TextureId message;
+		uint8_t id = mngr_->getClientId();
+
+		if (gameCtrl->getScore(id) > gameCtrl->getScore(1 - id)) message = Resources::Win;
+		else if (gameCtrl->getScore(id) < gameCtrl->getScore(1 - id)) message = Resources::Loss;
+		else message = Resources::Draw;
+
+		auto msgTex = game_->getTextureMngr()->getTexture(message);
 		msgTex->render((game_->getWindowWidth() - msgTex->getWidth()) / 2,
 			(game_->getWindowHeight() - msgTex->getHeight()) / 2);
 

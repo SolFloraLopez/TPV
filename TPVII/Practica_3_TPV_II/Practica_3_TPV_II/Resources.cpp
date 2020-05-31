@@ -19,8 +19,10 @@ vector<Resources::TextMsgInfo> Resources::messages_ {
 //
 		{ PressEnter, "Press Enter to Start", { COLOR(0xaaffbbff) }, ARIAL24 }, //
 		{ GameOver, "Game Over", { COLOR(0xffffbbff) }, ARIAL24 }, //
-		{ WaitingForPlayer, "Waiting for other player", { COLOR(0xaaccbbff) }, ARIAL24 } //
-
+		{ WaitingForPlayer, "Waiting for other player", { COLOR(0xaaccbbff) }, ARIAL24 }, //
+		{ Win, "You win", { COLOR(0xaaccbbff) }, ARIAL24 }, //
+		{ Loss, "You lose", { COLOR(0xaaccbbff) }, ARIAL24 }, //
+		{ Draw, "Draw", { COLOR(0xaaccbbff) }, ARIAL24 } //
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {

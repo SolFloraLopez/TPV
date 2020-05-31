@@ -44,10 +44,6 @@ void FightersSystem::recieve(const msg::Message& msg)
 
 		break;
 	}
-	case msg::_START_GAME: {
-		//resetea la posicion de los jugadores con los parametros del msg
-		break;
-	}
 	case msg::_FIGHTER_SHOOT: {
 		if (msg.senderClientId == mngr_->getClientId())
 			return;
