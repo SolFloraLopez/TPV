@@ -8,7 +8,7 @@
 class GameCtrlSystem: public System {
 public:
 	enum State : uint8_t {
-		READY, RUNNING, ROUNDOVER, GAMEOVER
+		WAITING, READY, RUNNING, ROUNDOVER, GAMEOVER
 	};
 
 	GameCtrlSystem();
@@ -22,6 +22,9 @@ public:
 		assert(fighterId >= 0 && fighterId <= 1);
 		return score[fighterId];
 	}
+
+	void receive(const msg::Message& msg);
+
 private:
 	void resetScore();
 	void startGame();

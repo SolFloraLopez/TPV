@@ -23,11 +23,20 @@ void NetworkingSystem::update() {
 
 	while ((msg = net->recieve()) != nullptr) {
 		switch (msg->id) {
+		case msg::_PLAYER_INFO:
+			mngr_->forwardMsg<msg::Message>(msg->senderClientId,
+				msg::_PLAYER_INFO);
+			break;
 		case msg::_CLIENT_DISCONNECTED:
 			mngr_->forwardMsg<msg::ClientDisconnectedMsg>(msg->senderClientId,
-					static_cast<msg::ClientDisconnectedMsg*>(msg)->clientId);
+				static_cast<msg::ClientDisconnectedMsg*>(msg)->clientId);
 			break;
-
+		case msg::_POSITION_INFO: {
+			msg::PositionInfoMsg* m = static_cast<msg::PositionInfoMsg*>(msg);
+			mngr_->forwardMsg<msg::PositionInfoMsg>(msg->senderClientId, m->x,
+				m->y);
+			break;
+		}
 		default:
 			assert(false);
 			break;

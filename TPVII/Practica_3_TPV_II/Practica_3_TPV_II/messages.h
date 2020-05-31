@@ -12,6 +12,9 @@ enum MsgId : uint8_t {
 	_CONNECTED, //
 	_CONNECTION_REFUSED, //
 	_CLIENT_DISCONNECTED, //
+	_PLAYER_INFO, //
+	_POSITION_INFO, //
+
 
 	//
 	_last_MsgId_
@@ -44,6 +47,14 @@ struct ClientDisconnectedMsg: Message {
 					clientId) {
 	}
 	uint32_t clientId;
+};
+
+struct PositionInfoMsg : Message {
+	PositionInfoMsg(double x, double y) :
+		Message(sizeof(PositionInfoMsg), _POSITION_INFO), x(x), y(y) {
+	}		
+	double x;
+	double y;
 };
 
 

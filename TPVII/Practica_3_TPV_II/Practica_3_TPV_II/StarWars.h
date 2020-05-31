@@ -8,6 +8,7 @@
 #include "GameCtrlSystem.h"
 #include "Manager.h"
 #include "RenderSystem.h"
+#include "NetworkingSystem.h"
 #include "SDLGame.h"
 
 class StarWars {
@@ -31,7 +32,7 @@ private:
 	Manager *mngr_;
 	bool exit_;
 
-	//NetworkingSystem* networkingSystem_;
+	NetworkingSystem* networkingSystem_;
 	//PhysicsSystem* physicsSystem_;
 	RenderSystem *renderSystem_;
 	FightersSystem *fightersSystem_;

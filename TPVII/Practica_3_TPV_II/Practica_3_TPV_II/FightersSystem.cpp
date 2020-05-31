@@ -21,6 +21,33 @@ FightersSystem::FightersSystem() :
 FightersSystem::~FightersSystem() {
 }
 
+void FightersSystem::recieve(const msg::Message& msg)
+{
+	switch (msg.id) {
+	case msg::_POSITION_INFO: {
+		if (msg.senderClientId == mngr_->getClientId())
+			return;
+
+		Transform* playerTR = nullptr;
+		if (msg.senderClientId == 0) {
+			playerTR = mngr_->getHandler(ecs::_hdlr_Fighter0)->getComponent<
+				Transform>(ecs::Transform);
+		}
+		else {
+			playerTR = mngr_->getHandler(ecs::_hdlr_Fighter1)->getComponent<
+				Transform>(ecs::Transform);
+		}
+
+		playerTR->position_.setX(static_cast<const msg::PositionInfoMsg&>(msg).x);
+		playerTR->position_.setY(static_cast<const msg::PositionInfoMsg&>(msg).y);
+
+		break;
+	}
+	default:
+		break;
+	}
+}
+
 void FightersSystem::resetFighterPositions() {
 	auto f0Tr = fighter0_->getComponent<Transform>(ecs::Transform);
 	f0Tr->velocity_ = Vector2D(0.0, 0.0);
@@ -62,7 +89,8 @@ void FightersSystem::init() {
 	f1Tr->width_ = 50.0;
 	f1Tr->height_ = 50.0;
 	f1Tr->rotation_ = -90.0;
-	fighter1_->addComponent<CtrlKeys>(SDLK_a, SDLK_s, SDLK_w, SDLK_z, SDLK_x);
+	fighter1_->addComponent<CtrlKeys>(SDLK_LEFT, SDLK_RIGHT, SDLK_UP, SDLK_DOWN,
+		SDLK_SPACE);
 
 	fighter1_->addComponent<Image>(
 			game_->getTextureMngr()->getTexture(Resources::Fighter));
@@ -77,8 +105,8 @@ void FightersSystem::update() {
 	if (gameState != GameCtrlSystem::RUNNING)
 		return;
 
-	updateFighter(fighter0_);
-	updateFighter(fighter1_);
+	if(mngr_->getClientId() == 0) updateFighter(fighter0_);
+	else updateFighter(fighter1_);
 
 }
 
@@ -91,25 +119,29 @@ void FightersSystem::updateFighter(Entity *e) {
 		if (ih->isKeyDown(keys->left)) { // turn left
 			tr->rotation_ = fmod(tr->rotation_ - 5.0, 360.0);
 			tr->velocity_ = tr->velocity_.rotate(-5.0);
-		} else if (ih->isKeyDown(keys->right)) { // turn right
+		}
+		else if (ih->isKeyDown(keys->right)) { // turn right
 			tr->rotation_ = fmod(tr->rotation_ + 5.0, 360.0);
 			tr->velocity_ = tr->velocity_.rotate(5.0);
-		} else if (ih->isKeyDown(keys->speedup)) { // speed up
+		}
+		else if (ih->isKeyDown(keys->speedup)) { // speed up
 			tr->velocity_ = Vector2D(0.0, -1.0).rotate(tr->rotation_)
-					* (std::min(tr->velocity_.magnitude() + 0.2, 3.0));
-		} else if (ih->isKeyDown(keys->slowdown)) { // slow down
+				* (std::min(tr->velocity_.magnitude() + 0.2, 3.0));
+		}
+		else if (ih->isKeyDown(keys->slowdown)) { // slow down
 			tr->velocity_ = Vector2D(0.0, -1.0).rotate(tr->rotation_)
-					* (std::max(tr->velocity_.magnitude() - 0.2, 0.0));
-		} else if (ih->isKeyDown(keys->shoot)
-				&& game_->getTime() - keys->lastShootTime > 1000) { // shoot
+				* (std::max(tr->velocity_.magnitude() - 0.2, 0.0));
+		}
+		else if (ih->isKeyDown(keys->shoot)
+			&& game_->getTime() - keys->lastShootTime > 1000) { // shoot
 			keys->lastShootTime = game_->getTime();
 			Vector2D p = tr->position_
-					+ Vector2D(tr->width_ / 2, tr->height_ / 2)
-					+ Vector2D(0, -(tr->height_ / 2 + 5.0)).rotate(
-							tr->rotation_);
+				+ Vector2D(tr->width_ / 2, tr->height_ / 2)
+				+ Vector2D(0, -(tr->height_ / 2 + 5.0)).rotate(
+					tr->rotation_);
 			Vector2D d = Vector2D(0, -1).rotate(tr->rotation_) * 2;
 
-			mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->shoot(p,d,2,5);
+			mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->shoot(p, d, 2, 5);
 
 		}
 
@@ -130,4 +162,6 @@ void FightersSystem::updateFighter(Entity *e) {
 		tr->velocity_ = Vector2D();
 		tr->position_ = oldPos;
 	}
+
+	mngr_->send<msg::PositionInfoMsg>(tr->position_.getX(), tr->position_.getY());
 }

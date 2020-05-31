@@ -1,100 +1,65 @@
-﻿  AudioManager.cpp
-  BulletsPool.cpp
-  BulletsSystem.cpp
-  Collisions.cpp
-  CollisionSystem.cpp
-  DefFactory.cpp
-  Entity.cpp
-  FightersSystem.cpp
-  Font.cpp
-  FontsManager.cpp
-  GameCtrlSystem.cpp
-  InputHandler.cpp
-  jute.cpp
-  main.cpp
-  Manager.cpp
-  Networking.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Networking.cpp(21,8): warning C4018: '<': no coinciden signed/unsigned
-  NetworkingSystem.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(38,3): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(36): message : al compilar la función del miembro clase plantilla "void ObjectFactory<T,std::allocator<T>>::destroy(T *)"
+﻿  GameCtrlSystem.cpp
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(38,3): warning C4018: '<': no coinciden signed/unsigned
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(36): message : al compilar la función del miembro clase plantilla "void ObjectFactory<T,std::allocator<T>>::destroy(T *)"
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(27): message : Vea la referencia a la creación de una instancia de la función plantilla "void ObjectFactory<T,std::allocator<T>>::destroy(T *)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(27): message : Vea la referencia a la creación de una instancia de la función plantilla "void ObjectFactory<T,std::allocator<T>>::destroy(T *)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(38): message : Vea la referencia a la creación de una instancia de clase plantilla "ObjectFactory<T,std::allocator<T>>" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(38): message : Vea la referencia a la creación de una instancia de clase plantilla "ObjectFactory<T,std::allocator<T>>" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(106): message : Vea la referencia a la creación de una instancia de clase plantilla "OFFacotry<T>" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(96): message : Vea la referencia a la creación de una instancia de clase plantilla "OFFacotry<T>" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\NetworkingSystem.cpp(28): message : Vea la referencia a la creación de una instancia de la función plantilla "void Manager::forwardMsg<msg::ClientDisconnectedMsg,OFFacotry<T>,uint32_t&>(uint32_t,uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\GameCtrlSystem.cpp(29): message : Vea la referencia a la creación de una instancia de la función plantilla "void Manager::send<msg::Message,OFFacotry<T>,msg::MsgId>(msg::MsgId &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(25,1): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(22): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ObjectFactory<T,std::allocator<T>>::construct<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\ObjectFactory.h(25,1): warning C4018: '<': no coinciden signed/unsigned
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(22): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ObjectFactory<T,std::allocator<T>>::construct<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(23): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ObjectFactory<T,std::allocator<T>>::construct<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(23): message : Vea la referencia a la creación de una instancia de la función plantilla "T *ObjectFactory<T,std::allocator<T>>::construct<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(13): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct_<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(13): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct_<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(14): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct_<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\OFFacotry.h(14): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct_<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(106): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(96): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(107): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct<uint32_t&>(uint32_t &)" que se está compilando
+D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\Manager.h(97): message : Vea la referencia a la creación de una instancia de la función plantilla "T *OFFacotry<T>::construct<_Ty>(_Ty &&)" que se está compilando
           with
           [
-              T=msg::ClientDisconnectedMsg
+              T=msg::Message,
+              _Ty=msg::MsgId
           ]
-  ObjectFactory.cpp
-  ObjectPool.cpp
-  OFFacotry.cpp
-  Generando código...
-  Compilando...
-  RandomNumberGenerator.cpp
-  RenderSystem.cpp
-  Resources.cpp
-  SDLAudioManager.cpp
-  SDLFontsManager.cpp
-  SDLGame.cpp
-  SDLTexturesManager.cpp
-  sdl_macros.cpp
-  Singleton.cpp
-  SRandBasedGenerator.cpp
-C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\Practica_3_TPV_II\SRandBasedGenerator.cpp(11,8): warning C4244: 'inicializando': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  StarWars.cpp
-  System.cpp
-  Texture.cpp
-  TexturesManager.cpp
-  Transform.cpp
-  Vector2D.cpp
-  Generando código...
-     Creando biblioteca C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\bin\Practica_3_TPV_IIDebug.lib y objeto C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\bin\Practica_3_TPV_IIDebug.exp
-  TPV2.vcxproj -> C:\Users\Tomás López\Desktop\Universidad\Segundo\TPV\TPV\TPVII\Practica_3_TPV_II\bin\Practica_3_TPV_IIDebug.exe
+  TPV2.vcxproj -> D:\Otros\Uni\TP\RepoTP\TPV\TPVII\Practica_3_TPV_II\bin\Practica_3_TPV_IIDebug.exe

@@ -29,8 +29,8 @@ void StarWars::initGame() {
 
 	BulletsPool::init(100);
 
-	/*networkingSystem_ = mngr_->addSystem<NetworkingSystem>();
-	physicsSystem_ = mngr_->addSystem<PhysicsSystem>();*/
+	networkingSystem_ = mngr_->addSystem<NetworkingSystem>();
+	/*physicsSystem_ = mngr_->addSystem<PhysicsSystem>();*/
 	fightersSystem_ = mngr_->addSystem<FightersSystem>();
 	gameCtrlSystem_ = mngr_->addSystem<GameCtrlSystem>();
 	bulletsSystem_ = mngr_->addSystem<BulletsSystem>();
@@ -66,8 +66,8 @@ void StarWars::start() {
 		gameCtrlSystem_->update();
 		fightersSystem_->update();
 		bulletsSystem_->update();
+		networkingSystem_->update();
 
-		/*networkingSystem_->update();*/
 		if (collisionSystem_ != nullptr)
 			collisionSystem_->update();
 		renderSystem_->update();
