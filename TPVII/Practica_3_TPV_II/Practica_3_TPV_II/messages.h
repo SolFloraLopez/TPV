@@ -18,6 +18,7 @@ enum MsgId : uint8_t {
 	_START_GAME, //
 	_PLAYER_HIT, //
 	_FIGHTER_SHOOT, //
+	_FIGHTERS_COLLIDE, //
 
 
 
@@ -62,13 +63,6 @@ struct PositionInfoMsg : Message {
 	double y;
 	double rot;
 	//pasar la rotacion tambien y la pos como vector2 igual esta mejor
-};
-
-struct StartGameMsg : Message {
-	StartGameMsg() :
-		Message(sizeof(StartGameMsg), _START_GAME) {
-		//hay que pasar la posicion inicial de los jugadores
-	}
 };
 
 struct PlayerHitMsg : Message {

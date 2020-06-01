@@ -41,8 +41,8 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 		break; 
 	}
 	case msg::_START_REQ: {
-		if (state_ != RUNNING) 
-			mngr_->send<msg::StartGameMsg>();
+		if (state_ != RUNNING && mngr_->getClientId() == 0) 
+			mngr_->send<msg::Message>(msg::_START_GAME);
 		break;
 	}		
 	case msg::_START_GAME: {
@@ -51,6 +51,10 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 	}
 	case msg::_PLAYER_HIT: {
 		onFighterDeath(static_cast<const msg::PlayerHitMsg&>(msg).player);
+		break;
+	}	
+	case msg::_FIGHTERS_COLLIDE: {
+		onFighterCrash();
 		break;
 	}
 	default:
@@ -65,13 +69,10 @@ void GameCtrlSystem::init() {
 }
 
 void GameCtrlSystem::update() {
-
-	if (state_ == READY || state_ == ROUNDOVER) {
-		if (state_ != RUNNING) {
-			InputHandler* ih = game_->getInputHandler();
-			if (ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
-				mngr_->send<msg::Message>(msg::_START_REQ);
-			}
+	if (state_ != RUNNING && state_ != WAITING) {
+		InputHandler* ih = game_->getInputHandler();
+		if (ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
+			mngr_->send<msg::Message>(msg::_START_REQ);
 		}
 	}
 }
@@ -96,6 +97,12 @@ void GameCtrlSystem::onFighterDeath(uint8_t fighterId) {
 	if (score[id] == 3)
 		state_ = GAMEOVER;
 
+}
+
+void GameCtrlSystem::onFighterCrash() 
+{
+	state_ = ROUNDOVER;
+	mngr_->getSystem<BulletsSystem>(ecs::_sys_Bullets)->disableAll();
 }
 
 

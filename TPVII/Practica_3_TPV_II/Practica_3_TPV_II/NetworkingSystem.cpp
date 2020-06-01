@@ -43,9 +43,8 @@ void NetworkingSystem::update() {
 			break;
 		}
 		case msg::_START_GAME: {
-			msg::StartGameMsg* m = static_cast<msg::StartGameMsg*>(msg);
-			/*mngr_->forwardMsg<msg::StartRoundMsg>(msg->senderClientId, m->x,
-				m->y);*/
+			msg::Message* m = static_cast<msg::Message*>(msg);
+			mngr_->forwardMsg<msg::Message>(msg->senderClientId, msg::_START_GAME);
 			break;
 		}
 		case msg::_PLAYER_HIT: {
@@ -56,6 +55,11 @@ void NetworkingSystem::update() {
 		case msg::_FIGHTER_SHOOT:
 		{
 			mngr_->forwardMsg<msg::Message>(msg->senderClientId, msg::_FIGHTER_SHOOT);
+			break;
+		}
+		case msg::_FIGHTERS_COLLIDE:
+		{
+			mngr_->forwardMsg<msg::Message>(msg->senderClientId, msg::_FIGHTERS_COLLIDE);
 			break;
 		}
 		default:

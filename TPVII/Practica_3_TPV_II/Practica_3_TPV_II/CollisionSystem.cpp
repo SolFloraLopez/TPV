@@ -24,6 +24,17 @@ void CollisionSystem::update() {
 
 	bool roundOver = false;
 
+	Transform* fgTR0 = mngr_->getGroupEntities(ecs::_grp_Fighters)[0]->getComponent<Transform>(ecs::Transform);
+	Transform* fgTR1 = mngr_->getGroupEntities(ecs::_grp_Fighters)[1]->getComponent<Transform>(ecs::Transform);
+
+	if(Collisions::collidesWithRotation(fgTR0->position_, fgTR0->width_,
+		fgTR0->height_, fgTR0->rotation_, fgTR1->position_, fgTR1->width_,
+		fgTR1->height_, fgTR1->rotation_))
+	{
+		roundOver = true;
+		mngr_->send<msg::Message>(msg::_FIGHTERS_COLLIDE);
+	}
+
 	for (auto &f : mngr_->getGroupEntities(ecs::_grp_Fighters)) {
 		auto fTR = f->getComponent<Transform>(ecs::Transform);
 

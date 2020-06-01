@@ -30,7 +30,8 @@ private:
 	void startGame();
 	void sendMyInfo();
 
-	void onFighterDeath(uint8_t fighterId);
+	void onFighterDeath(uint8_t fighterId);	
+	void onFighterCrash();
 
 
 	uint8_t score[2];
