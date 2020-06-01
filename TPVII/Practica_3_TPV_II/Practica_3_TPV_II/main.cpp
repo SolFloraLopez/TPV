@@ -10,9 +10,10 @@ void server(int port) {
 	net.server(port);
 }
 
-void client(char* host, int port) {
+void client(char* host, int port, const char* name) {
 	try {
-		StarWars g(host, port);
+		cout << name << endl;
+		StarWars g(host, port, name);
 		g.start();
 	}
 	catch (std::string& e) { // catch errors thrown as strings
@@ -32,7 +33,10 @@ int main(int argc, char** argv) {
 		server(atoi(argv[2])); // start in server mode
 	}
 	else if (argc == 4 && strcmp(argv[1], "client") == 0) {
-		client(argv[2], atoi(argv[3])); // start in client mode
+		client(argv[2], atoi(argv[3]), "Anonymous"); // start in client mode
+	}
+	else if (argc == 5 && strcmp(argv[1], "client") == 0) {		
+		if(std::strlen(argv[4])<=10) client(argv[2], atoi(argv[3]), argv[4]); // start in client mode
 	}
 	else {
 		cout << "Usage: " << endl;

@@ -19,6 +19,7 @@ enum MsgId : uint8_t {
 	_PLAYER_HIT, //
 	_FIGHTER_SHOOT, //
 	_FIGHTERS_COLLIDE, //
+	_PLAYER_NAME, //
 
 
 
@@ -70,6 +71,14 @@ struct PlayerHitMsg : Message {
 		Message(sizeof(PlayerHitMsg), _PLAYER_HIT), player(player) {
 	}
 	uint8_t player;
+};
+
+struct PlayerName : Message {
+	PlayerName(const char* player) :
+		Message(sizeof(PlayerName), _PLAYER_NAME) {
+		strcpy_s(player_, 11, player);
+	}
+	char player_[11];
 };
 
 //crear mensajes para las balas

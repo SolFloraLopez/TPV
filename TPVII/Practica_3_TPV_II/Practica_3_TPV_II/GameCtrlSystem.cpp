@@ -57,6 +57,18 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 		onFighterCrash();
 		break;
 	}
+	case msg::_PLAYER_NAME: {
+		if (mngr_->getClientId() == msg.senderClientId) return;
+		
+		if (mngr_->getOpName() != (static_cast<const msg::PlayerName&>(msg).player_)) {
+			mngr_->setOpName((static_cast<const msg::PlayerName&>(msg).player_));
+
+		}
+		mngr_->send<msg::PlayerName>(mngr_->getName());
+		//cout << mngr_->getOpName() << endl;
+
+		break;
+	}
 	default:
 		break; 
 	}
@@ -65,6 +77,7 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 void GameCtrlSystem::init() {
 	state_ = WAITING;
 	mngr_->send<msg::Message>(msg::_PLAYER_INFO);
+	mngr_->send<msg::PlayerName>(mngr_->getName());
 	std::cout << "Client " << mngr_->getClientId() << " connected" << endl;
 }
 
