@@ -24,7 +24,6 @@ void RenderSystem::update() {
 
 	drawCtrlMessages();
 	drawScore();
-	drawNames();
 }
 
 void RenderSystem::drawImage(Entity *e) {
@@ -80,24 +79,4 @@ void RenderSystem::drawScore() {
 			game_->getFontMngr()->getFont(Resources::ARIAL24),
 			{ COLOR(0x111122ff) });
 	scoreTex.render(game_->getWindowWidth() / 2 - scoreTex.getWidth() / 2, 10);
-}
-
-void RenderSystem::drawNames()
-{
-	Texture myName(game_->getRenderer(), (mngr_->getName(0)), game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0x111122ff) });
-	Texture opName(game_->getRenderer(), (mngr_->getName(1)), game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0x111122ff) });
-	auto whiteRect = game_->getTextureMngr()->getTexture(Resources::WhiteRect);
-
-	if (mngr_->getClientId() == 0) {
-		whiteRect->render((game_->getWindowWidth() / 4 - myName.getWidth() / 2) * 3, 10);
-
-		myName.render((game_->getWindowWidth() / 4 - myName.getWidth() / 2) * 3, 10);		
-		opName.render(game_->getWindowWidth() / 4 - myName.getWidth() / 2, 10);
-	}
-	else {
-		whiteRect->render(game_->getWindowWidth() / 4 - myName.getWidth() / 2, 10);
-
-		opName.render((game_->getWindowWidth() / 4 - myName.getWidth() / 2) * 3, 10);		
-		myName.render(game_->getWindowWidth() / 4 - myName.getWidth() / 2, 10);
-	}
 }

@@ -15,10 +15,8 @@ class Manager {
 	using EventType = std::function<void()>;
 
 public:
-	Manager(SDLGame* game, const char* name) :
-		game_(game)
-	{
-		names_[0] = name;
+	Manager(SDLGame *game) :
+			game_(game) {
 
 		msgs_ = new std::list<uptr_msg>();
 
@@ -131,14 +129,6 @@ public:
 		return game_->getNetworking()->getClientId();
 	}
 
-	const char* getName(int i) {
-		return names_[i];
-	}
-
-	void setName(const char* name,int i) {
-		names_[i] = name;
-	}
-
 private:
 	SDLGame *game_;
 
@@ -150,7 +140,5 @@ private:
 	std::list<std::function<void()>> events_;
 	std::list<uptr_msg> *msgs_;
 	// std::list<uptr_msg> *supportMsgs_;
-
-	std::array<const char*, 2> names_;
 
 };
