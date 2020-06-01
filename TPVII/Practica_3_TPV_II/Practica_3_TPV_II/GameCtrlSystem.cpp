@@ -9,6 +9,7 @@
 #include "Manager.h"
 #include "BulletsSystem.h"
 
+
 using ecs::CmpId;
 
 GameCtrlSystem::GameCtrlSystem() :
@@ -57,6 +58,16 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 		onFighterCrash();
 		break;
 	}
+	case msg::_PLAYER_NAME: {
+		if (msg.senderClientId == mngr_->getClientId()) {
+			return;
+		}
+		else {
+			mngr_->setName((static_cast<const msg::PlayerName&>(msg).name), 1);
+		}
+
+		break;
+	}
 	default:
 		break; 
 	}
@@ -65,6 +76,7 @@ void GameCtrlSystem::recieve(const msg::Message& msg)
 void GameCtrlSystem::init() {
 	state_ = WAITING;
 	mngr_->send<msg::Message>(msg::_PLAYER_INFO);
+	mngr_->send<msg::PlayerName>(mngr_->getName(0));
 	std::cout << "Client " << mngr_->getClientId() << " connected" << endl;
 }
 

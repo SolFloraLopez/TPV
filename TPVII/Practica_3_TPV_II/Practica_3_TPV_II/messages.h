@@ -4,6 +4,7 @@
 #include <cstring>
 #include <ctime>
 
+
 namespace msg {
 
 using msgSizeType = uint32_t;
@@ -19,6 +20,7 @@ enum MsgId : uint8_t {
 	_PLAYER_HIT, //
 	_FIGHTER_SHOOT, //
 	_FIGHTERS_COLLIDE, //
+	_PLAYER_NAME, //
 
 
 
@@ -70,6 +72,14 @@ struct PlayerHitMsg : Message {
 		Message(sizeof(PlayerHitMsg), _PLAYER_HIT), player(player) {
 	}
 	uint8_t player;
+};
+
+struct PlayerName : Message {
+	PlayerName(const char* n) :
+		Message(sizeof(PlayerName), _PLAYER_NAME) {
+	std:strcpy_s(name, n);	
+	}
+	char name[11];
 };
 
 //crear mensajes para las balas
