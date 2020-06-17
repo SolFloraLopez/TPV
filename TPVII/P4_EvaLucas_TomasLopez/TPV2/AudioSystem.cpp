@@ -25,7 +25,11 @@ void AudioSystem::recieve(const msg::Message& msg) {
 	{
 	case msg::_GAME_START: {
 		game_->getAudioMngr()->haltMusic();
-		//game_->getAudioMngr()->playMusic(Resources::PacMan_Intro);//
+		break;
+	}
+	case msg::_GAME_READY: {
+		game_->getAudioMngr()->haltMusic();
+		game_->getAudioMngr()->playMusic(Resources::PacMan_Intro);
 
 		break;
 	}

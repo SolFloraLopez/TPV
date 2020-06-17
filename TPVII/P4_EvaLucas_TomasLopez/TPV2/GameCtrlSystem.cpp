@@ -61,7 +61,7 @@ void GameCtrlSystem::update() {
 			gameState_->state_ = GameState::READY;
 			gameState_->score_ = 0;
 			gameState_->won_ = false;
-			//game_->getAudioMngr()->playMusic(Resources::PacMan_Intro);//
+			mngr_->send<msg::Message>(msg::_GAME_READY);
 			break;
 		default:
 			assert(false); // should not be rechable

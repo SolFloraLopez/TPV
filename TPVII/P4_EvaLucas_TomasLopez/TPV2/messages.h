@@ -12,6 +12,7 @@ enum MsgId : msgType {
 	_GAME_OVER,
 	_FOOD_COLLISION,
 	_NO_FOOD,
+	_GAME_READY,
 
 	//
 	_last_MsgId_

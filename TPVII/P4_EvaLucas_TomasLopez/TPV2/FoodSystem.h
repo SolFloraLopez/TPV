@@ -9,7 +9,6 @@ public:
 	void update() override;
 
 	void recieve(const msg::Message& msg) override;
-
 	
 private:
 	int numOfFoodPieces_;
