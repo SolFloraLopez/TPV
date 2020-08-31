@@ -10,8 +10,8 @@ private:
 	Texture* buttonExitTexture;
 public:
 	MainMenuState(SDLApplication* game);
-	~MainMenuState();
-	virtual void update() {};
-	virtual void render();
+	//~MainMenuState();
+	//virtual void update() {};
+	//virtual void render();
 	virtual void handleEvents();
 };

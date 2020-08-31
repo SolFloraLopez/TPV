@@ -20,25 +20,25 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonPlay);
 }
 
-MainMenuState::~MainMenuState() {
-	for (GameObject* ob : objects)
-	{
-		delete ob;
-	}
-};
+//MainMenuState::~MainMenuState() {
+//	for (GameObject* ob : objects)
+//	{
+//		delete ob;
+//	}
+//};
 
-void MainMenuState::render()
-{
-	list<GameObject*>::iterator it;
-
-	it = objects.begin();
-
-	while (it != objects.end())
-	{
-		(*it)->render();
-		++it;
-	}
-}
+//void MainMenuState::render()
+//{
+//	list<GameObject*>::iterator it;
+//
+//	it = objects.begin();
+//
+//	while (it != objects.end())
+//	{
+//		(*it)->render();
+//		++it;
+//	}
+//}
 
 void MainMenuState::handleEvents()
 {

@@ -8,7 +8,7 @@ ArrowsGameObject(pos, vel, width, height, texture, game, id)
 	state = estado;
 }
 
-Butterfly::~Butterfly(){}
+//Butterfly::~Butterfly(){}
 
 void Butterfly::render() /*const*/ { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura
 	SDL_Rect destRect = ArrowsGameObject::getDestRect(cols,rows);

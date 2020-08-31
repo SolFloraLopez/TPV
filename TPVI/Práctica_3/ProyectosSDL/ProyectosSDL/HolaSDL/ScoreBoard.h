@@ -31,8 +31,8 @@ public:
 	ScoreBoard(Texture* numbers, Texture* arrows, PlayState* game);
 	virtual void render();
 	virtual void update();
-	virtual void loadFromFile(fstream& input);
-	virtual void saveToFile(ofstream& output);
+	virtual void loadFromFile(fstream& input) {};
+	virtual void saveToFile(ofstream& output) {};
 	SDL_Rect getDestRect(int cols, int rows, uint height, uint width, Vector2D pos);
 	void setItList(list<GameObject*>::iterator iterator);
 };

@@ -27,8 +27,10 @@ private:
 	int currentMaxPoints = BASE_POINT_MAX;
 	bool load = false;
 	string file = "";
+	void newGame();
 public:
-	PlayState(SDLApplication* game, bool load, string file);
+	PlayState(SDLApplication* game, string file);
+	PlayState(SDLApplication* game) : GameState(game) { newGame(); };
 	virtual void update();
 	virtual void render();
 	virtual void handleEvents();

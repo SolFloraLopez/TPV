@@ -9,7 +9,7 @@ ArrowsGameObject::ArrowsGameObject(Point2D pos, Vector2D velocity, double width,
 	playState = game;
 };
 
-ArrowsGameObject::~ArrowsGameObject() {};
+//ArrowsGameObject::~ArrowsGameObject() {};
 
 //void ArrowsGameObject::render()
 //{

@@ -4,8 +4,8 @@
 Arrow::Arrow(double height, double width, Point2D pos, Vector2D vel, Texture* tex, PlayState* game, int id) :
 	ArrowsGameObject(pos, vel, width, height, tex, game, id) {}; //Constructor
 
-Arrow::~Arrow() //Destructor
-{}
+//Arrow::~Arrow() //Destructor
+//{}
 
 
 void Arrow::update() //Mueve la flecha segun su posicion y velocidad
@@ -19,10 +19,10 @@ void Arrow::update() //Mueve la flecha segun su posicion y velocidad
 	}
 }
 
-void Arrow::changePos(Vector2D newPos) //Cambia la posicion de la flecha
-{
-	pos = { newPos.getX(), newPos.getY() };
-}
+//void Arrow::changePos(Vector2D newPos) //Cambia la posicion de la flecha
+//{
+//	pos = { newPos.getX(), newPos.getY() };
+//}
 
 SDL_Rect* Arrow::returnPointRect() //Devuelve el rectangulo de la punta de la flecha
 {

@@ -57,11 +57,3 @@ void ScoreBoard::setItList(list<GameObject*>::iterator iterator)
 {
 	it = iterator;
 }
-
-void ScoreBoard::loadFromFile(fstream& input)
-{
-}
-
-void ScoreBoard::saveToFile(ofstream& output)
-{
-}

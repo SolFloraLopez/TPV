@@ -1,23 +1,32 @@
 #include "PlayState.h"
 
-PlayState::PlayState(SDLApplication* game, bool load, string file) :
-GameState(game)
+PlayState::PlayState(SDLApplication* game, string file) :
+	GameState(game)
 {
+	try
+	{
+		loadFromFile(file);
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what() << endl << "Comenzando una nueva partida" << endl;
+		newGame();
+	}
+
+}
+void PlayState::newGame()
+{	
 	ScoreBoard* scoreBoard = new ScoreBoard(getTexture(DigitsTexture), getTexture(ScoreArrowTexture), this);
 	objects.push_back(scoreBoard);
 	scoreBoard->setItList(objects.end());
+	
+	Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH, { 0, BOW_VELOCITY },
+		getTexture(BowTexture), getTexture(ArrowTexture), true, this, 0); //Crea el arco
 
-	if (!load) {
-		Bow* bow = new Bow({ 0,0 }, BOW_HEIGHT, BOW_WIDTH,{ 0, BOW_VELOCITY }, 
-			getTexture(BowTexture), getTexture(ArrowTexture), true, this, 0); //Crea el arco
-
-		objects.push_back(bow);
-		events.push_back(bow);
-		bow->setItList(objects.end());
-		butterflySpawner();
-	}
-
-	else loadFromFile(file);
+	objects.push_back(bow);
+	events.push_back(bow);
+	bow->setItList(objects.end());
+	butterflySpawner();
 }
 
 void PlayState::update()
@@ -78,15 +87,7 @@ void PlayState::render()
 {
 	getTexture(currentMap % MAP_AMOUNT)->render({ 0, 0, WIN_WIDTH, WIN_HEIGHT });
 
-	list<GameObject*>::iterator it;
-
-	it = objects.begin();
-
-	while (it != objects.end())
-	{
-		(*it)->render();
-		++it;
-	}
+	GameState::render();
 }
 
 void PlayState::handleEvents()
@@ -231,7 +232,6 @@ void PlayState::saveToFile()
 void PlayState::loadFromFile(string file)
 {
 	fstream input(file);
-
 	if (!input.is_open()) throw FileNotFoundError(file);
 
 	input >> availableArrows; input >> currentButterflies; input >> currentArrows; input >> points;
@@ -290,4 +290,8 @@ void PlayState::loadFromFile(string file)
 	}
 
 	input.close();
+
+	ScoreBoard* scoreBoard = new ScoreBoard(getTexture(DigitsTexture), getTexture(ScoreArrowTexture), this);
+	objects.push_back(scoreBoard);
+	scoreBoard->setItList(objects.end());
 }

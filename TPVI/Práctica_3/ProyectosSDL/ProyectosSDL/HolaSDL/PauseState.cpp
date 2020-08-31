@@ -20,25 +20,25 @@ PauseState::PauseState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonSave);
 }
 
-PauseState::~PauseState() {
-	for (GameObject* ob : objects)
-	{
-		delete ob;
-	}
-};
+//PauseState::~PauseState() {
+//	for (GameObject* ob : objects)
+//	{
+//		delete ob;
+//	}
+//};
 
-void PauseState::render()
-{
-	list<GameObject*>::iterator it;
-
-	it = objects.begin();
-
-	while (it != objects.end())
-	{
-		(*it)->render();
-		++it;
-	}
-}
+//void PauseState::render()
+//{
+//	list<GameObject*>::iterator it;
+//
+//	it = objects.begin();
+//
+//	while (it != objects.end())
+//	{
+//		(*it)->render();
+//		++it;
+//	}
+//}
 
 void PauseState::handleEvents()
 {

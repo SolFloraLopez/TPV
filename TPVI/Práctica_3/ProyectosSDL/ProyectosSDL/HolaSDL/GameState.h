@@ -15,17 +15,19 @@ protected:
 	list<EventHandler*> events;
 	SDLApplication* game;
 public:
-	GameState(SDLApplication* game);
+	GameState(SDLApplication* game) : game(game) {};
 	~GameState();
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void update();
+	virtual void render();
 	virtual void handleEvents() = 0;
-	virtual void saveToFile();
-	virtual void loadFromFile();
+
+	virtual void saveToFile() ;
+	virtual void loadFromFile() ;
 	void exitGame();
 	bool getExit();
 	Texture* getTexture(int num);
-	void Pause();
-	void Resume();
-	void End();
+
+	void Pause() ;
+	void Resume() ;
+	void End() ;
 };

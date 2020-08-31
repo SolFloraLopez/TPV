@@ -15,7 +15,7 @@ protected:
 public:
 	SDLGameObject(Point2D pos,double width,double height, Texture* texture, GameState* gameState);
 	virtual void render();
-	virtual void update() = 0;
+	//virtual void update() = 0;
 	virtual void saveToFile(ofstream& output) = 0;
 	virtual void loadFromFile(fstream& input) = 0;
 	SDL_Rect getDestRect(int cols, int rows);

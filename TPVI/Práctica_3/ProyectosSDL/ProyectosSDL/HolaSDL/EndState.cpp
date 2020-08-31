@@ -16,25 +16,25 @@ EndState::EndState(SDLApplication* game) : GameState(game)
 	events.push_back(buttonExit);
 
 }
-EndState::~EndState() {
+/*EndState::~EndState() {
 	for (GameObject* ob : objects)
 	{
 		delete ob;
 	}
-};
+}*/;
 
-void EndState::render()
-{
-	list<GameObject*>::iterator it;
-
-	it = objects.begin();
-
-	while (it != objects.end())
-	{
-		(*it)->render();
-		++it;
-	}
-}
+//void EndState::render()
+//{
+//	list<GameObject*>::iterator it;
+//
+//	it = objects.begin();
+//
+//	while (it != objects.end())
+//	{
+//		(*it)->render();
+//		++it;
+//	}
+//}
 
 void EndState::handleEvents()
 {

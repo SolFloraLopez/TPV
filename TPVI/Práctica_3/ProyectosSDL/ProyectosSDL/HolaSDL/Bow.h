@@ -20,7 +20,7 @@ private:
 	
 public:
 	Bow(Point2D pos, double width, double height, Vector2D vel, Texture* texture, Texture* arrowTex, bool loaded, PlayState* game, int ID);
-	~Bow();
+	/*~Bow();*/
 	virtual void render() /*const*/;
 	virtual void update();
 	virtual void loadFromFile(fstream& input);

@@ -1,18 +1,1 @@
-﻿  Arrow.cpp
-  Balloon.cpp
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Balloon.cpp(16,22): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Balloon.cpp(17,21): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Balloon.cpp(18,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Bow.cpp
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Balloon.cpp(19,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Bow.cpp(19,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Bow.cpp(20,15): warning C4244:  '=': conversion from 'const double' to 'int', possible loss of data
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Bow.cpp(21,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Game.cpp
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Bow.cpp(22,23): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\HolaSDL\Game.cpp(15,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005:  '_malloca': macro redefinition
-  Generating Code...
-C:\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message :  see previous definition of '_malloca'
-  HolaSDL.vcxproj -> C:\Users\usuario_local\Documents\Downloads\Practica1_TPV_G17\bin\HolaSDLDebug.exe
+﻿  HolaSDL.vcxproj -> D:\Otros\Uni\TP\RepoTP\TPV\TPVI\Practica1_Corregida\bin\HolaSDLDebug.exe

@@ -29,7 +29,7 @@ void SDLApplication::run() {//Bucle principal
 	{
 		if (stateMachine->getFlag() != "") checkStateMachine();
 
-		GameState* s = stateMachine->currentState();
+		//GameState* s = stateMachine->currentState();
 		stateMachine->currentState()->handleEvents();
 		stateMachine->currentState()->update();
 		render();
@@ -164,7 +164,7 @@ void SDLApplication::checkStateMachine()
 	}
 	else if (flag == "PlayState") 
 	{
-		stateMachine->changeState(new PlayState(this, false, ""));
+		stateMachine->changeState(new PlayState(this));
 		stateMachine->setFlag("");
 	}
 	else if (flag == "LoadState") 
@@ -172,7 +172,7 @@ void SDLApplication::checkStateMachine()
 		string file;
 		cout << "\n Codigo del archivo de guardado: ";
 		cin >> file;
-		stateMachine->changeState(new PlayState(this, true, file));
+		stateMachine->changeState(new PlayState(this, file));
 		//stateMachine->setFlag("PlayState");
 		stateMachine->setFlag("");
 	}

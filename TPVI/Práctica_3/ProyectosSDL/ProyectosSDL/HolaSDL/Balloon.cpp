@@ -11,9 +11,9 @@ Balloon::Balloon(Point2D pos, double ancho, double alto, Vector2D vel, bool esta
 	color = colour;
 }
 
-Balloon::~Balloon() //Destructor
-{
-}
+//Balloon::~Balloon() //Destructor
+//{
+//}
 
 void Balloon::render() /*const*/ { //Crear un rectangulo destino con las proporciones de los globos y renderiza su textura
 	SDL_Rect destRect = SDLGameObject::getDestRect(cols,rows);

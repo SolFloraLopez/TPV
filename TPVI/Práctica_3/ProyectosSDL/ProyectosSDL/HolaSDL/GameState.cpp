@@ -1,9 +1,9 @@
 #include "SDLApplication.h"
 #include "GameState.h"
 
-GameState::GameState(SDLApplication* game) : game(game) {}
 
-GameState::~GameState() 
+
+GameState::~GameState()
 {
 	for (GameObject* ob : objects)
 	{
@@ -13,31 +13,35 @@ GameState::~GameState()
 	objects.clear();
 };
 
-void GameState::exitGame()
-{
-	game->exitGame();
+
+void GameState::update() {
+	for (GameObject* ob : objects) {
+		ob->update();
+	}
+}
+void GameState::render() {
+	for (GameObject* ob : objects) {
+		ob->render();
+	}
 }
 
-bool GameState::getExit()
-{
-	return game->getExit();
-}
+void GameState::loadFromFile() { game->loadFromFile(); }
 
-Texture* GameState::getTexture(int num)
-{
-	return game->getTexture(num);
-}
-
-void GameState::loadFromFile()
-{
-	game->loadFromFile();
-}
-
-void GameState::saveToFile()
-{
+void GameState::saveToFile() {
 	game->saveToFile();
 }
 
+void GameState::exitGame(){
+	game->exitGame();
+}
+
+bool GameState::getExit(){
+	return game->getExit();
+}
+
+Texture* GameState::getTexture(int num){
+	return game->getTexture(num);
+}
 void GameState::Pause() {
 	game->Pause();
 }

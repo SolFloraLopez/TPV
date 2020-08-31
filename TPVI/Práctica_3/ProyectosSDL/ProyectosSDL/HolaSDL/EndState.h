@@ -9,8 +9,8 @@ private:
 	Texture* buttonExitTexture;
 public:
 	EndState(SDLApplication* game);
-	~EndState();
-	virtual void render();
-	virtual void update() {};
+	//~EndState();
+	/*virtual void render();*/
+	//virtual void update() {};
 	virtual void handleEvents();
 };

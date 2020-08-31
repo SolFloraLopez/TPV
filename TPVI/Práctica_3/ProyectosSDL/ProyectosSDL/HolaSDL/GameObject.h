@@ -10,4 +10,5 @@ public:
 	virtual void update() = 0;
 	virtual void saveToFile(ofstream& output) = 0;
 	virtual void loadFromFile(fstream& input) = 0;
+	virtual ~GameObject() {};
 };

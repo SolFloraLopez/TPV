@@ -12,18 +12,19 @@ Bow::Bow(Point2D pos, double ancho, double alto, Vector2D vel, Texture* texture,
 
 
 //Destructor
-Bow::~Bow() 
-{
-	delete arrow;
-}
+//Bow::~Bow() 
+//{
+//	delete arrow;
+//}
 
 void Bow::render() { //Crear un rectangulo destino con las proporciones del arco y renderiza su textura
 
-	ArrowsGameObject::render();
-	if(arrow != nullptr) arrow->render(); //Si flecha no es null llama el render de la misma
+	//ArrowsGameObject::render();
+	texture->render(getDestRect(1, 1));
+	if (arrow != nullptr) arrow->render(); //Si flecha no es null llama el render de la misma
 };
 
-void Bow::update() 
+void Bow::update()
 {
 	pos = { pos.getX(), pos.getY() + (vel.getY() * vel.getX()) }; //Actualiza la posicion del arco
 
@@ -36,39 +37,32 @@ void Bow::update()
 	else if (pos.getY() < 0) pos = { pos.getX(), 0 };
 };
 
-void Bow::handleEvent(SDL_Event& event) 
+void Bow::handleEvent(SDL_Event& event)
 {
 	double velocity = vel.getY();
 
-	switch (event.type)
+	if (event.key.type == SDL_KEYDOWN)
 	{
-	case SDL_KEYDOWN: //Control del arco con las teclas de flecha
-		if (event.key.keysym.sym == SDLK_UP) 
-		{
-			vel = Vector2D(-1, velocity);
+
+		switch (event.key.keysym.sym) {
+		case SDLK_UP: {vel = Vector2D(-1, velocity); break; }
+
+		case SDLK_DOWN: {vel = Vector2D(1, velocity);; break; }
+
+		case SDLK_LEFT: {if (playState->changeAvaliableArrows(0) > 0 && arrow == nullptr) {
+			arrow = new Arrow(arrowHeight, arrowWidth, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, playState, 4);
+		};
+					  break;
 		}
 
-		else if (event.key.keysym.sym == SDLK_DOWN)
-		{
-			vel = Vector2D(1, velocity);
+		case SDLK_RIGHT: {if (arrow != nullptr) { playState->shoot(arrow); arrow = nullptr; };
+					   break;
 		}
-
-		else if (event.key.keysym.sym == SDLK_LEFT && playState->changeAvaliableArrows(0) > 0 && arrow == nullptr) //Si hay flechas disponibles, crea una nueva
-		{
-			arrow = new Arrow (arrowHeight, arrowWidth, { pos.getX(), pos.getY() + height / 2 - 15 }, { 1, ARROW_VELOCITY }, arrowTexture, playState, 4);
+					   break;
 		}
-		else if (event.key.keysym.sym == SDLK_RIGHT && arrow != nullptr) //Si hay una flecha cargada llama al metodo disparar de game y el puntero a arrow se pone en null
-		{
-			playState->shoot(arrow);
-			arrow = nullptr;
-		}
-		break;
-	case SDL_KEYUP: // Si no se pulsa ninguna tecla la velocidad del arco es igual a 0
-		vel = Vector2D(0, velocity);
-		break;
-	default:
-		break;
 	}
+
+	else vel = Vector2D(0, velocity);// Si no se pulsa ninguna tecla la velocidad del arco es igual a 0
 };
 
 void Bow::loadFromFile(fstream& input)
